@@ -6,6 +6,7 @@
 
 package Vista;
 
+
 /**
  *
  * @author Genesis Vargas
@@ -61,8 +62,9 @@ public class Login extends javax.swing.JFrame {
         });
 
         cbx_usuario.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        cbx_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "vendedor" }));
+        cbx_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Vendedor" }));
         cbx_usuario.setActionCommand("cbx_usuario");
+        cbx_usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbx_usuario.setName(""); // NOI18N
         cbx_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,21 +133,30 @@ public class Login extends javax.swing.JFrame {
             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        panel1.getAccessibleContext().setAccessibleName("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmd_inicicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_inicicarActionPerformed
 
         try {
-//            String cedula = fieldCedula.getText();
-//            char[] pass = fieldPassword.getPassword();
-//            Persona persona = negocio.validarSesion(cedula, pass);
-//            if(persona!=null){
-//                System.out.println("paso");
-//                this.setVisible(false);
-//                Sesion sesion = new Sesion(persona);
-//                sesion.setVisible(true);
-//            }
+            String usuario = String.valueOf(cbx_usuario.getSelectedItem());
+//            String contrasenia = "prontitud";
+            char[] pass = jPasswordF_usuario.getPassword();
+            if (usuario.equals("Vendedor") && (String.valueOf(pass).equals("p"))) {
+                Inicio inicio = new Inicio();
+//                System.out.println("si entra vende");
+                    inicio.validar();
+                    inicio.setEnabled(true);
+                    this.setVisible(false);
+                
+            } else if(usuario.equals("Administrador")&& String.valueOf(pass).equals("p")){
+                Inicio inicio = new Inicio();
+//                System.out.println("si entra admi");
+                inicio.setEnabled(true);
+                this.setVisible(false);
+            }
         } catch (Exception ex) {
             System.out.println("Hubo un error");
         }
@@ -181,9 +192,11 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Login().setVisible(true);
             }

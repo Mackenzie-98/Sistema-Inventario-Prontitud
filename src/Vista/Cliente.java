@@ -76,6 +76,7 @@ public class Cliente extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tabla_cliente.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_cliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

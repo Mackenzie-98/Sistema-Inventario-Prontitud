@@ -57,7 +57,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id.setText("Identificación");
-        getContentPane().add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 47, 81, 20));
+        getContentPane().add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 47, 90, 20));
 
         lbl_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_nombre.setText("Nombre:");

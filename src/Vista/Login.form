@@ -34,6 +34,9 @@
   </Layout>
   <SubComponents>
     <Container class="java.awt.Panel" name="panel1">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -152,10 +155,13 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
                 <StringItem index="0" value="Administrador"/>
-                <StringItem index="1" value="vendedor"/>
+                <StringItem index="1" value="Vendedor"/>
               </StringArray>
             </Property>
             <Property name="actionCommand" type="java.lang.String" value="cbx_usuario"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Por defecto"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>
           <Events>

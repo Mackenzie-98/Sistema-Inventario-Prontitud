@@ -20,7 +20,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
      */
     public AgregarProducto() {
         initComponents();
-        this.setSize(520,229);
+        this.setSize(600,300);
         this.setResizable(false);
         this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
@@ -43,9 +43,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         lbl_cant = new javax.swing.JLabel();
         txt_cant = new javax.swing.JTextField();
         lbl_precio = new javax.swing.JLabel();
-        txt_precio = new javax.swing.JTextField();
-        lbl_stock = new javax.swing.JLabel();
-        cbx_stock = new javax.swing.JComboBox<>();
+        txt_stock = new javax.swing.JTextField();
+        lbl_categoria = new javax.swing.JLabel();
+        cbx_categoria = new javax.swing.JComboBox<>();
         cmd_agregar = new javax.swing.JButton();
         lbl_lab = new javax.swing.JLabel();
         txt_lab = new javax.swing.JTextField();
@@ -54,57 +54,66 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         txt_fecha = new javax.swing.JTextField();
         lbl_fecha = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        lbl_stock = new javax.swing.JLabel();
+        txt_precio1 = new javax.swing.JTextField();
 
         setBorder(null);
         setClosable(true);
         setTitle("Agregar producto");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lbl_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_nombre.setText("Nombre:");
-        getContentPane().add(lbl_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 28, 81, 23));
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 29, 100, -1));
 
+        txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+
+        lbl_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_cant.setText("Cantidad:");
-        getContentPane().add(lbl_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 69, 81, 23));
-        getContentPane().add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 70, 100, -1));
 
+        txt_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+
+        lbl_precio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_precio.setText("Precio:");
-        getContentPane().add(lbl_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 110, 81, 22));
 
-        txt_precio.addActionListener(new java.awt.event.ActionListener() {
+        txt_stock.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        txt_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_precioActionPerformed(evt);
+                txt_stockActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 111, 100, -1));
 
-        lbl_stock.setText("Stock mínimo:");
-        getContentPane().add(lbl_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 160, 81, 22));
+        lbl_categoria.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        lbl_categoria.setText("Categoría:");
 
-        cbx_stock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicamento", "Aseo Personal", "Otro" }));
-        getContentPane().add(cbx_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 100, -1));
+        cbx_categoria.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cbx_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicamento", "Aseo Personal", "Otro" }));
+        cbx_categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_categoriaActionPerformed(evt);
+            }
+        });
 
+        cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         cmd_agregar.setText("Agregar");
         cmd_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmd_agregarActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 100, -1));
 
+        lbl_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_lab.setText("Laboratorio:");
-        getContentPane().add(lbl_lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 77, 23));
-        getContentPane().add(txt_lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 100, -1));
 
+        txt_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+
+        lbl_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         lbl_lote.setText("No. Lote:");
-        getContentPane().add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 77, 23));
 
+        txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_lote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_loteActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 100, -1));
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
@@ -112,27 +121,144 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 txt_fechaActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 100, 20));
 
+        lbl_fecha.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         lbl_fecha.setText("Fecha ven:");
-        getContentPane().add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 77, 23));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 520, -1));
+
+        lbl_stock.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_stock.setText("Stock mínimo:");
+
+        txt_precio1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_precio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_precio1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_precio1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(87, 87, 87)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(57, 57, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbx_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmd_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_stock)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_precio1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_lab))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(cmd_agregar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbx_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precioActionPerformed
+    private void txt_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_precioActionPerformed
+    }//GEN-LAST:event_txt_stockActionPerformed
 
     private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
 
-        if("".equals(this.txt_nombre.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_precio.getText()) ||
+        if("".equals(this.txt_nombre.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_stock.getText()) ||
             "".equals(this.txt_lab.getText()) || "".equals(this.txt_lote.getText()) || "".equals(this.txt_fecha.getText())) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese todos los datos", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         else{
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar producto", JOptionPane.INFORMATION_MESSAGE);
+//            escritorio.removeAll();
             Producto ver_ventana = new Producto();
             Inicio.escritorio.add(ver_ventana);
             this.setVisible(false);
@@ -149,12 +275,21 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fechaActionPerformed
 
+    private void cbx_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_categoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_categoriaActionPerformed
+
+    private void txt_precio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precio1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_precio1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbx_stock;
+    private javax.swing.JComboBox<String> cbx_categoria;
     private javax.swing.JButton cmd_agregar;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_cant;
+    private javax.swing.JLabel lbl_categoria;
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_lab;
     private javax.swing.JLabel lbl_lote;
@@ -166,6 +301,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_lab;
     private javax.swing.JTextField txt_lote;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_precio;
+    private javax.swing.JTextField txt_precio1;
+    private javax.swing.JTextField txt_stock;
     // End of variables declaration//GEN-END:variables
 }
