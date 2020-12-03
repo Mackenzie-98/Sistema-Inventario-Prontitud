@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ProntitudORMPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Modelo.FacturaVenta</class>
+    <class>Modelo.Devolucion</class>
+    <class>Modelo.DetalleVenta</class>
+    <class>Modelo.Categoria</class>
+    <class>Modelo.DetalleLote</class>
+    <class>Modelo.Cliente</class>
+    <class>Modelo.Producto</class>
+    <class>Modelo.Proveedor</class>
+    <class>Modelo.DetalleCompra</class>
+    <class>Modelo.Lote</class>
+    <class>Modelo.FacturaCompra</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-prontitud.chjhoyymvqtv.us-east-1.rds.amazonaws.com:3306/Prontitud?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="admin"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="3202633111"/>
+    </properties>
+  </persistence-unit>
+</persistence>
