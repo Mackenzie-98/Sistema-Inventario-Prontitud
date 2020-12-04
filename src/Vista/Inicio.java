@@ -7,10 +7,8 @@ package Vista;
 
 import Vista.ImagenFondo.ImagenFondo;
 import static Vista.Login.cbx_usuario;
-import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import static jdk.nashorn.internal.objects.NativeDebug.getClass;
-import static sun.security.x509.OIDMap.getClass;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,9 +16,10 @@ import static sun.security.x509.OIDMap.getClass;
  */
 public class Inicio extends javax.swing.JFrame {
     
+
     public Login usuario;
     String tipo = String.valueOf(cbx_usuario.getSelectedItem());
- 
+    
     
     /**
      * Creates new form Inicio
@@ -28,11 +27,11 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         
         initComponents();
-        this.setSize(810,564);
+        this.setSize(800,585);
         this.setResizable(false);
         this.setVisible(true);
         this.setTitle("Droguería Prontitud");
-    
+        this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
         
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(Inicio.MAXIMIZED_HORIZ);
@@ -83,32 +82,37 @@ public class Inicio extends javax.swing.JFrame {
         jmi_facturasV = new javax.swing.JMenuItem();
         jm_dev = new javax.swing.JMenu();
         jmi_mostrar_dev = new javax.swing.JMenuItem();
+        jmi_reg_dev = new javax.swing.JMenuItem();
         jmi_eliminar_dev = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         escritorio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        escritorio.setPreferredSize(new java.awt.Dimension(810, 543));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 810, Short.MAX_VALUE)
+            .addGap(0, 791, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
+            .addGap(0, 521, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jMenuBar1.setForeground(new java.awt.Color(204, 204, 204));
         jMenuBar1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         jMenuBar1.setName(""); // NOI18N
 
+        jm_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/image_prod.png"))); // NOI18N
         jm_prod.setText("Producto");
         jm_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
 
-        jmi_mostrar_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jmi_mostrar_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jmi_mostrar_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        jmi_mostrar_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_prod.png"))); // NOI18N
         jmi_mostrar_prod.setText("Ver productos");
         jmi_mostrar_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +123,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jmi_mostrar_lotes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jmi_mostrar_lotes.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_lotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_lot.png"))); // NOI18N
         jmi_mostrar_lotes.setText("Ver lotes");
         jmi_mostrar_lotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +134,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jmi_agg_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jmi_agg_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        jmi_agg_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_resg_prod.png"))); // NOI18N
         jmi_agg_prod.setText("Registrar");
         jmi_agg_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +145,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jmi_buscar_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         jmi_buscar_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        jmi_buscar_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar.png"))); // NOI18N
         jmi_buscar_prod.setText("Buscar ");
         jmi_buscar_prod.setInheritsPopupMenu(true);
         jmi_buscar_prod.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +157,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jmi_eliminar_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jmi_eliminar_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        jmi_eliminar_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         jmi_eliminar_prod.setText("Eliminar");
         jmi_eliminar_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +166,9 @@ public class Inicio extends javax.swing.JFrame {
         });
         jm_prod.add(jmi_eliminar_prod);
 
+        jmi_salir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jmi_salir.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_salir.png"))); // NOI18N
         jmi_salir.setText("Salir");
         jmi_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,12 +179,14 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jm_prod);
 
+        jm_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_prov.png"))); // NOI18N
         jm_prov.setText("Proveedor");
         jm_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         jm_prov.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jm_prov.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jm_prov.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jmi_mostrar_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_prov.png"))); // NOI18N
         jmi_mostrar_prov.setText("Ver proveedores");
         jmi_mostrar_prov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +196,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_prov.add(jmi_mostrar_prov);
 
         jmi_agg_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_agg_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_prov.png"))); // NOI18N
         jmi_agg_prov.setText("Registrar");
         jmi_agg_prov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +206,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_prov.add(jmi_agg_prov);
 
         jmi_buscar_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_buscar_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
         jmi_buscar_prov.setText("Buscar");
         jmi_buscar_prov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,6 +216,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_prov.add(jmi_buscar_prov);
 
         jmi_eliminar_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_eliminar_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         jmi_eliminar_prov.setText("Eliminar");
         jmi_eliminar_prov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +227,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jm_prov);
 
+        jm_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_clientes.png"))); // NOI18N
         jm_cliente.setText("Cliente");
         jm_cliente.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         jm_cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +238,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_cliente.add(jSeparator1);
 
         jmi_mostrar_clientes.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_cli.png"))); // NOI18N
         jmi_mostrar_clientes.setText("Ver clientes");
         jmi_mostrar_clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +248,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_cliente.add(jmi_mostrar_clientes);
 
         jmi_agg_cliente.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_agg_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_cli.png"))); // NOI18N
         jmi_agg_cliente.setText("Registrar");
         jmi_agg_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,6 +258,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_cliente.add(jmi_agg_cliente);
 
         jmi_buscar_cliente.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        jmi_buscar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_clie.png"))); // NOI18N
         jmi_buscar_cliente.setText("Buscar");
         jmi_buscar_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,6 +268,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_cliente.add(jmi_buscar_cliente);
 
         jmi_eliminar_cliente.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_eliminar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         jmi_eliminar_cliente.setText("Eliminar ");
         jmi_eliminar_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,10 +279,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jm_cliente);
 
+        jm_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_registrar.png"))); // NOI18N
         jm_registrar.setText("Registrar");
         jm_registrar.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
 
         jmi_registrar_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_registrar_c.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_comp.png"))); // NOI18N
         jmi_registrar_c.setText("Registrar compra");
         jmi_registrar_c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,6 +294,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_registrar.add(jmi_registrar_c);
 
         jmi_registrar_v.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_registrar_v.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_vent.png"))); // NOI18N
         jmi_registrar_v.setText("Registrar venta");
         jmi_registrar_v.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,11 +305,13 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jm_registrar);
 
+        jm_facturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_facturas.png"))); // NOI18N
         jm_facturas.setText("Facturas");
         jm_facturas.setFocusable(false);
         jm_facturas.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
 
         jmi_facturasC.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_facturasC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_comp.png"))); // NOI18N
         jmi_facturasC.setText("Facturas compra");
         jmi_facturasC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,6 +321,7 @@ public class Inicio extends javax.swing.JFrame {
         jm_facturas.add(jmi_facturasC);
 
         jmi_facturasV.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_facturasV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_vent.png"))); // NOI18N
         jmi_facturasV.setText("Facturas venta");
         jmi_facturasV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,10 +332,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jm_facturas);
 
+        jm_dev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_dev.png"))); // NOI18N
         jm_dev.setText("Devolución");
         jm_dev.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
 
         jmi_mostrar_dev.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_dev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_dev.png"))); // NOI18N
         jmi_mostrar_dev.setText("Ver devoluciones");
         jmi_mostrar_dev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +346,18 @@ public class Inicio extends javax.swing.JFrame {
         });
         jm_dev.add(jmi_mostrar_dev);
 
+        jmi_reg_dev.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_reg_dev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_dev.png"))); // NOI18N
+        jmi_reg_dev.setText("Registrar");
+        jmi_reg_dev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_reg_devActionPerformed(evt);
+            }
+        });
+        jm_dev.add(jmi_reg_dev);
+
         jmi_eliminar_dev.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_eliminar_dev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         jmi_eliminar_dev.setText("Eliminar");
         jmi_eliminar_dev.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,11 +375,11 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
 
         pack();
@@ -379,6 +418,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
 //        escritorio.removeAll();
+
         Producto ver_ventana = new Producto();
         escritorio.add(ver_ventana);
         ver_ventana.show();        
@@ -495,6 +535,10 @@ public class Inicio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jmi_salirActionPerformed
 
+    private void jmi_reg_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_reg_devActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_reg_devActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -558,6 +602,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_mostrar_lotes;
     private javax.swing.JMenuItem jmi_mostrar_prod;
     private javax.swing.JMenuItem jmi_mostrar_prov;
+    private javax.swing.JMenuItem jmi_reg_dev;
     private javax.swing.JMenuItem jmi_registrar_c;
     private javax.swing.JMenuItem jmi_registrar_v;
     private javax.swing.JMenuItem jmi_salir;
