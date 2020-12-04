@@ -16,7 +16,7 @@
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-prontitud.chjhoyymvqtv.us-east-1.rds.amazonaws.com:3306/Prontitud?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="admin"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="3202633111"/>
     </properties>
   </persistence-unit>
