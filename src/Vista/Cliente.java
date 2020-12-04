@@ -18,7 +18,7 @@ public class Cliente extends javax.swing.JInternalFrame {
     /** Creates new form Cliente */
     public Cliente() {
         initComponents();
-        this.setSize(620,401);
+        this.setSize(600,420);
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
@@ -65,7 +65,7 @@ public class Cliente extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Identificación", "Nombre", "Fecha de nacimiento", "Contacto"
+                "Identificación", "Nombre", "Fecha de nacimiento", "Correo"
             }
         ) {
             Class[] types = new Class [] {

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Genes
+ * @author Genesis Vargas
  */
 public class AgregarProveedor extends javax.swing.JInternalFrame {
 
@@ -20,7 +20,7 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
      */
     public AgregarProveedor() {
         initComponents();
-        this.setSize(520,229);
+        this.setSize(500,330);
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
@@ -53,16 +53,24 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Registrar proveedor");
 
+        txt_ciudad.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_ciudad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lbl_nit.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_nit.setText("NIT:");
 
+        txt_tel.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_tel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_telActionPerformed(evt);
             }
         });
 
+        lbl_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_nombre.setText("Nombre:");
 
+        cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         cmd_agregar.setText("Agregar");
         cmd_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,18 +78,28 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
             }
         });
 
+        lbl_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_correo.setText("Correo:");
 
+        lbl_ciudad.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_ciudad.setText("Ciudad:");
 
+        lbl_tel.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_tel.setText("Telefono:");
 
+        txt_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_correoActionPerformed(evt);
             }
         });
 
+        txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txt_nit.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_nit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_nit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nitActionPerformed(evt);
@@ -93,7 +111,7 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -112,14 +130,14 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
                         .addComponent(lbl_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(cmd_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,7 +158,7 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();

@@ -178,9 +178,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_nombre">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_cant">
@@ -193,9 +197,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_cant">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_precio">
@@ -208,9 +216,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_stock">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft JhengHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_stockActionPerformed"/>
@@ -265,9 +277,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_lab">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_lote">
@@ -280,9 +296,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_lote">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_loteActionPerformed"/>
@@ -290,9 +310,14 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_fecha">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_fechaActionPerformed"/>
@@ -318,9 +343,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_precio1">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="default"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft YaHei Light" size="14" style="0"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_precio1ActionPerformed"/>

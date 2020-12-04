@@ -88,7 +88,7 @@
                 <Column editable="true" title="Identificaci&#xf3;n" type="java.lang.String"/>
                 <Column editable="true" title="Nombre" type="java.lang.String"/>
                 <Column editable="true" title="Fecha de nacimiento" type="java.lang.String"/>
-                <Column editable="true" title="Contacto" type="java.lang.String"/>
+                <Column editable="true" title="Correo" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

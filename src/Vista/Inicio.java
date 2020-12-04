@@ -5,8 +5,12 @@
  */
 package Vista;
 
+import Vista.ImagenFondo.ImagenFondo;
 import static Vista.Login.cbx_usuario;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.objects.NativeDebug.getClass;
+import static sun.security.x509.OIDMap.getClass;
 
 /**
  *
@@ -27,7 +31,11 @@ public class Inicio extends javax.swing.JFrame {
         this.setSize(810,564);
         this.setResizable(false);
         this.setVisible(true);
-
+        this.setTitle("Droguería Prontitud");
+    
+        
+        escritorio.setBorder(new ImagenFondo());
+        this.setExtendedState(Inicio.MAXIMIZED_HORIZ);
     }
     public void validar(){
         if(tipo.equals("Vendedor")){
@@ -51,19 +59,22 @@ public class Inicio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_prod = new javax.swing.JMenu();
         jmi_mostrar_prod = new javax.swing.JMenuItem();
+        jmi_mostrar_lotes = new javax.swing.JMenuItem();
         jmi_agg_prod = new javax.swing.JMenuItem();
         jmi_buscar_prod = new javax.swing.JMenuItem();
         jmi_eliminar_prod = new javax.swing.JMenuItem();
-        jmi_mostrar_lotes = new javax.swing.JMenuItem();
+        jmi_salir = new javax.swing.JMenuItem();
         jm_prov = new javax.swing.JMenu();
+        jmi_mostrar_prov = new javax.swing.JMenuItem();
         jmi_agg_prov = new javax.swing.JMenuItem();
         jmi_buscar_prov = new javax.swing.JMenuItem();
         jmi_eliminar_prov = new javax.swing.JMenuItem();
-        jmi_mostrar_prov = new javax.swing.JMenuItem();
         jm_cliente = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jmi_mostrar_clientes = new javax.swing.JMenuItem();
         jmi_agg_cliente = new javax.swing.JMenuItem();
         jmi_buscar_cliente = new javax.swing.JMenuItem();
+        jmi_eliminar_cliente = new javax.swing.JMenuItem();
         jm_registrar = new javax.swing.JMenu();
         jmi_registrar_c = new javax.swing.JMenuItem();
         jmi_registrar_v = new javax.swing.JMenuItem();
@@ -71,6 +82,8 @@ public class Inicio extends javax.swing.JFrame {
         jmi_facturasC = new javax.swing.JMenuItem();
         jmi_facturasV = new javax.swing.JMenuItem();
         jm_dev = new javax.swing.JMenu();
+        jmi_mostrar_dev = new javax.swing.JMenuItem();
+        jmi_eliminar_dev = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,9 +117,19 @@ public class Inicio extends javax.swing.JFrame {
         });
         jm_prod.add(jmi_mostrar_prod);
 
+        jmi_mostrar_lotes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        jmi_mostrar_lotes.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_lotes.setText("Ver lotes");
+        jmi_mostrar_lotes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mostrar_lotesActionPerformed(evt);
+            }
+        });
+        jm_prod.add(jmi_mostrar_lotes);
+
         jmi_agg_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jmi_agg_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        jmi_agg_prod.setText("Agregar ");
+        jmi_agg_prod.setText("Registrar");
         jmi_agg_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_agg_prodActionPerformed(evt);
@@ -117,6 +140,7 @@ public class Inicio extends javax.swing.JFrame {
         jmi_buscar_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         jmi_buscar_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         jmi_buscar_prod.setText("Buscar ");
+        jmi_buscar_prod.setInheritsPopupMenu(true);
         jmi_buscar_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_buscar_prodActionPerformed(evt);
@@ -134,23 +158,33 @@ public class Inicio extends javax.swing.JFrame {
         });
         jm_prod.add(jmi_eliminar_prod);
 
-        jmi_mostrar_lotes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        jmi_mostrar_lotes.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jmi_mostrar_lotes.setText("Ver lotes");
-        jmi_mostrar_lotes.addActionListener(new java.awt.event.ActionListener() {
+        jmi_salir.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_salir.setText("Salir");
+        jmi_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_mostrar_lotesActionPerformed(evt);
+                jmi_salirActionPerformed(evt);
             }
         });
-        jm_prod.add(jmi_mostrar_lotes);
+        jm_prod.add(jmi_salir);
 
         jMenuBar1.add(jm_prod);
 
         jm_prov.setText("Proveedor");
         jm_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jm_prov.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jm_prov.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jmi_mostrar_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_prov.setText("Ver proveedores");
+        jmi_mostrar_prov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mostrar_provActionPerformed(evt);
+            }
+        });
+        jm_prov.add(jmi_mostrar_prov);
 
         jmi_agg_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jmi_agg_prov.setText("Agregar");
+        jmi_agg_prov.setText("Registrar");
         jmi_agg_prov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_agg_provActionPerformed(evt);
@@ -176,15 +210,6 @@ public class Inicio extends javax.swing.JFrame {
         });
         jm_prov.add(jmi_eliminar_prov);
 
-        jmi_mostrar_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jmi_mostrar_prov.setText("Mostrar");
-        jmi_mostrar_prov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_mostrar_provActionPerformed(evt);
-            }
-        });
-        jm_prov.add(jmi_mostrar_prov);
-
         jMenuBar1.add(jm_prov);
 
         jm_cliente.setText("Cliente");
@@ -196,8 +221,17 @@ public class Inicio extends javax.swing.JFrame {
         });
         jm_cliente.add(jSeparator1);
 
+        jmi_mostrar_clientes.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_clientes.setText("Ver clientes");
+        jmi_mostrar_clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mostrar_clientesActionPerformed(evt);
+            }
+        });
+        jm_cliente.add(jmi_mostrar_clientes);
+
         jmi_agg_cliente.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jmi_agg_cliente.setText("Agregar");
+        jmi_agg_cliente.setText("Registrar");
         jmi_agg_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_agg_clienteActionPerformed(evt);
@@ -213,6 +247,15 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jm_cliente.add(jmi_buscar_cliente);
+
+        jmi_eliminar_cliente.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_eliminar_cliente.setText("Eliminar ");
+        jmi_eliminar_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminar_clienteActionPerformed(evt);
+            }
+        });
+        jm_cliente.add(jmi_eliminar_cliente);
 
         jMenuBar1.add(jm_cliente);
 
@@ -265,6 +308,25 @@ public class Inicio extends javax.swing.JFrame {
 
         jm_dev.setText("Devolución");
         jm_dev.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+
+        jmi_mostrar_dev.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_dev.setText("Ver devoluciones");
+        jmi_mostrar_dev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_mostrar_devActionPerformed(evt);
+            }
+        });
+        jm_dev.add(jmi_mostrar_dev);
+
+        jmi_eliminar_dev.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_eliminar_dev.setText("Eliminar");
+        jmi_eliminar_dev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminar_devActionPerformed(evt);
+            }
+        });
+        jm_dev.add(jmi_eliminar_dev);
+
         jMenuBar1.add(jm_dev);
 
         setJMenuBar(jMenuBar1);
@@ -293,6 +355,7 @@ public class Inicio extends javax.swing.JFrame {
         AgregarProducto ver_ventana = new AgregarProducto();
         escritorio.add(ver_ventana);
         ver_ventana.show();
+//        dispose();
     }//GEN-LAST:event_jmi_agg_prodActionPerformed
 
     private void jmi_buscar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_prodActionPerformed
@@ -302,6 +365,7 @@ public class Inicio extends javax.swing.JFrame {
         Producto ver_ventana = new Producto();
         escritorio.add(ver_ventana);
         ver_ventana.show();
+//        dispose();
     }//GEN-LAST:event_jmi_buscar_prodActionPerformed
 
     private void jmi_eliminar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_prodActionPerformed
@@ -388,16 +452,48 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_facturasVActionPerformed
 
     private void jmi_registrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrar_cActionPerformed
-        Compra ver_ventana = new Compra();
+        AgregarCompra ver_ventana = new AgregarCompra();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_registrar_cActionPerformed
 
     private void jmi_registrar_vActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrar_vActionPerformed
-        Venta ver_ventana = new Venta();
+        AgregarVenta ver_ventana = new AgregarVenta();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_registrar_vActionPerformed
+
+    private void jmi_mostrar_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_clientesActionPerformed
+        Cliente ver_ventana = new Cliente();
+        escritorio.add(ver_ventana);
+        ver_ventana.show();        
+    }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
+
+    private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed
+        String nombre;
+        nombre = JOptionPane.showInputDialog("Digita número de documento:  ");     
+        Cliente ver_ventana = new Cliente();
+        escritorio.add(ver_ventana);
+        ver_ventana.show();
+    }//GEN-LAST:event_jmi_eliminar_clienteActionPerformed
+
+    private void jmi_mostrar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_devActionPerformed
+        Devolucion ver_ventana = new Devolucion();
+        escritorio.add(ver_ventana);
+        ver_ventana.show();  
+    }//GEN-LAST:event_jmi_mostrar_devActionPerformed
+
+    private void jmi_eliminar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_devActionPerformed
+        String nombre;
+        nombre = JOptionPane.showInputDialog("Digita número de devolución:  ");     
+        Devolucion ver_ventana = new Devolucion();
+        escritorio.add(ver_ventana);
+        ver_ventana.show();
+    }//GEN-LAST:event_jmi_eliminar_devActionPerformed
+
+    private void jmi_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_salirActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jmi_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,14 +547,19 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_buscar_cliente;
     private javax.swing.JMenuItem jmi_buscar_prod;
     private javax.swing.JMenuItem jmi_buscar_prov;
+    private javax.swing.JMenuItem jmi_eliminar_cliente;
+    private javax.swing.JMenuItem jmi_eliminar_dev;
     private javax.swing.JMenuItem jmi_eliminar_prod;
     private javax.swing.JMenuItem jmi_eliminar_prov;
     private javax.swing.JMenuItem jmi_facturasC;
     private javax.swing.JMenuItem jmi_facturasV;
+    private javax.swing.JMenuItem jmi_mostrar_clientes;
+    private javax.swing.JMenuItem jmi_mostrar_dev;
     private javax.swing.JMenuItem jmi_mostrar_lotes;
     private javax.swing.JMenuItem jmi_mostrar_prod;
     private javax.swing.JMenuItem jmi_mostrar_prov;
     private javax.swing.JMenuItem jmi_registrar_c;
     private javax.swing.JMenuItem jmi_registrar_v;
+    private javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
 }

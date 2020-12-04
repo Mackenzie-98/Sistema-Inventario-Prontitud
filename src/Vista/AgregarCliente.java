@@ -42,9 +42,9 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         lbl_id = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
         cmd_agregar = new javax.swing.JButton();
-        lbl_contacto = new javax.swing.JLabel();
+        lbl_correo = new javax.swing.JLabel();
         lbl_fecha = new javax.swing.JLabel();
-        txt_cont = new javax.swing.JTextField();
+        txt_correo = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
         txt_id = new javax.swing.JTextField();
 
@@ -53,7 +53,9 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_fecha_nac.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        getContentPane().add(txt_fecha_nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 95, -1));
+        txt_fecha_nac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_fecha_nac.setText("YYYY-MM-DD");
+        getContentPane().add(txt_fecha_nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, -1));
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id.setText("Identificación");
@@ -70,26 +72,26 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 cmd_agregarActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 99, 36));
+        getContentPane().add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 99, 36));
 
-        lbl_contacto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_contacto.setText("Contacto:");
-        getContentPane().add(lbl_contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 170, 81, 22));
+        lbl_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_correo.setText("Correo:");
+        getContentPane().add(lbl_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 170, 81, 22));
 
         lbl_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_fecha.setText("Fecha de nacimiento:");
         getContentPane().add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 23));
 
-        txt_cont.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_cont.addActionListener(new java.awt.event.ActionListener() {
+        txt_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contActionPerformed(evt);
+                txt_correoActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 95, -1));
+        getContentPane().add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 100, -1));
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 95, -1));
+        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 100, -1));
 
         txt_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_id.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +99,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 txt_idActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 95, -1));
+        getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,9 +123,9 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cmd_agregarActionPerformed
 
-    private void txt_contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contActionPerformed
+    private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contActionPerformed
+    }//GEN-LAST:event_txt_correoActionPerformed
 
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
         // TODO add your handling code here:
@@ -132,11 +134,11 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmd_agregar;
-    private javax.swing.JLabel lbl_contacto;
+    private javax.swing.JLabel lbl_correo;
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JLabel lbl_nombre;
-    private javax.swing.JTextField txt_cont;
+    private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_fecha_nac;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;

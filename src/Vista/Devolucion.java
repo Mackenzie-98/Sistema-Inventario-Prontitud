@@ -10,16 +10,16 @@ import java.awt.Dimension;
 
 /**
  *
- * @author Genesis Vargas
+ * @author Genes
  */
-public class Venta extends javax.swing.JInternalFrame {
+public class Devolucion extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form Venta
+     * Creates new form Devolucion
      */
-    public Venta() {
+    public Devolucion() {
         initComponents();
-        this.setSize(500,413);
+        this.setSize(605,430);
         this.setResizable(false);
         this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
@@ -38,17 +38,17 @@ public class Venta extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         setClosable(true);
-        setTitle("Tabla de ventas");
+        setTitle("Tabla de devoluciones");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGap(0, 370, Short.MAX_VALUE)
         );
 
         pack();

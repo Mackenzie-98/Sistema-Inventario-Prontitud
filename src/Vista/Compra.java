@@ -5,9 +5,12 @@
  */
 package Vista;
 
+import static Vista.Inicio.escritorio;
+import java.awt.Dimension;
+
 /**
  *
- * @author Genes
+ * @author Genesis Vargas
  */
 public class Compra extends javax.swing.JInternalFrame {
 
@@ -16,6 +19,13 @@ public class Compra extends javax.swing.JInternalFrame {
      */
     public Compra() {
         initComponents();
+        this.setSize(500,500);
+        this.setResizable(false);
+        this.setVisible(true); 
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);
     }
 
     /**
@@ -38,7 +48,7 @@ public class Compra extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGap(0, 272, Short.MAX_VALUE)
         );
 
         pack();

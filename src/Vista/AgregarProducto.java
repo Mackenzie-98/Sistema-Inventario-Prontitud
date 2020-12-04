@@ -65,16 +65,19 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         lbl_nombre.setText("Nombre:");
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lbl_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_cant.setText("Cantidad:");
 
         txt_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_cant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lbl_precio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_precio.setText("Precio:");
 
         txt_stock.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        txt_stock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_stockActionPerformed(evt);
@@ -104,11 +107,13 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         lbl_lab.setText("Laboratorio:");
 
         txt_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_lab.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         lbl_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         lbl_lote.setText("No. Lote:");
 
         txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_lote.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_lote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_loteActionPerformed(evt);
@@ -116,6 +121,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         });
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_fecha.setText("YYYY-MM-DD");
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fechaActionPerformed(evt);
@@ -129,6 +136,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         lbl_stock.setText("Stock mínimo:");
 
         txt_precio1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_precio1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_precio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_precio1ActionPerformed(evt);
