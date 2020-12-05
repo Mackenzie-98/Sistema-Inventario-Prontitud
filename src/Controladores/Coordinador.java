@@ -14,7 +14,8 @@ public class Coordinador {
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
     Conexion conexion = Conexion.getConexion();
-
+    
+    
     public static void main(String[] agrs) {
         login=new LoginVista();
         login.setVisible(true);
