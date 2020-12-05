@@ -52,7 +52,7 @@ public class Coordinador {
             st = conexion.getConexionSQL().createStatement();
             ResultSet rs;
             rs = st.executeQuery("SELECT p.id_producto, p.nombre, SUM(dl.cantidad), p.precio_unitario FROM Producto p\n"
-                    + "INNER JOIN Detalle_Lote dl on dl.id_producto_FK=p.id_producto\n"
+                    + "LEFT JOIN Detalle_Lote dl on dl.id_producto_FK=p.id_producto\n"
                     + "GROUP BY p.id_producto, p.nombre,p.precio_unitario;");
             Object datos[] = new String[4];
             DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
