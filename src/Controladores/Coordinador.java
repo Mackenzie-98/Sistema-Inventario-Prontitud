@@ -48,4 +48,17 @@ public class Coordinador {
         inicio.getEscritorio().add(productoVista);
         clienteVista.setVisible(true);
     }   
+    
+    public void mostrarProveedores() {
+        ProveedorVista proveedorVista = new ProveedorVista();
+        ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
+        List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
+        DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
+        for (Proveedor  x : proveedores) {
+            model.addRow(new Object[]{x.getNit(),x.getNombre(),x.getCiudad(),x.getCorreo(), x.getTelefono()});
+        }
+        proveedorVista.getTabla_proveedor().setModel(model);
+        inicio.getEscritorio().add(proveedorVista);
+        clienteVista.setVisible(true);
+    }
 }

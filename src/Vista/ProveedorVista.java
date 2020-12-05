@@ -7,6 +7,10 @@ package Vista;
 
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 
 /**
@@ -123,6 +127,45 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLbl_id() {
+        return lbl_id;
+    }
+
+    public void setLbl_id(JLabel lbl_id) {
+        this.lbl_id = lbl_id;
+    }
+
+    public JTable getTabla_proveedor() {
+        return tabla_proveedor;
+    }
+
+    public void setTabla_proveedor(JTable tabla_proveedor) {
+        this.tabla_proveedor = tabla_proveedor;
+    }
+
+    public JTextField getTxt_nit() {
+        return txt_nit;
+    }
+
+    public void setTxt_nit(JTextField txt_nit) {
+        this.txt_nit = txt_nit;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
