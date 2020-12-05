@@ -6,6 +6,7 @@
 package Vista;
 
 import static Vista.InicioVista.escritorio;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -20,7 +21,6 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
      */
     public AgregarCompraVista() {
         initComponents();
-        this.setSize(605,310);
         this.setResizable(false);
         this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
@@ -38,54 +38,100 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        lbl_dto = new javax.swing.JLabel();
-        lbl_fecha = new javax.swing.JLabel();
+        cmd_reg_c = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         lbl_prov = new javax.swing.JLabel();
-        txt_dto = new javax.swing.JTextField();
-        cbx_proveedor = new javax.swing.JComboBox<>();
+        txt_nit = new javax.swing.JTextField();
+        lbl_fecha = new javax.swing.JLabel();
         txt_fecha = new javax.swing.JTextField();
-        cmd_registrar = new javax.swing.JButton();
+        lbl_dto1 = new javax.swing.JLabel();
+        txt_dto = new javax.swing.JTextField();
+        lbl_cant = new javax.swing.JLabel();
+        txt_cant = new javax.swing.JTextField();
+        lbl_precio_c = new javax.swing.JLabel();
+        txt_precio_c = new javax.swing.JTextField();
         lbl_prod = new javax.swing.JLabel();
-        cbx_prod = new javax.swing.JComboBox<>();
+        txt_nombre_prod = new javax.swing.JTextField();
         lbl_lote = new javax.swing.JLabel();
-        cbx_lote = new javax.swing.JComboBox<>();
+        txt_lote = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setTitle("Registrar compra");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_comp.png"))); // NOI18N
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${defaultCloseOperation}"), this, org.jdesktop.beansbinding.BeanProperty.create("defaultCloseOperation"));
+        bindingGroup.addBinding(binding);
+
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_dto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_dto.setText("Descuento");
-        getContentPane().add(lbl_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 73, 22));
+        cmd_reg_c.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_reg_c.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 14)); // NOI18N
+        cmd_reg_c.setForeground(new java.awt.Color(255, 255, 255));
+        cmd_reg_c.setText("Registrar");
+        cmd_reg_c.setBorder(null);
+        cmd_reg_c.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_reg_cMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_reg_cMouseExited(evt);
+            }
+        });
+        cmd_reg_c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_reg_cActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmd_reg_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, 100, 32));
 
-        lbl_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_fecha.setText("Fecha");
-        getContentPane().add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 73, 22));
+        jLabel4.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Compra");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 130, 40));
+
+        jLabel3.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Registrar ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 160, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 51, 204));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 410, 680, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/fondo_derecha.png"))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, -30, 210, 480));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_prov.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        lbl_prov.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_prov.setText("Proveedor");
-        getContentPane().add(lbl_prov, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 73, 22));
+        lbl_prov.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_prov.setText("NIT proveedor:");
+        jPanel1.add(lbl_prov, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 22));
 
-        txt_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_dto.addActionListener(new java.awt.event.ActionListener() {
+        txt_nit.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_nit.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_nit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dtoActionPerformed(evt);
+                txt_nitActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 150, -1));
+        jPanel1.add(txt_nit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 150, -1));
 
-        cbx_proveedor.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cbx_proveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aún no me decido" }));
-        cbx_proveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_proveedorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cbx_proveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
+        lbl_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_fecha.setText("Fecha:");
+        jPanel1.add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 73, 22));
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -95,84 +141,171 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
                 txt_fechaActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 149, -1));
+        jPanel1.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 149, -1));
 
-        cmd_registrar.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        cmd_registrar.setText("Registrar");
-        cmd_registrar.addActionListener(new java.awt.event.ActionListener() {
+        lbl_dto1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_dto1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_dto1.setText("Descuento:");
+        jPanel1.add(lbl_dto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 73, 22));
+
+        txt_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_dto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmd_registrarActionPerformed(evt);
+                txt_dtoActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 100, 32));
+        jPanel1.add(txt_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 150, -1));
+
+        lbl_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_cant.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_cant.setText("Cantidad:");
+        jPanel1.add(lbl_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 73, 22));
+
+        txt_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_cant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cantActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 150, -1));
+
+        lbl_precio_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_precio_c.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_precio_c.setText("Precio compra:");
+        jPanel1.add(lbl_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 100, -1));
+
+        txt_precio_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_precio_c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_precio_cActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 150, -1));
 
         lbl_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        lbl_prod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_prod.setText("Producto");
-        getContentPane().add(lbl_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 73, 22));
+        lbl_prod.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl_prod.setText("Nombre producto");
+        jPanel1.add(lbl_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 120, 22));
 
-        cbx_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cbx_prod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aún no me decido" }));
-        cbx_prod.addActionListener(new java.awt.event.ActionListener() {
+        txt_nombre_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_nombre_prod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_nombre_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_prodActionPerformed(evt);
+                txt_nombre_prodActionPerformed(evt);
             }
         });
-        getContentPane().add(cbx_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
+        jPanel1.add(txt_nombre_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 150, -1));
 
         lbl_lote.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        lbl_lote.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_lote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_lote.setText("Lote");
-        getContentPane().add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 73, 22));
+        jPanel1.add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 60, 22));
 
-        cbx_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cbx_lote.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aún no me decido" }));
-        cbx_lote.addActionListener(new java.awt.event.ActionListener() {
+        txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_lote.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_lote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_loteActionPerformed(evt);
+                txt_loteActionPerformed(evt);
             }
         });
-        getContentPane().add(cbx_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
+        jPanel1.add(txt_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 150, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 360, 310));
+
+        jPanel3.setBackground(new java.awt.Color(0, 51, 204));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Datos de compra:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 150, -1));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 60));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_dtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dtoActionPerformed
+    private void txt_precio_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precio_cActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dtoActionPerformed
-
-    private void cbx_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_proveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbx_proveedorActionPerformed
-
-    private void cmd_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_registrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmd_registrarActionPerformed
-
-    private void cbx_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_prodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbx_prodActionPerformed
-
-    private void cbx_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_loteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbx_loteActionPerformed
+    }//GEN-LAST:event_txt_precio_cActionPerformed
 
     private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fechaActionPerformed
 
+    private void cmd_reg_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_reg_cActionPerformed
+        
+
+
+        if ("".equals(this.txt_nit.getText()) || "".equals(this.txt_nombre_prod.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_dto.getText())
+                || "".equals(this.txt_lote.getText())|| "".equals(this.txt_precio_c.getText()) || "".equals(this.txt_fecha.getText())) {
+            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese todos los datos", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar producto", JOptionPane.INFORMATION_MESSAGE);
+            CompraVista ver_ventana = new CompraVista();
+            escritorio.add(ver_ventana);
+            this.setVisible(false);
+            ver_ventana.show(); 
+
+        }
+    }//GEN-LAST:event_cmd_reg_cActionPerformed
+
+    private void txt_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_loteActionPerformed
+
+    private void txt_nitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nitActionPerformed
+
+    private void txt_nombre_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombre_prodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombre_prodActionPerformed
+
+    private void txt_dtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dtoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_dtoActionPerformed
+
+    private void txt_cantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cantActionPerformed
+
+    private void cmd_reg_cMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_reg_cMouseEntered
+        // TODO add your handling code here:
+        cmd_reg_c.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_reg_cMouseEntered
+
+    private void cmd_reg_cMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_reg_cMouseExited
+        // TODO add your handling code here:
+        cmd_reg_c.setBackground(new Color(0, 51, 204));
+    }//GEN-LAST:event_cmd_reg_cMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbx_lote;
-    private javax.swing.JComboBox<String> cbx_prod;
-    private javax.swing.JComboBox<String> cbx_proveedor;
-    private javax.swing.JButton cmd_registrar;
-    private javax.swing.JLabel lbl_dto;
+    private javax.swing.JButton cmd_reg_c;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_cant;
+    private javax.swing.JLabel lbl_dto1;
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_lote;
+    private javax.swing.JLabel lbl_precio_c;
     private javax.swing.JLabel lbl_prod;
     private javax.swing.JLabel lbl_prov;
+    private javax.swing.JTextField txt_cant;
     private javax.swing.JTextField txt_dto;
     private javax.swing.JTextField txt_fecha;
+    private javax.swing.JTextField txt_lote;
+    private javax.swing.JTextField txt_nit;
+    private javax.swing.JTextField txt_nombre_prod;
+    private javax.swing.JTextField txt_precio_c;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

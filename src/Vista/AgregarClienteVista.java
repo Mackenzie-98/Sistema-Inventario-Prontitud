@@ -52,7 +52,9 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        jPanel1 = new javax.swing.JPanel();
         cmd_agregar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -72,7 +74,15 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Registrar cliente");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_cli.png"))); // NOI18N
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${defaultCloseOperation}"), this, org.jdesktop.beansbinding.BeanProperty.create("defaultCloseOperation"));
+        bindingGroup.addBinding(binding);
+
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmd_agregar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
@@ -92,15 +102,16 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
                 cmd_agregarActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 99, 36));
+        jPanel1.add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 99, 36));
 
         jLabel3.setFont(new java.awt.Font("Bodoni MT Black", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registrar Cliente");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, -1));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/fondo_top.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 0, 640, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -158,14 +169,19 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         lbl_tel.setText("Teléfono:");
         jPanel2.add(lbl_tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 81, 22));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 310, 160));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 310, 160));
 
         jLabel4.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 12)); // NOI18N
         jLabel4.setText("Datos del cliente:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 30));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/fondo_do.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 540, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 540, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 540, 320));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,6 +275,7 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_correo;
     private javax.swing.JLabel lbl_fecha;
@@ -270,5 +287,6 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_tel;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
