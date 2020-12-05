@@ -24,7 +24,7 @@ public class Coordinador {
     }
     
     public void mostrarClientes() {
-        clienteVista=new ClienteVista();
+        clienteVista = new ClienteVista();
         ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
         List<Cliente> clientes = clienteCon.findClienteEntities();
         DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
@@ -36,4 +36,16 @@ public class Coordinador {
         clienteVista.setVisible(true);
     }
     
+    public void mostrarProductos() {
+        ProductoVista productoVista = new ProductoVista();
+        ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
+        List<Producto> productos = productoCon.findProductoEntities();                
+        DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
+        for (Producto x : productos) {
+            model.addRow(new Object[]{x.getIdProducto(),x.getNombre(),null,x.getPrecioUnitario()});
+        }
+        productoVista.getTabla_producto().setModel(model);
+        inicio.getEscritorio().add(productoVista);
+        clienteVista.setVisible(true);
+    }   
 }

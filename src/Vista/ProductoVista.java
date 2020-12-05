@@ -7,6 +7,10 @@ package Vista;
 
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -121,6 +125,37 @@ public class ProductoVista extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLbl_id() {
+        return lbl_id;
+    }
+
+    public void setLbl_id(JLabel lbl_id) {
+        this.lbl_id = lbl_id;
+    }
+
+    public JTable getTabla_producto() {
+        return tabla_producto;
+    }
+
+    public void setTabla_producto(JTable tabla_producto) {
+        this.tabla_producto = tabla_producto;
+    }
+
+    public JTextField getTxt_nombre() {
+        return txt_nombre;
+    }
+
+    public void setTxt_nombre(JTextField txt_nombre) {
+        this.txt_nombre = txt_nombre;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
