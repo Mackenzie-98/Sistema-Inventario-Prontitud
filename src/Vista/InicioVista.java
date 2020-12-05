@@ -690,7 +690,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_eliminar_prodActionPerformed
 
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
-            coordinador.mostrarProductos();
+            coordinador.verProductos();
     }//GEN-LAST:event_jmi_mostrar_prodActionPerformed
 
     private void jmi_agg_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_provActionPerformed
@@ -702,7 +702,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_agg_provActionPerformed
 
     private void jmi_mostrar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_provActionPerformed
-        coordinador.mostrarProveedores();
+        coordinador.verProveedores();
     }//GEN-LAST:event_jmi_mostrar_provActionPerformed
 
     private void jmi_buscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_clienteActionPerformed
@@ -737,9 +737,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_agg_clienteActionPerformed
 
     private void jmi_mostrar_lotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_lotesActionPerformed
-        LoteVista ver_ventana = new LoteVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();        
+        coordinador.verLotes();
     }//GEN-LAST:event_jmi_mostrar_lotesActionPerformed
 
     private void jmi_facturasCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_facturasCActionPerformed
@@ -767,7 +765,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registrar_vActionPerformed
 
     private void jmi_mostrar_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_clientesActionPerformed
-            coordinador.mostrarClientes();
+            coordinador.verClientes();
     }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
 
     private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed
