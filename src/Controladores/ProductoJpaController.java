@@ -22,6 +22,7 @@ import Modelo.DetalleVenta;
 import Modelo.Producto;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,7 +126,13 @@ public class ProductoJpaController implements Serializable {
                     oldProductoOfDetalleVentaListDetalleVenta = em.merge(oldProductoOfDetalleVentaListDetalleVenta);
                 }
             }
-            em.getTransaction().commit();
+            em.getTransaction().commit(); 
+        } catch (Exception ex) {
+            if (findProducto(producto.getIdProducto()) != null) {
+                JOptionPane.showMessageDialog(null, "ERROR: Producto ya existente", "ERROR", JOptionPane.WARNING_MESSAGE);
+                //throw new PreexistingEntityException("Cliente " + cliente + " already exists.", ex);
+            }
+            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -276,7 +283,7 @@ public class ProductoJpaController implements Serializable {
             if (msg == null || msg.length() == 0) {
                 Integer id = producto.getIdProducto();
                 if (findProducto(id) == null) {
-                    throw new NonexistentEntityException("The producto with id " + id + " no longer exists.");
+                    throw new NonexistentEntityException("The producto with nombre " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -376,7 +383,7 @@ public class ProductoJpaController implements Serializable {
         } finally {
             em.close();
         }
-    }
+    } 
 
     public int getProductoCount() {
         EntityManager em = getEntityManager();

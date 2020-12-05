@@ -195,17 +195,7 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_agregarMouseExited
 
     private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
-
-        if ("".equals(this.txt_id.getText())) {
-            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de identificación",
-                "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar cliente", JOptionPane.INFORMATION_MESSAGE);
-            ClienteVista ver_ventana = new ClienteVista();
-            InicioVista.escritorio.add(ver_ventana);
-            this.setVisible(false);
-            ver_ventana.show();
-        }
+        coordinador.agregarCliente();
     }//GEN-LAST:event_cmd_agregarActionPerformed
 
     private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed

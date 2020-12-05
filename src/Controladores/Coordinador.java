@@ -23,6 +23,7 @@ public class Coordinador {
     public static AgregarClienteVista agregarClienteVista;
     public static LoteVista loteVista;
     public static AgregarProveedorVista agregarProveedorVista;
+    public static AgregarProductoVista agregarProductoVista;
     public static Conexion conexion = Conexion.getConexion();
 
     public static void main(String[] agrs) throws SQLException {
@@ -64,6 +65,57 @@ public class Coordinador {
             }
         }
     }
+    
+    public void registrarProductoVista() {
+        agregarProductoVista = new AgregarProductoVista(this);
+        inicio.getEscritorio().add(agregarProductoVista);
+        agregarProductoVista.show();
+    }
+       
+    public void agregarProducto() {        
+        String id = agregarProductoVista.getTxt_id().getText();
+        String nombre = agregarProductoVista.getTxt_nombre().getText();
+        String cantidad = agregarProductoVista.getTxt_cant().getText();
+        String precio = agregarProductoVista.getTxt_precio().getText();
+        String stock = agregarProductoVista.getTxt_stock().getText();
+        String lab = agregarProductoVista.getTxt_lab().getText();
+        String numLote = agregarProductoVista.getTxt_lote().getText();
+        String fecha = agregarProductoVista.getTxt_fecha().getText();
+        Integer numCategoria = agregarProductoVista.getCbx_categoria().getSelectedIndex() + 1;
+        
+        if ("".equals(id)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el id del producto", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if("".equals(nombre)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre del producto", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(cantidad)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la cantidad del producto", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(precio)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el precio del producto", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(lab)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el laboratorio del producto", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(numLote)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de lote", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(fecha)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la fecha de vencimiento", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else{
+            try { 
+                //Controllers
+                CategoriaJpaController categoriaCon = new CategoriaJpaController(conexion.getBd());
+                ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());    
+                LoteJpaController loteCon = new LoteJpaController(conexion.getBd());
+                DetalleLoteJpaController detalleLoteCon = new DetalleLoteJpaController(conexion.getBd());
+                
+                //Entidades
+                Categoria categoria = categoriaCon.findCategoria(numCategoria);
+                Producto producto = new Producto(Integer.parseInt(id), nombre, Long.parseLong(precio), Integer.parseInt(stock), categoria);
+                if(productoCon.findProducto(Integer.parseInt(id)) == null) productoCon.create(producto);
+                Lote lote = new Lote(Integer.parseInt(numLote), this.obtenerFecha(fecha), lab);
+                DetalleLote detalleLote = new DetalleLote(new DetalleLotePK(), cantidad);
+                
+                loteCon.create(lote); detalleLote.setProducto(producto); detalleLote.setLote(lote);
+                detalleLoteCon.create(detalleLote);                
+                
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar producto", JOptionPane.INFORMATION_MESSAGE);
+                agregarProductoVista.limpiar();
+            } catch (Exception ex) { 
+                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public void verClientes() {
         clienteVista = new ClienteVista();
         ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
@@ -123,7 +175,6 @@ public class Coordinador {
         String fecha_nac = agregarClienteVista.getTxt_fecha_nac().getText();
         String telefono = agregarClienteVista.getTxt_telefono().getText();
         String correo = agregarClienteVista.getTxt_correo().getText();
-        Date fecha = new Date(12239);
 
         if ("".equals(id)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de identificación", "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -131,7 +182,7 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                Cliente nuevo = new Cliente(id, nombre, fecha, telefono, correo);
+                Cliente nuevo = new Cliente(id, nombre, this.obtenerFecha(fecha_nac), telefono, correo);
                 ClienteJpaController controller = new ClienteJpaController(conexion.getBd());
                 controller.create(nuevo);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar cliente", JOptionPane.INFORMATION_MESSAGE);

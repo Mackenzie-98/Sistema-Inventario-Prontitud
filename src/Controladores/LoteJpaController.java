@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,7 +60,13 @@ public class LoteJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } finally {
+        } catch (Exception ex) {
+            if (findLote(lote.getIdLote()) != null) {
+                JOptionPane.showMessageDialog(null, "ERROR: Lote ya existente", "ERROR", JOptionPane.WARNING_MESSAGE);
+                //throw new PreexistingEntityException("Cliente " + cliente + " already exists.", ex);
+            }
+            throw ex;        
+        }finally {
             if (em != null) {
                 em.close();
             }
