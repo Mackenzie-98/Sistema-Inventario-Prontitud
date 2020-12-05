@@ -6,6 +6,8 @@
 package Modelo;
 
 import Controladores.ClienteJpaController;
+import Controladores.Coordinador;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,10 +16,14 @@ import java.util.List;
  */
 public class test {
     public static void main(String [] args) throws Exception{
-        Conexion con=Conexion.getConexion();
+        Coordinador c = new Coordinador();
+        String fecha = "2003-12-7";
+        Date f = c.obtenerFecha(fecha);
+        
+        /*Conexion con=Conexion.getConexion();
         ClienteJpaController clienteController=new ClienteJpaController(con.getBd());
         Cliente cliente = new Cliente("12345", "Camila Cabello");
         clienteController.create(cliente);
-        System.out.println(cliente.getNombre());
+        System.out.println(cliente.getNombre());*/
     }
 }
