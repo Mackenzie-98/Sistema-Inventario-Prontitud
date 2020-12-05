@@ -413,11 +413,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jm_clienteActionPerformed
 
     private void jmi_agg_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_prodActionPerformed
-//        escritorio.removeAll();
-        AgregarProductoVista ver_ventana = new AgregarProductoVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
-//        dispose();
+        coordinador.registrarProductoVista();
     }//GEN-LAST:event_jmi_agg_prodActionPerformed
 
     public LoginVista getUsuario() {

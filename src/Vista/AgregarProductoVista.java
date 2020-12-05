@@ -5,9 +5,12 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,7 +21,21 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     /**
      * Creates new form Producto
      */
+    public static Coordinador coordinador;
+    
     public AgregarProductoVista() {
+        initComponents();
+        this.setSize(600,300);
+        this.setResizable(false);
+        this.setVisible(true); 
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);
+    }
+
+    public AgregarProductoVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
         initComponents();
         this.setSize(600,300);
         this.setResizable(false);
@@ -38,7 +55,7 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_nombre = new javax.swing.JLabel();
+        lbl_id = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         lbl_cant = new javax.swing.JLabel();
         txt_cant = new javax.swing.JTextField();
@@ -55,14 +72,16 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
         lbl_fecha = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lbl_stock = new javax.swing.JLabel();
-        txt_precio1 = new javax.swing.JTextField();
+        txt_precio = new javax.swing.JTextField();
+        txt_id = new javax.swing.JTextField();
+        lbl_nombre1 = new javax.swing.JLabel();
 
         setBorder(null);
         setClosable(true);
         setTitle("Agregar producto");
 
-        lbl_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_nombre.setText("Nombre:");
+        lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_id.setText("Id:");
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -122,7 +141,12 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha.setText("YYYY-MM-DD");
+        txt_fecha.setText("yyyy-mm-dd");
+        txt_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fechaMouseClicked(evt);
+            }
+        });
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fechaActionPerformed(evt);
@@ -135,13 +159,19 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
         lbl_stock.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_stock.setText("Stock mínimo:");
 
-        txt_precio1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_precio1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_precio1.addActionListener(new java.awt.event.ActionListener() {
+        txt_precio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_precio1ActionPerformed(evt);
+                txt_precioActionPerformed(evt);
             }
         });
+
+        txt_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lbl_nombre1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_nombre1.setText("Nombre:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,24 +183,23 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txt_precio1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lbl_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(87, 87, 87)))
+                                .addGap(87, 87, 87))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,7 +213,7 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
                                 .addComponent(lbl_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(57, 57, Short.MAX_VALUE))
+                .addGap(65, 65, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,27 +229,37 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(lbl_id, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addComponent(lbl_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(493, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_id, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_precio1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,6 +288,11 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(lbl_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(245, Short.MAX_VALUE)))
         );
 
         pack();
@@ -259,20 +303,7 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_stockActionPerformed
 
     private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
-
-        if("".equals(this.txt_nombre.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_stock.getText()) ||
-            "".equals(this.txt_lab.getText()) || "".equals(this.txt_lote.getText()) || "".equals(this.txt_fecha.getText())) {
-            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese todos los datos", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar producto", JOptionPane.INFORMATION_MESSAGE);
-//            escritorio.removeAll();
-            ProductoVista ver_ventana = new ProductoVista();
-            InicioVista.escritorio.add(ver_ventana);
-            this.setVisible(false);
-            ver_ventana.show();
-        }
-    
+        coordinador.agregarProducto();    
     }//GEN-LAST:event_cmd_agregarActionPerformed
 
     private void txt_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loteActionPerformed
@@ -287,9 +318,99 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_categoriaActionPerformed
 
-    private void txt_precio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precio1ActionPerformed
+    private void txt_precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_precio1ActionPerformed
+    }//GEN-LAST:event_txt_precioActionPerformed
+
+    private void txt_fechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fechaMouseClicked
+       this.getTxt_fecha().setText("");
+    }//GEN-LAST:event_txt_fechaMouseClicked
+    
+    public void limpiar(){
+        this.getTxt_cant().setText("");
+        this.getTxt_fecha().setText("");
+        this.getTxt_lab().setText("");
+        this.getTxt_lote().setText("");
+        this.getTxt_nombre().setText("");
+        this.getTxt_precio().setText(""); 
+        this.getTxt_stock().setText("");
+        this.getTxt_id().setText("");
+        this.getCbx_categoria().setSelectedIndex(0);
+    }
+
+    public JTextField getTxt_id() {
+        return txt_id;
+    }
+
+    public void setTxt_id(JTextField txt_id) {
+        this.txt_id = txt_id;
+    }
+    
+    public JTextField getTxt_cant() {
+        return txt_cant;
+    }
+
+    public void setTxt_cant(JTextField txt_cant) {
+        this.txt_cant = txt_cant;
+    }
+
+    public JTextField getTxt_fecha() {
+        return txt_fecha;
+    }
+
+    public void setTxt_fecha(JTextField txt_fecha) {
+        this.txt_fecha = txt_fecha;
+    }
+
+    public JTextField getTxt_lab() {
+        return txt_lab;
+    }
+
+    public void setTxt_lab(JTextField txt_lab) {
+        this.txt_lab = txt_lab;
+    }
+
+    public JTextField getTxt_lote() {
+        return txt_lote;
+    }
+
+    public void setTxt_lote(JTextField txt_lote) {
+        this.txt_lote = txt_lote;
+    }
+
+    public JTextField getTxt_nombre() {
+        return txt_nombre;
+    }
+
+    public void setTxt_nombre(JTextField txt_nombre) {
+        this.txt_nombre = txt_nombre;
+    }
+
+    public JTextField getTxt_precio() {
+        return txt_precio;
+    }
+
+    public void setTxt_precio1(JTextField txt_precio1) {
+        this.txt_precio = txt_precio1;
+    }
+
+    public JTextField getTxt_stock() {
+        return txt_stock;
+    }
+
+    public void setTxt_stock(JTextField txt_stock) {
+        this.txt_stock = txt_stock;
+    }
+
+    public JComboBox<String> getCbx_categoria() {
+        return cbx_categoria;
+    }
+
+    public void setCbx_categoria(JComboBox<String> cbx_categoria) {
+        this.cbx_categoria = cbx_categoria;
+    }
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -299,17 +420,19 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_cant;
     private javax.swing.JLabel lbl_categoria;
     private javax.swing.JLabel lbl_fecha;
+    private javax.swing.JLabel lbl_id;
     private javax.swing.JLabel lbl_lab;
     private javax.swing.JLabel lbl_lote;
-    private javax.swing.JLabel lbl_nombre;
+    private javax.swing.JLabel lbl_nombre1;
     private javax.swing.JLabel lbl_precio;
     private javax.swing.JLabel lbl_stock;
     private javax.swing.JTextField txt_cant;
     private javax.swing.JTextField txt_fecha;
+    private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_lab;
     private javax.swing.JTextField txt_lote;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_precio1;
+    private javax.swing.JTextField txt_precio;
     private javax.swing.JTextField txt_stock;
     // End of variables declaration//GEN-END:variables
 }
