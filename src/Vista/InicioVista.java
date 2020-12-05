@@ -8,6 +8,9 @@ package Vista;
 import Controladores.Coordinador;
 import Vista.ImagenFondo.ImagenFondo;
 import static Vista.LoginVista.cbx_usuario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -673,7 +676,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_eliminar_prodActionPerformed
 
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
-        coordinador.mostrarProductos();
+            coordinador.mostrarProductos();
     }//GEN-LAST:event_jmi_mostrar_prodActionPerformed
 
     private void jmi_agg_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_provActionPerformed
