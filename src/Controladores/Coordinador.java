@@ -40,7 +40,7 @@ public class Coordinador {
         List<Cliente> clientes = clienteCon.findClienteEntities();
         DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
         for (Cliente x : clientes) {
-            model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getFechaNacimiento(), x.getCorreo()});
+            model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getCorreo()});
         }
         clienteVista.getTabla_cliente().setModel(model);
         inicio.getEscritorio().add(clienteVista);
@@ -80,7 +80,7 @@ public class Coordinador {
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
         DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
         for (Proveedor x : proveedores) {
-            model.addRow(new Object[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono()});
+            model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono()});
         }
         proveedorVista.getTabla_proveedor().setModel(model);
         inicio.getEscritorio().add(proveedorVista);

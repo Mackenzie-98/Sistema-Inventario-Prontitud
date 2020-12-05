@@ -69,7 +69,15 @@ public class FacturaCompra implements Serializable {
         this.idFactura = idFactura;
         this.fecha = fecha;
     }
-
+    
+    public String getStringFecha(){
+        String fecha_ = "";
+        if(fecha != null){
+            fecha_ = fecha.getDate() + "-" + (fecha.getMonth()+1) + "-" + (fecha.getYear()+1900);
+        }
+        return fecha_;
+    }
+    
     public Integer getIdFactura() {
         return idFactura;
     }
@@ -81,7 +89,7 @@ public class FacturaCompra implements Serializable {
     public Date getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }

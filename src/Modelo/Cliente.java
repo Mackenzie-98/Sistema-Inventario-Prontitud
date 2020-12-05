@@ -73,6 +73,14 @@ public class Cliente implements Serializable {
         this.identificacion = identificacion;
         this.nombre = nombre;
     }
+    
+    public String getStringFecha(){
+        String fecha = "";
+        if(fechaNacimiento != null){
+            fecha = fechaNacimiento.getDate() + "-" + (fechaNacimiento.getMonth()+1) + "-" + (fechaNacimiento.getYear()+1900);
+        }
+        return fecha;
+    }
 
     public String getIdentificacion() {
         return identificacion;
@@ -147,5 +155,4 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Modelo.Cliente[ identificacion=" + identificacion + " ]";
     }
-    
 }

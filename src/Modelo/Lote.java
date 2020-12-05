@@ -70,7 +70,11 @@ public class Lote implements Serializable {
     public Integer getIdLote() {
         return idLote;
     }
-
+    
+    public String getStringFecha(){
+        return fechaVencimiento.getDate()+"-"+(fechaVencimiento.getMonth()+1)+"-"+(fechaVencimiento.getYear()+1900);
+    }
+    
     public void setIdLote(Integer idLote) {
         this.idLote = idLote;
     }

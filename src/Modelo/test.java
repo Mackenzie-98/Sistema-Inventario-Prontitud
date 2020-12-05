@@ -16,10 +16,6 @@ import java.util.List;
  */
 public class test {
     public static void main(String [] args) throws Exception{
-        Coordinador c = new Coordinador();
-        String fecha = "2003-12-7";
-        Date f = c.obtenerFecha(fecha);
-        
         /*Conexion con=Conexion.getConexion();
         ClienteJpaController clienteController=new ClienteJpaController(con.getBd());
         Cliente cliente = new Cliente("12345", "Camila Cabello");
