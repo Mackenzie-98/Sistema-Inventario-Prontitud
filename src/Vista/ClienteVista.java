@@ -6,8 +6,13 @@
 
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -26,7 +31,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
            (desktopSize.height- jInternalFrameSize.height)/2);  
     }
-
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -117,5 +122,37 @@ public class ClienteVista extends javax.swing.JInternalFrame {
     private javax.swing.JTable tabla_cliente;
     private javax.swing.JTextField txt_id;
     // End of variables declaration//GEN-END:variables
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLbl_filtrar() {
+        return lbl_filtrar;
+    }
+
+    public void setLbl_filtrar(JLabel lbl_filtrar) {
+        this.lbl_filtrar = lbl_filtrar;
+    }
+
+    public JTable getTabla_cliente() {
+        return tabla_cliente;
+    }
+
+    public void setTabla_cliente(JTable tabla_cliente) {
+        this.tabla_cliente = tabla_cliente;
+    }
+
+    public JTextField getTxt_id() {
+        return txt_id;
+    }
+
+    public void setTxt_id(JTextField txt_id) {
+        this.txt_id = txt_id;
+    }
 
 }

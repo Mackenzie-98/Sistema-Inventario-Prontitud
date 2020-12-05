@@ -1,25 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
 
-import Vista.ClienteVista;
-import Vista.InicioVista;
-import sun.util.cldr.CLDRLocaleDataMetaInfo;
+import Modelo.*;
+import Vista.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
-/**
- *
- * @author garun
- */
 public class Coordinador {
-    InicioVista inicioVista=new InicioVista();
-    ClienteVista clienteVista=new ClienteVista();
-    public static void main(String[] agrs){
-        
+
+    public static LoginVista login ;
+    public static InicioVista inicio;
+    public static ClienteVista clienteVista ;
+    Conexion conexion = Conexion.getConexion();
+
+    public static void main(String[] agrs) {
+        login=new LoginVista();
+        login.setVisible(true);
     }
-    void mostrarClientes(){
-        
+    public void iniciarSesion(){
+        inicio=new InicioVista();
+        inicio.setVisible(true);
+        login.setVisible(false);
     }
+    
+    public void mostrarClientes() {
+        clienteVista=new ClienteVista();
+        ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
+        List<Cliente> clientes = clienteCon.findClienteEntities();
+        DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
+        for (Cliente x : clientes) {
+            model.addRow(new Object[]{x.getIdentificacion(),x.getNombre(),x.getFechaNacimiento(),x.getCorreo()});
+        }
+        clienteVista.getTabla_cliente().setModel(model);
+        inicio.getEscritorio().add(clienteVista);
+        clienteVista.setVisible(true);
+    }
+    
 }

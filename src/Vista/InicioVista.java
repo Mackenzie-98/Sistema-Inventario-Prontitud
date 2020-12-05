@@ -5,10 +5,16 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import Vista.ImagenFondo.ImagenFondo;
 import static Vista.LoginVista.cbx_usuario;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -386,7 +392,7 @@ public class InicioVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jm_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_clienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jm_clienteActionPerformed
 
     private void jmi_agg_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_prodActionPerformed
@@ -396,6 +402,255 @@ public class InicioVista extends javax.swing.JFrame {
         ver_ventana.show();
 //        dispose();
     }//GEN-LAST:event_jmi_agg_prodActionPerformed
+
+    public LoginVista getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(LoginVista usuario) {
+        this.usuario = usuario;
+    }
+
+  
+    public static JDesktopPane getEscritorio() {
+        return escritorio;
+    }
+
+    public static void setEscritorio(JDesktopPane escritorio) {
+        InicioVista.escritorio = escritorio;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public void setjMenuBar1(JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    public JPopupMenu.Separator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public void setjSeparator1(JPopupMenu.Separator jSeparator1) {
+        this.jSeparator1 = jSeparator1;
+    }
+
+    public JMenu getJm_cliente() {
+        return jm_cliente;
+    }
+
+    public void setJm_cliente(JMenu jm_cliente) {
+        this.jm_cliente = jm_cliente;
+    }
+
+    public JMenu getJm_dev() {
+        return jm_dev;
+    }
+
+    public void setJm_dev(JMenu jm_dev) {
+        this.jm_dev = jm_dev;
+    }
+
+    public JMenu getJm_facturas() {
+        return jm_facturas;
+    }
+
+    public void setJm_facturas(JMenu jm_facturas) {
+        this.jm_facturas = jm_facturas;
+    }
+
+    public JMenu getJm_prod() {
+        return jm_prod;
+    }
+
+    public void setJm_prod(JMenu jm_prod) {
+        this.jm_prod = jm_prod;
+    }
+
+    public JMenu getJm_prov() {
+        return jm_prov;
+    }
+
+    public void setJm_prov(JMenu jm_prov) {
+        this.jm_prov = jm_prov;
+    }
+
+    public JMenu getJm_registrar() {
+        return jm_registrar;
+    }
+
+    public void setJm_registrar(JMenu jm_registrar) {
+        this.jm_registrar = jm_registrar;
+    }
+
+    public JMenuItem getJmi_agg_cliente() {
+        return jmi_agg_cliente;
+    }
+
+    public void setJmi_agg_cliente(JMenuItem jmi_agg_cliente) {
+        this.jmi_agg_cliente = jmi_agg_cliente;
+    }
+
+    public JMenuItem getJmi_agg_prod() {
+        return jmi_agg_prod;
+    }
+
+    public void setJmi_agg_prod(JMenuItem jmi_agg_prod) {
+        this.jmi_agg_prod = jmi_agg_prod;
+    }
+
+    public JMenuItem getJmi_agg_prov() {
+        return jmi_agg_prov;
+    }
+
+    public void setJmi_agg_prov(JMenuItem jmi_agg_prov) {
+        this.jmi_agg_prov = jmi_agg_prov;
+    }
+
+    public JMenuItem getJmi_buscar_cliente() {
+        return jmi_buscar_cliente;
+    }
+
+    public void setJmi_buscar_cliente(JMenuItem jmi_buscar_cliente) {
+        this.jmi_buscar_cliente = jmi_buscar_cliente;
+    }
+
+    public JMenuItem getJmi_buscar_prod() {
+        return jmi_buscar_prod;
+    }
+
+    public void setJmi_buscar_prod(JMenuItem jmi_buscar_prod) {
+        this.jmi_buscar_prod = jmi_buscar_prod;
+    }
+
+    public JMenuItem getJmi_buscar_prov() {
+        return jmi_buscar_prov;
+    }
+
+    public void setJmi_buscar_prov(JMenuItem jmi_buscar_prov) {
+        this.jmi_buscar_prov = jmi_buscar_prov;
+    }
+
+    public JMenuItem getJmi_eliminar_cliente() {
+        return jmi_eliminar_cliente;
+    }
+
+    public void setJmi_eliminar_cliente(JMenuItem jmi_eliminar_cliente) {
+        this.jmi_eliminar_cliente = jmi_eliminar_cliente;
+    }
+
+    public JMenuItem getJmi_eliminar_dev() {
+        return jmi_eliminar_dev;
+    }
+
+    public void setJmi_eliminar_dev(JMenuItem jmi_eliminar_dev) {
+        this.jmi_eliminar_dev = jmi_eliminar_dev;
+    }
+
+    public JMenuItem getJmi_eliminar_prod() {
+        return jmi_eliminar_prod;
+    }
+
+    public void setJmi_eliminar_prod(JMenuItem jmi_eliminar_prod) {
+        this.jmi_eliminar_prod = jmi_eliminar_prod;
+    }
+
+    public JMenuItem getJmi_eliminar_prov() {
+        return jmi_eliminar_prov;
+    }
+
+    public void setJmi_eliminar_prov(JMenuItem jmi_eliminar_prov) {
+        this.jmi_eliminar_prov = jmi_eliminar_prov;
+    }
+
+    public JMenuItem getJmi_facturasC() {
+        return jmi_facturasC;
+    }
+
+    public void setJmi_facturasC(JMenuItem jmi_facturasC) {
+        this.jmi_facturasC = jmi_facturasC;
+    }
+
+    public JMenuItem getJmi_facturasV() {
+        return jmi_facturasV;
+    }
+
+    public void setJmi_facturasV(JMenuItem jmi_facturasV) {
+        this.jmi_facturasV = jmi_facturasV;
+    }
+
+    public JMenuItem getJmi_mostrar_clientes() {
+        return jmi_mostrar_clientes;
+    }
+
+    public void setJmi_mostrar_clientes(JMenuItem jmi_mostrar_clientes) {
+        this.jmi_mostrar_clientes = jmi_mostrar_clientes;
+    }
+
+    public JMenuItem getJmi_mostrar_dev() {
+        return jmi_mostrar_dev;
+    }
+
+    public void setJmi_mostrar_dev(JMenuItem jmi_mostrar_dev) {
+        this.jmi_mostrar_dev = jmi_mostrar_dev;
+    }
+
+    public JMenuItem getJmi_mostrar_lotes() {
+        return jmi_mostrar_lotes;
+    }
+
+    public void setJmi_mostrar_lotes(JMenuItem jmi_mostrar_lotes) {
+        this.jmi_mostrar_lotes = jmi_mostrar_lotes;
+    }
+
+    public JMenuItem getJmi_mostrar_prod() {
+        return jmi_mostrar_prod;
+    }
+
+    public void setJmi_mostrar_prod(JMenuItem jmi_mostrar_prod) {
+        this.jmi_mostrar_prod = jmi_mostrar_prod;
+    }
+
+    public JMenuItem getJmi_mostrar_prov() {
+        return jmi_mostrar_prov;
+    }
+
+    public void setJmi_mostrar_prov(JMenuItem jmi_mostrar_prov) {
+        this.jmi_mostrar_prov = jmi_mostrar_prov;
+    }
+
+    public JMenuItem getJmi_reg_dev() {
+        return jmi_reg_dev;
+    }
+
+    public void setJmi_reg_dev(JMenuItem jmi_reg_dev) {
+        this.jmi_reg_dev = jmi_reg_dev;
+    }
+
+    public JMenuItem getJmi_registrar_c() {
+        return jmi_registrar_c;
+    }
+
+    public void setJmi_registrar_c(JMenuItem jmi_registrar_c) {
+        this.jmi_registrar_c = jmi_registrar_c;
+    }
+
+    public JMenuItem getJmi_registrar_v() {
+        return jmi_registrar_v;
+    }
+
+    public void setJmi_registrar_v(JMenuItem jmi_registrar_v) {
+        this.jmi_registrar_v = jmi_registrar_v;
+    }
+
+    public JMenuItem getJmi_salir() {
+        return jmi_salir;
+    }
+
+    public void setJmi_salir(JMenuItem jmi_salir) {
+        this.jmi_salir = jmi_salir;
+    }
 
     private void jmi_buscar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_prodActionPerformed
 //        escritorio.removeAll();
@@ -504,9 +759,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registrar_vActionPerformed
 
     private void jmi_mostrar_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_clientesActionPerformed
-        ClienteVista ver_ventana = new ClienteVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();        
+           
     }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
 
     private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed

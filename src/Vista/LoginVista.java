@@ -6,6 +6,7 @@
 
 package Vista;
 
+import Controladores.Coordinador;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
@@ -17,6 +18,9 @@ import javax.swing.ImageIcon;
 public class LoginVista extends javax.swing.JFrame {
 
     /** Creates new form Login */
+    Coordinador coordinador=new Coordinador();
+
+
     public LoginVista() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_login.png")).getImage());
@@ -240,27 +244,7 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmd_inicicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_inicicarActionPerformed
-
-        try {
-            String usuario = String.valueOf(cbx_usuario.getSelectedItem());
-//            String contrasenia = "prontitud";
-            char[] pass = jPasswordF_usuario.getPassword();
-            if (usuario.equals("Vendedor") && (String.valueOf(pass).equals("p"))) {
-                InicioVista inicio = new InicioVista();
-//                System.out.println("si entra vende");
-                    inicio.validar();
-                    inicio.setEnabled(true);
-                    this.setVisible(false);
-                
-            } else if(usuario.equals("Administrador")&& String.valueOf(pass).equals("p")){
-                InicioVista inicio = new InicioVista();
-//                System.out.println("si entra admi");
-                inicio.setEnabled(true);
-                this.setVisible(false);
-            }
-        } catch (Exception ex) {
-            System.out.println("Hubo un error");
-        }
+            coordinador.iniciarSesion();
     }//GEN-LAST:event_cmd_inicicarActionPerformed
 
     private void cbx_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_usuarioActionPerformed
@@ -325,7 +309,13 @@ public class LoginVista extends javax.swing.JFrame {
             }
         });
     }
+    public Coordinador getCoordinador() {
+        return coordinador;
+    }
 
+    public void setCoordinador(Coordinador coordinador) {
+        this.coordinador = coordinador;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JComboBox<String> cbx_usuario;
     private javax.swing.JButton cmd_inicicar;
