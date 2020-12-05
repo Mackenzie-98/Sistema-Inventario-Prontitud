@@ -5,19 +5,19 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 
 /**
  *
  * @author Genesis Vargas
  */
-public class Compra extends javax.swing.JInternalFrame {
+public class CompraVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Compra
      */
-    public Compra() {
+    public CompraVista() {
         initComponents();
         this.setSize(500,500);
         this.setResizable(false);

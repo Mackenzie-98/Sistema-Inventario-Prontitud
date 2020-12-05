@@ -6,17 +6,17 @@
 
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 
 /**
  *
  * @author Genesis Vargas
  */
-public class Cliente extends javax.swing.JInternalFrame {
+public class ClienteVista extends javax.swing.JInternalFrame {
 
     /** Creates new form Cliente */
-    public Cliente() {
+    public ClienteVista() {
         initComponents();
         this.setSize(600,420);
         this.setResizable(false);

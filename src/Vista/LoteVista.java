@@ -5,19 +5,19 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 
 /**
  *
  * @author Genesis Vargas
  */
-public class Lote extends javax.swing.JInternalFrame {
+public class LoteVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Lote
      */
-    public Lote() {
+    public LoteVista() {
         initComponents();
         this.setSize(784,430);
         this.setResizable(false);

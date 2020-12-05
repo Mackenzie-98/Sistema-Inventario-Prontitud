@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Genesis Vargas
  */
-public class AgregarCompra extends javax.swing.JInternalFrame {
+public class AgregarCompraVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegistrarCompra
      */
-    public AgregarCompra() {
+    public AgregarCompraVista() {
         initComponents();
         this.setSize(605,310);
         this.setResizable(false);

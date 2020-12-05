@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Genesis Vargas
  */
-public class AgregarCliente extends javax.swing.JInternalFrame {
+public class AgregarClienteVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Cliente
      */
-    public AgregarCliente() {
+    public AgregarClienteVista() {
         initComponents();
         this.setSize(520,256);
         this.setResizable(false);
@@ -115,8 +115,8 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 "ERROR", JOptionPane.WARNING_MESSAGE);
     } else {
         JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar cliente", JOptionPane.INFORMATION_MESSAGE);
-        Cliente ver_ventana = new Cliente();
-        Inicio.escritorio.add(ver_ventana);
+        ClienteVista ver_ventana = new ClienteVista();
+        InicioVista.escritorio.add(ver_ventana);
         this.setVisible(false);
         ver_ventana.show();
     }    

@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Genesis Vargas
  */
-public class AgregarProveedor extends javax.swing.JInternalFrame {
+public class AgregarProveedorVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Proveedor1
      */
-    public AgregarProveedor() {
+    public AgregarProveedorVista() {
         initComponents();
         this.setSize(500,330);
         this.setResizable(false);
@@ -182,8 +182,8 @@ public class AgregarProveedor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el NIT", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar proveedor", JOptionPane.INFORMATION_MESSAGE);
-            Proveedor ver_ventana = new Proveedor();
-            Inicio.escritorio.add(ver_ventana);
+            ProveedorVista ver_ventana = new ProveedorVista();
+            InicioVista.escritorio.add(ver_ventana);
             this.setVisible(false);
             ver_ventana.show();
         }

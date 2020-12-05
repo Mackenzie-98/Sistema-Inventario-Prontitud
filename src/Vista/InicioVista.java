@@ -6,7 +6,7 @@
 package Vista;
 
 import Vista.ImagenFondo.ImagenFondo;
-import static Vista.Login.cbx_usuario;
+import static Vista.LoginVista.cbx_usuario;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
@@ -14,17 +14,17 @@ import javax.swing.ImageIcon;
  *
  * @author Genesis Vargas
  */
-public class Inicio extends javax.swing.JFrame {
+public class InicioVista extends javax.swing.JFrame {
     
 
-    public Login usuario;
-    String tipo = String.valueOf(cbx_usuario.getSelectedItem());
+    public LoginVista usuario;
+    //String tipo = String.valueOf(cbx_usuario.getSelectedItem());
     
     
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public InicioVista() {
         
         initComponents();
         this.setSize(800,585);
@@ -34,16 +34,16 @@ public class Inicio extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
         
         escritorio.setBorder(new ImagenFondo());
-        this.setExtendedState(Inicio.MAXIMIZED_HORIZ);
+        this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
     }
     public void validar(){
-        if(tipo.equals("Vendedor")){
+        /*if(tipo.equals("Vendedor")){
             jm_prov.setEnabled(false);
             jmi_registrar_c.setEnabled(false);
             jmi_eliminar_prod.setEnabled(false);
             jmi_agg_prod.setEnabled(false);
             jmi_facturasC.setEnabled(false);
-        } 
+        } */
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -391,7 +391,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jmi_agg_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_prodActionPerformed
 //        escritorio.removeAll();
-        AgregarProducto ver_ventana = new AgregarProducto();
+        AgregarProductoVista ver_ventana = new AgregarProductoVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
 //        dispose();
@@ -401,7 +401,7 @@ public class Inicio extends javax.swing.JFrame {
 //        escritorio.removeAll();
         String nombre;
         nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");     
-        Producto ver_ventana = new Producto();
+        ProductoVista ver_ventana = new ProductoVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
 //        dispose();
@@ -411,7 +411,7 @@ public class Inicio extends javax.swing.JFrame {
 //        escritorio.removeAll();
         String nombre;
         nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");     
-        Producto ver_ventana = new Producto();
+        ProductoVista ver_ventana = new ProductoVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_eliminar_prodActionPerformed
@@ -419,7 +419,7 @@ public class Inicio extends javax.swing.JFrame {
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
 //        escritorio.removeAll();
 
-        Producto ver_ventana = new Producto();
+        ProductoVista ver_ventana = new ProductoVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();        
     }//GEN-LAST:event_jmi_mostrar_prodActionPerformed
@@ -427,14 +427,14 @@ public class Inicio extends javax.swing.JFrame {
     private void jmi_agg_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_provActionPerformed
         // TODO add your handling code here:
 //        escritorio.removeAll();
-        AgregarProveedor ver_ventana = new AgregarProveedor();
+        AgregarProveedorVista ver_ventana = new AgregarProveedorVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_agg_provActionPerformed
 
     private void jmi_mostrar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_provActionPerformed
 //        escritorio.removeAll();
-        Proveedor ver_ventana = new Proveedor();
+        ProveedorVista ver_ventana = new ProveedorVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_mostrar_provActionPerformed
@@ -443,7 +443,7 @@ public class Inicio extends javax.swing.JFrame {
 //        escritorio.removeAll();
         String id;
         id = JOptionPane.showInputDialog("Digita número de documento:  "); 
-        Cliente ver_ventana = new Cliente();
+        ClienteVista ver_ventana = new ClienteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_buscar_clienteActionPerformed
@@ -452,7 +452,7 @@ public class Inicio extends javax.swing.JFrame {
 //        escritorio.removeAll();
         String nombre;
         nombre = JOptionPane.showInputDialog("Digita el número de NIT:  "); 
-        Proveedor ver_ventana = new Proveedor();
+        ProveedorVista ver_ventana = new ProveedorVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_eliminar_provActionPerformed
@@ -461,50 +461,50 @@ public class Inicio extends javax.swing.JFrame {
 //        escritorio.removeAll();
         String nombre;
         nombre = JOptionPane.showInputDialog("Digita el número de NIT:  "); 
-        Proveedor ver_ventana = new Proveedor();
+        ProveedorVista ver_ventana = new ProveedorVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_buscar_provActionPerformed
 
     private void jmi_agg_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_clienteActionPerformed
 //        escritorio.removeAll();
-        AgregarCliente ver_ventana = new AgregarCliente();
+        AgregarClienteVista ver_ventana = new AgregarClienteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_agg_clienteActionPerformed
 
     private void jmi_mostrar_lotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_lotesActionPerformed
-        Lote ver_ventana = new Lote();
+        LoteVista ver_ventana = new LoteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();        
     }//GEN-LAST:event_jmi_mostrar_lotesActionPerformed
 
     private void jmi_facturasCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_facturasCActionPerformed
-        Compra ver_ventana = new Compra();
+        CompraVista ver_ventana = new CompraVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();          
     }//GEN-LAST:event_jmi_facturasCActionPerformed
 
     private void jmi_facturasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_facturasVActionPerformed
-        Venta ver_ventana = new Venta();
+        VentaVista ver_ventana = new VentaVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_facturasVActionPerformed
 
     private void jmi_registrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrar_cActionPerformed
-        AgregarCompra ver_ventana = new AgregarCompra();
+        AgregarCompraVista ver_ventana = new AgregarCompraVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_registrar_cActionPerformed
 
     private void jmi_registrar_vActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrar_vActionPerformed
-        AgregarVenta ver_ventana = new AgregarVenta();
+        AgregarVentaVista ver_ventana = new AgregarVentaVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_registrar_vActionPerformed
 
     private void jmi_mostrar_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_clientesActionPerformed
-        Cliente ver_ventana = new Cliente();
+        ClienteVista ver_ventana = new ClienteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();        
     }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
@@ -512,13 +512,13 @@ public class Inicio extends javax.swing.JFrame {
     private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed
         String nombre;
         nombre = JOptionPane.showInputDialog("Digita número de documento:  ");     
-        Cliente ver_ventana = new Cliente();
+        ClienteVista ver_ventana = new ClienteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_eliminar_clienteActionPerformed
 
     private void jmi_mostrar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_devActionPerformed
-        Devolucion ver_ventana = new Devolucion();
+        DevolucionVista ver_ventana = new DevolucionVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();  
     }//GEN-LAST:event_jmi_mostrar_devActionPerformed
@@ -526,7 +526,7 @@ public class Inicio extends javax.swing.JFrame {
     private void jmi_eliminar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_devActionPerformed
         String nombre;
         nombre = JOptionPane.showInputDialog("Digita número de devolución:  ");     
-        Devolucion ver_ventana = new Devolucion();
+        DevolucionVista ver_ventana = new DevolucionVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_eliminar_devActionPerformed
@@ -556,21 +556,23 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                new InicioVista().setVisible(true);
             }
         });
     }

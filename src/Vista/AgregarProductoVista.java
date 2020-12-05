@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author Genesis Vargas
  */
-public class AgregarProducto extends javax.swing.JInternalFrame {
+public class AgregarProductoVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Producto
      */
-    public AgregarProducto() {
+    public AgregarProductoVista() {
         initComponents();
         this.setSize(600,300);
         this.setResizable(false);
@@ -267,8 +267,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         else{
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar producto", JOptionPane.INFORMATION_MESSAGE);
 //            escritorio.removeAll();
-            Producto ver_ventana = new Producto();
-            Inicio.escritorio.add(ver_ventana);
+            ProductoVista ver_ventana = new ProductoVista();
+            InicioVista.escritorio.add(ver_ventana);
             this.setVisible(false);
             ver_ventana.show();
         }

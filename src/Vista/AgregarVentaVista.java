@@ -5,19 +5,19 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 
 /**
  *
  * @author Genes
  */
-public class AgregarVenta extends javax.swing.JInternalFrame {
+public class AgregarVentaVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegistrarVenta
      */
-    public AgregarVenta() {
+    public AgregarVentaVista() {
         initComponents();
         this.setSize(670,310);
         this.setResizable(false);

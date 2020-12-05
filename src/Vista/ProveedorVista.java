@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import static Vista.Inicio.escritorio;
+import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 
 
@@ -13,12 +13,12 @@ import java.awt.Dimension;
  *
  * @author Genesis Vargas
  */
-public class Proveedor extends javax.swing.JInternalFrame {
+public class ProveedorVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Proveedor
      */
-    public Proveedor() {
+    public ProveedorVista() {
         initComponents();
         this.setSize(653,430);
         this.setResizable(false);

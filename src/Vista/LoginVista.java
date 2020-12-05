@@ -14,10 +14,10 @@ import javax.swing.ImageIcon;
  *
  * @author Genesis Vargas
  */
-public class Login extends javax.swing.JFrame {
+public class LoginVista extends javax.swing.JFrame {
 
     /** Creates new form Login */
-    public Login() {
+    public LoginVista() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_login.png")).getImage());
         this.setTitle("Drogueria prontitud - Inicio de sesión");
@@ -246,14 +246,14 @@ public class Login extends javax.swing.JFrame {
 //            String contrasenia = "prontitud";
             char[] pass = jPasswordF_usuario.getPassword();
             if (usuario.equals("Vendedor") && (String.valueOf(pass).equals("p"))) {
-                Inicio inicio = new Inicio();
+                InicioVista inicio = new InicioVista();
 //                System.out.println("si entra vende");
                     inicio.validar();
                     inicio.setEnabled(true);
                     this.setVisible(false);
                 
             } else if(usuario.equals("Administrador")&& String.valueOf(pass).equals("p")){
-                Inicio inicio = new Inicio();
+                InicioVista inicio = new InicioVista();
 //                System.out.println("si entra admi");
                 inicio.setEnabled(true);
                 this.setVisible(false);
@@ -304,14 +304,16 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -319,7 +321,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Login().setVisible(true);
+                new LoginVista().setVisible(true);
             }
         });
     }
