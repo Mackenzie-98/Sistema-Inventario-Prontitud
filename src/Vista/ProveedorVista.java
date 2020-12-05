@@ -58,11 +58,11 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "NIT", "Nombre", "Ciudad", "Correo", "Teléfono"
+                "NIT", "Nombre", "Ciudad", "Correo", "Teléfono", "Dirección"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
