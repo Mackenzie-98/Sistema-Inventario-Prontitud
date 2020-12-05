@@ -3,6 +3,8 @@ package Controladores;
 import Modelo.*;
 import Vista.*;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -117,8 +119,15 @@ public class Coordinador {
         agregarClienteVista.show();
     }
     
-    /*private Date obtenerFecha(String fecha){
-        String obj[] = fecha.split("-");
-    }*/
+    public java.util.Date obtenerFecha(String fecha){
+        java.util.Date now = null;  
+        try {
+            now = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
+            //System.out.println(now.getDate()+"-"+(now.getMonth()+1)+"-"+(now.getYear()+1900));
+        } catch (ParseException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return now;
+    }
     
 }
