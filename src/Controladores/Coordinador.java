@@ -61,12 +61,9 @@ public class Coordinador {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                System.out.println(rs.getString(3));
                 model.addRow(datos);
             }
             productoVista.getTabla_producto().setModel(model);
-            //List<Producto> productos = productoCon.findProductoEntities();
-
             inicio.getEscritorio().add(productoVista);
             productoVista.setVisible(true);
         } catch (SQLException ex) {
