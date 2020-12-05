@@ -21,7 +21,8 @@ public class Coordinador {
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
     public static AgregarClienteVista agregarClienteVista;
-    public static Conexion conexion=Conexion.getConexion();
+    public static LoteVista loteVista;
+    public static Conexion conexion = Conexion.getConexion();
 
     public static void main(String[] agrs) throws SQLException {
         login = new LoginVista();
@@ -34,7 +35,7 @@ public class Coordinador {
         login.setVisible(false);
     }
 
-    public void mostrarClientes() {
+    public void verClientes() {
         clienteVista = new ClienteVista();
         ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
         List<Cliente> clientes = clienteCon.findClienteEntities();
@@ -47,7 +48,7 @@ public class Coordinador {
         clienteVista.setVisible(true);
     }
 
-    public void mostrarProductos() {
+    public void verProductos() {
         try {
             productoVista = new ProductoVista();
             Statement st;
@@ -74,7 +75,7 @@ public class Coordinador {
 
     }
 
-    public void mostrarProveedores() {
+    public void verProveedores() {
         proveedorVista = new ProveedorVista();
         ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
@@ -86,21 +87,20 @@ public class Coordinador {
         inicio.getEscritorio().add(proveedorVista);
         proveedorVista.setVisible(true);
     }
-    
-    public void agregarCliente()
-    {
+
+    public void agregarCliente() {
         String id = agregarClienteVista.getTxt_id().getText();
         String nombre = agregarClienteVista.getTxt_nombre().getText();
         String fecha_nac = agregarClienteVista.getTxt_fecha_nac().getText();
         String telefono = agregarClienteVista.getTxt_telefono().getText();
         String correo = agregarClienteVista.getTxt_correo().getText();
         Date fecha = new Date(12239);
-        
-        if ("".equals(id))
+
+        if ("".equals(id)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de identificación", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else if("".equals(nombre))
+        } else if ("".equals(nombre)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else{
+        } else {
             try {
                 Cliente nuevo = new Cliente(id, nombre, fecha, telefono, correo);
                 ClienteJpaController controller = new ClienteJpaController(conexion.getBd());
@@ -112,15 +112,15 @@ public class Coordinador {
             }
         }
     }
-    
-    public void registrarCliente(){
+
+    public void registrarCliente() {
         agregarClienteVista = new AgregarClienteVista(this);
         inicio.getEscritorio().add(agregarClienteVista);
         agregarClienteVista.show();
     }
-    
-    public java.util.Date obtenerFecha(String fecha){
-        java.util.Date now = null;  
+
+    public java.util.Date obtenerFecha(String fecha) {
+        java.util.Date now = null;
         try {
             now = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
             //System.out.println(now.getDate()+"-"+(now.getMonth()+1)+"-"+(now.getYear()+1900));
@@ -129,5 +129,32 @@ public class Coordinador {
         }
         return now;
     }
-    
+
+    public void verLotes() {
+        try {
+            loteVista=new LoteVista(this);
+            Statement st;
+            st = conexion.getConexionSQL().createStatement();
+            ResultSet rs;
+            rs = st.executeQuery("SELECT P.id_producto, L.id_lote, P.nombre, DL.cantidad, L.fecha_vencimiento, L.laboratorio FROM Producto P\n"
+                    + "INNER JOIN Detalle_Lote DL on DL.id_producto_FK=P.id_producto\n"
+                    + "INNER JOIN Lote L on L.id_lote=DL.id_lote_FK;");
+            Object datos[] = new String[6];
+            DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
+                model.addRow(datos);
+            }
+            loteVista.getTabla_lote().setModel(model);
+            inicio.getEscritorio().add(loteVista);
+            loteVista.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

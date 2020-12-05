@@ -5,8 +5,10 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import javax.swing.JTable;
 
 /**
  *
@@ -14,9 +16,7 @@ import java.awt.Dimension;
  */
 public class LoteVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Lote
-     */
+    public static Coordinador coordinador;
     public LoteVista() {
         initComponents();
         this.setSize(784,430);
@@ -26,6 +26,25 @@ public class LoteVista extends javax.swing.JInternalFrame {
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
            (desktopSize.height- jInternalFrameSize.height)/2); 
+    }
+        public LoteVista(Coordinador coordinador) {
+        this.coordinador=coordinador;
+        initComponents();
+        this.setSize(784,430);
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2); 
+    }
+
+    public JTable getTabla_lote() {
+        return tabla_lote;
+    }
+
+    public void setTabla_lote(JTable tabla_lote) {
+        this.tabla_lote = tabla_lote;
     }
 
     /**
@@ -38,7 +57,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_producto = new javax.swing.JTable();
+        tabla_lote = new javax.swing.JTable();
         lbl_id_prod = new javax.swing.JLabel();
         txt_id_prod = new javax.swing.JTextField();
         lbl_id_lote = new javax.swing.JLabel();
@@ -48,8 +67,8 @@ public class LoteVista extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Tabla de lotes");
 
-        tabla_producto.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        tabla_producto.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        tabla_lote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -65,9 +84,9 @@ public class LoteVista extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        tabla_producto.setEnabled(false);
-        tabla_producto.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabla_producto);
+        tabla_lote.setEnabled(false);
+        tabla_lote.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabla_lote);
 
         lbl_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id_prod.setText("No de producto");
@@ -135,7 +154,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_filtrar;
     private javax.swing.JLabel lbl_id_lote;
     private javax.swing.JLabel lbl_id_prod;
-    private javax.swing.JTable tabla_producto;
+    private javax.swing.JTable tabla_lote;
     private javax.swing.JTextField txt_id_lote1;
     private javax.swing.JTextField txt_id_prod;
     // End of variables declaration//GEN-END:variables
