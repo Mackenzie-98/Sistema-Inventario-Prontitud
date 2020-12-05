@@ -110,7 +110,7 @@ public class Coordinador {
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
         DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
         for (Proveedor x : proveedores) {
-            model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono()});
+            model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono(),x.getDireccion()});
         }
         proveedorVista.getTabla_proveedor().setModel(model);
         inicio.getEscritorio().add(proveedorVista);
