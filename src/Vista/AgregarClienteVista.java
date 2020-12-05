@@ -72,7 +72,18 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
 
         txt_fecha_nac.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha_nac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha_nac.setText("YYYY-MM-DD");
+        txt_fecha_nac.setText("yyyy-mm-dd");
+        txt_fecha_nac.setToolTipText("");
+        txt_fecha_nac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fecha_nacMouseClicked(evt);
+            }
+        });
+        txt_fecha_nac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fecha_nacActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_fecha_nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, -1));
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
@@ -149,13 +160,21 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_correoActionPerformed
+
+    private void txt_fecha_nacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fecha_nacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fecha_nacActionPerformed
+
+    private void txt_fecha_nacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fecha_nacMouseClicked
+        this.getTxt_fecha_nac().setText("");
+    }//GEN-LAST:event_txt_fecha_nacMouseClicked
     
     public void limpiar(){
-        this.setTxt_id(null);
-        this.setTxt_nombre(null);
-        this.setTxt_fecha_nac(null);
-        this.setTxt_telefono(null);
-        this.setTxt_correo(null);
+        this.getTxt_id().setText("");
+        this.getTxt_nombre().setText("");
+        this.getTxt_fecha_nac().setText("");
+        this.getTxt_telefono().setText("");
+        this.getTxt_correo().setText("");
     }
     
     public JTextField getTxt_correo() {

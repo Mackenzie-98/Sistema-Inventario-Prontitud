@@ -116,4 +116,9 @@ public class Coordinador {
         inicio.getEscritorio().add(agregarClienteVista);
         agregarClienteVista.show();
     }
+    
+    /*private Date obtenerFecha(String fecha){
+        String obj[] = fecha.split("-");
+    }*/
+    
 }
