@@ -24,43 +24,41 @@ import javax.swing.JPopupMenu;
  * @author Genesis Vargas
  */
 public class InicioVista extends javax.swing.JFrame {
-    
 
     public LoginVista usuario;
-    Coordinador coordinador=new Coordinador();
+    Coordinador coordinador = new Coordinador();
     //String tipo = String.valueOf(cbx_usuario.getSelectedItem());
-    
-    
+
     /**
      * Creates new form Inicio
      */
     public InicioVista() {
-        
+
         initComponents();
-        this.setSize(800,585);
+        this.setSize(800, 585);
         this.setResizable(false);
         this.setVisible(true);
         this.setTitle("Droguería Prontitud");
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
-        
+
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
     }
-    
+
     public InicioVista(Coordinador coordinador) {
         this.coordinador = coordinador;
         initComponents();
-        this.setSize(800,585);
+        this.setSize(800, 585);
         this.setResizable(false);
         this.setVisible(true);
         this.setTitle("Droguería Prontitud");
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
-        
+
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
     }
-    
-    public void validar(){
+
+    public void validar() {
         /*if(tipo.equals("Vendedor")){
             jm_prov.setEnabled(false);
             jmi_registrar_c.setEnabled(false);
@@ -69,6 +67,7 @@ public class InicioVista extends javax.swing.JFrame {
             jmi_facturasC.setEnabled(false);
         } */
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -410,7 +409,7 @@ public class InicioVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jm_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_clienteActionPerformed
-        
+
     }//GEN-LAST:event_jm_clienteActionPerformed
 
     private void jmi_agg_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_prodActionPerformed
@@ -429,7 +428,6 @@ public class InicioVista extends javax.swing.JFrame {
         this.usuario = usuario;
     }
 
-  
     public static JDesktopPane getEscritorio() {
         return escritorio;
     }
@@ -673,7 +671,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_buscar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_prodActionPerformed
 //        escritorio.removeAll();
         String nombre;
-        nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");     
+        nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");
         ProductoVista ver_ventana = new ProductoVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
@@ -683,22 +681,18 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_eliminar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_prodActionPerformed
 //        escritorio.removeAll();
         String nombre;
-        nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");     
+        nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");
         ProductoVista ver_ventana = new ProductoVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_eliminar_prodActionPerformed
 
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
-            coordinador.verProductos();
+        coordinador.verProductos();
     }//GEN-LAST:event_jmi_mostrar_prodActionPerformed
 
     private void jmi_agg_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_provActionPerformed
-        // TODO add your handling code here:
-//        escritorio.removeAll();
-        AgregarProveedorVista ver_ventana = new AgregarProveedorVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
+        coordinador.registrarProveedorVista();
     }//GEN-LAST:event_jmi_agg_provActionPerformed
 
     private void jmi_mostrar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_provActionPerformed
@@ -708,7 +702,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_buscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_clienteActionPerformed
 //        escritorio.removeAll();
         String id;
-        id = JOptionPane.showInputDialog("Digita número de documento:  "); 
+        id = JOptionPane.showInputDialog("Digita número de documento:  ");
         ClienteVista ver_ventana = new ClienteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
@@ -717,7 +711,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_eliminar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_provActionPerformed
 //        escritorio.removeAll();
         String nombre;
-        nombre = JOptionPane.showInputDialog("Digita el número de NIT:  "); 
+        nombre = JOptionPane.showInputDialog("Digita el número de NIT:  ");
         ProveedorVista ver_ventana = new ProveedorVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
@@ -726,7 +720,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_buscar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_provActionPerformed
 //        escritorio.removeAll();
         String nombre;
-        nombre = JOptionPane.showInputDialog("Digita el número de NIT:  "); 
+        nombre = JOptionPane.showInputDialog("Digita el número de NIT:  ");
         ProveedorVista ver_ventana = new ProveedorVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
@@ -743,7 +737,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_facturasCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_facturasCActionPerformed
         CompraVista ver_ventana = new CompraVista();
         escritorio.add(ver_ventana);
-        ver_ventana.show();          
+        ver_ventana.show();
     }//GEN-LAST:event_jmi_facturasCActionPerformed
 
     private void jmi_facturasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_facturasVActionPerformed
@@ -765,12 +759,12 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registrar_vActionPerformed
 
     private void jmi_mostrar_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_clientesActionPerformed
-            coordinador.verClientes();
+        coordinador.verClientes();
     }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
 
     private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed
         String nombre;
-        nombre = JOptionPane.showInputDialog("Digita número de documento:  ");     
+        nombre = JOptionPane.showInputDialog("Digita número de documento:  ");
         ClienteVista ver_ventana = new ClienteVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
@@ -779,12 +773,12 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_mostrar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_devActionPerformed
         DevolucionVista ver_ventana = new DevolucionVista();
         escritorio.add(ver_ventana);
-        ver_ventana.show();  
+        ver_ventana.show();
     }//GEN-LAST:event_jmi_mostrar_devActionPerformed
 
     private void jmi_eliminar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_devActionPerformed
         String nombre;
-        nombre = JOptionPane.showInputDialog("Digita número de devolución:  ");     
+        nombre = JOptionPane.showInputDialog("Digita número de devolución:  ");
         DevolucionVista ver_ventana = new DevolucionVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
@@ -797,7 +791,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_reg_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_reg_devActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmi_reg_devActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

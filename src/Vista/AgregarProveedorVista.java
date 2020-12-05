@@ -5,10 +5,13 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,17 +19,92 @@ import javax.swing.JOptionPane;
  */
 public class AgregarProveedorVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Proveedor1
-     */
+    public static Coordinador coordinador;
+
     public AgregarProveedorVista() {
         initComponents();
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+
+    public AgregarProveedorVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+
+    public JButton getCmd_agregar() {
+        return cmd_agregar;
+    }
+
+    public void setCmd_agregar(JButton cmd_agregar) {
+        this.cmd_agregar = cmd_agregar;
+    }
+
+    public JTextField getTxt_ciudad() {
+        return txt_ciudad;
+    }
+
+    public void setTxt_ciudad(JTextField txt_ciudad) {
+        this.txt_ciudad = txt_ciudad;
+    }
+
+    public JTextField getTxt_correo() {
+        return txt_correo;
+    }
+
+    public void setTxt_correo(JTextField txt_correo) {
+        this.txt_correo = txt_correo;
+    }
+
+    public JTextField getTxt_direccion() {
+        return txt_direccion;
+    }
+
+    public void setTxt_direccion(JTextField txt_direccion) {
+        this.txt_direccion = txt_direccion;
+    }
+
+    public JTextField getTxt_nit() {
+        return txt_nit;
+    }
+
+    public void setTxt_nit(JTextField txt_nit) {
+        this.txt_nit = txt_nit;
+    }
+
+    public JTextField getTxt_nombre() {
+        return txt_nombre;
+    }
+
+    public void setTxt_nombre(JTextField txt_nombre) {
+        this.txt_nombre = txt_nombre;
+    }
+
+    public JTextField getTxt_tel() {
+        return txt_tel;
+    }
+
+    public void setTxt_tel(JTextField txt_tel) {
+        this.txt_tel = txt_tel;
+    }
+
+    public void limpiar() {
+        this.getTxt_ciudad().setText("");
+        this.getTxt_correo().setText("");
+        this.getTxt_direccion().setText("");
+        this.getTxt_nit().setText("");
+        this.getTxt_nombre().setText("");
+        this.getTxt_tel().setText("");
     }
 
     /**
@@ -51,7 +129,7 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
         txt_nombre = new javax.swing.JTextField();
         txt_nit = new javax.swing.JTextField();
         lbl_dir = new javax.swing.JLabel();
-        txt_dir = new javax.swing.JTextField();
+        txt_direccion = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -133,11 +211,11 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
         lbl_dir.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_dir.setText("Dirección:");
 
-        txt_dir.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_dir.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_dir.addActionListener(new java.awt.event.ActionListener() {
+        txt_direccion.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_direccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dirActionPerformed(evt);
+                txt_direccionActionPerformed(evt);
             }
         });
 
@@ -169,7 +247,7 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(lbl_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(28, 28, 28)
-                            .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
                             .addComponent(lbl_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(9, 9, 9)
@@ -196,7 +274,7 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
                     .addGap(17, 17, 17)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbl_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_dir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 42, Short.MAX_VALUE)))
@@ -264,24 +342,7 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_agregarMouseExited
 
     private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
-
-        //                String NIT;
-        //                String nombre;
-        //                String ciudad;
-        //                String tel;
-        //                nombre = JOptionPane.showInputDialog("Digitame Tu Nombre:  ");
-        //                NIT = JOptionPane.showInputDialog("Digita tu NIT: ");
-        //                ciudad = JOptionPane.showInputDialog("Digita tu ciudad: ");
-        //                tel = JOptionPane.showInputDialog("Digita tu telefono: ");
-        if ("".equals(this.txt_nit.getText())) {
-            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el NIT", "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar proveedor", JOptionPane.INFORMATION_MESSAGE);
-            ProveedorVista ver_ventana = new ProveedorVista();
-            InicioVista.escritorio.add(ver_ventana);
-            this.setVisible(false);
-            ver_ventana.show();
-        }
+        coordinador.agregarProveedor();
 
     }//GEN-LAST:event_cmd_agregarActionPerformed
 
@@ -301,9 +362,9 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nitActionPerformed
 
-    private void txt_dirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dirActionPerformed
+    private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dirActionPerformed
+    }//GEN-LAST:event_txt_direccionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -320,7 +381,7 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_tel;
     private javax.swing.JTextField txt_ciudad;
     private javax.swing.JTextField txt_correo;
-    private javax.swing.JTextField txt_dir;
+    private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_nit;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_tel;

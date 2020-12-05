@@ -57,7 +57,15 @@ public class Proveedor implements Serializable {
 
     public Proveedor() {
     }
-
+    public Proveedor(String nit, String nombre,String direccion, String ciudad,String correo,String telefono) {
+        this.nit = nit;
+        this.nombre = nombre;
+        this.direccion=direccion;
+        this.ciudad=ciudad;
+        this.correo=correo;
+        this.telefono=telefono;
+        
+    }
     public Proveedor(String nit) {
         this.nit = nit;
     }

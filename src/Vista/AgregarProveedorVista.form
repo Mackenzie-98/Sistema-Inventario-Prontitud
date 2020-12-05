@@ -135,7 +135,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lbl_dir" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                              <Component id="txt_dir" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="txt_direccion" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
                               <Component id="lbl_correo" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
@@ -169,7 +169,7 @@
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbl_dir" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="txt_dir" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="txt_direccion" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="lbl_correo" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="txt_correo" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
@@ -280,7 +280,7 @@
             <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_dir">
+        <Component class="javax.swing.JTextField" name="txt_direccion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft YaHei Light" size="14" style="0"/>
@@ -288,7 +288,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_dirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_direccionActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

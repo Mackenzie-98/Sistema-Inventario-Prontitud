@@ -22,6 +22,7 @@ public class Coordinador {
     public static ProveedorVista proveedorVista;
     public static AgregarClienteVista agregarClienteVista;
     public static LoteVista loteVista;
+    public static AgregarProveedorVista agregarProveedorVista;
     public static Conexion conexion = Conexion.getConexion();
 
     public static void main(String[] agrs) throws SQLException {
@@ -34,7 +35,35 @@ public class Coordinador {
         inicio.setVisible(true);
         login.setVisible(false);
     }
-
+    public void registrarProveedorVista() {
+        agregarProveedorVista = new AgregarProveedorVista(this);
+        inicio.getEscritorio().add(agregarProveedorVista);
+        agregarProveedorVista.show();
+    }
+    
+     public void agregarProveedor() {
+        String nit = agregarProveedorVista.getTxt_nit().getText();
+        String nombre = agregarProveedorVista.getTxt_nombre().getText();
+        String ciudad = agregarProveedorVista.getTxt_ciudad().getText();
+        String correo=agregarProveedorVista.getTxt_correo().getText();
+        String telefono=agregarProveedorVista.getTxt_tel().getText();
+        String direccion=agregarProveedorVista.getTxt_direccion().getText();
+        if ("".equals(nit)) {
+            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de identificación", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if ("".equals(nombre)) {
+            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Proveedor nuevo = new Proveedor(nit, nombre, direccion, ciudad,correo, telefono);
+                ProveedorJpaController controller = new ProveedorJpaController(conexion.getBd());
+                controller.create(nuevo);
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar proveedor", JOptionPane.INFORMATION_MESSAGE);
+                agregarProveedorVista.limpiar();
+            } catch (Exception ex) {
+                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     public void verClientes() {
         clienteVista = new ClienteVista();
         ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
