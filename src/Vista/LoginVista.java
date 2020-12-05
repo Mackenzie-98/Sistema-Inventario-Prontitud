@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
  */
 public class LoginVista extends javax.swing.JFrame {
 
-    /** Creates new form Login */
     Coordinador coordinador=new Coordinador();
 
 

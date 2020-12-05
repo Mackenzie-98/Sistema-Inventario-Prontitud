@@ -57,17 +57,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         tabla_cliente.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Identificación", "Nombre", "Fecha de nacimiento", "Correo"

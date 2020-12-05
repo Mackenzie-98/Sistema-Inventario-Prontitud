@@ -24,6 +24,7 @@ public class InicioVista extends javax.swing.JFrame {
     
 
     public LoginVista usuario;
+    Coordinador coordinador=new Coordinador();
     //String tipo = String.valueOf(cbx_usuario.getSelectedItem());
     
     
@@ -759,7 +760,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_registrar_vActionPerformed
 
     private void jmi_mostrar_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_clientesActionPerformed
-           
+            coordinador.mostrarClientes();
     }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
 
     private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed
