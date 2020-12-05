@@ -673,11 +673,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_eliminar_prodActionPerformed
 
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
-//        escritorio.removeAll();
-
-        ProductoVista ver_ventana = new ProductoVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();        
+        coordinador.mostrarProductos();
     }//GEN-LAST:event_jmi_mostrar_prodActionPerformed
 
     private void jmi_agg_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_provActionPerformed
@@ -689,10 +685,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_agg_provActionPerformed
 
     private void jmi_mostrar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_provActionPerformed
-//        escritorio.removeAll();
-        ProveedorVista ver_ventana = new ProveedorVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
+        coordinador.mostrarProveedores();
     }//GEN-LAST:event_jmi_mostrar_provActionPerformed
 
     private void jmi_buscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_clienteActionPerformed

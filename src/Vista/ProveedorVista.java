@@ -55,17 +55,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         tabla_proveedor.setFont(tabla_proveedor.getFont().deriveFont(tabla_proveedor.getFont().getSize()+3f));
         tabla_proveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "NIT", "Nombre", "Ciudad", "Correo", "Teléfono"

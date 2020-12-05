@@ -11,6 +11,8 @@ public class Coordinador {
     public static LoginVista login ;
     public static InicioVista inicio;
     public static ClienteVista clienteVista ;
+    public static ProductoVista productoVista;
+    public static ProveedorVista proveedorVista;
     Conexion conexion = Conexion.getConexion();
 
     public static void main(String[] agrs) {
@@ -37,7 +39,7 @@ public class Coordinador {
     }
     
     public void mostrarProductos() {
-        ProductoVista productoVista = new ProductoVista();
+        productoVista = new ProductoVista();
         ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
         List<Producto> productos = productoCon.findProductoEntities();                
         DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
@@ -46,11 +48,11 @@ public class Coordinador {
         }
         productoVista.getTabla_producto().setModel(model);
         inicio.getEscritorio().add(productoVista);
-        clienteVista.setVisible(true);
+        productoVista.setVisible(true);
     }   
     
     public void mostrarProveedores() {
-        ProveedorVista proveedorVista = new ProveedorVista();
+        proveedorVista = new ProveedorVista();
         ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
         DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
@@ -59,6 +61,6 @@ public class Coordinador {
         }
         proveedorVista.getTabla_proveedor().setModel(model);
         inicio.getEscritorio().add(proveedorVista);
-        clienteVista.setVisible(true);
+        proveedorVista.setVisible(true);
     }
 }
