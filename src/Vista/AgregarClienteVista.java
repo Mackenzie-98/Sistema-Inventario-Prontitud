@@ -5,9 +5,11 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,6 +20,8 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     /**
      * Creates new form Cliente
      */
+    public static Coordinador coordinador;
+    
     public AgregarClienteVista() {
         initComponents();
         this.setSize(520,256);
@@ -27,6 +31,18 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
            (desktopSize.height- jInternalFrameSize.height)/2);
+    }
+    
+    public AgregarClienteVista(Coordinador coordinador) {
+        initComponents();
+        this.setSize(520,256);
+        this.setResizable(false);
+        this.setVisible(true); 
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);
+        this.coordinador = coordinador;
     }
 
     /**
@@ -42,11 +58,13 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         lbl_id = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
         cmd_agregar = new javax.swing.JButton();
-        lbl_correo = new javax.swing.JLabel();
+        lbl_telefono = new javax.swing.JLabel();
         lbl_fecha = new javax.swing.JLabel();
-        txt_correo = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
         txt_id = new javax.swing.JTextField();
+        txt_correo = new javax.swing.JTextField();
+        lbl_correo = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Registrar cliente");
@@ -74,21 +92,21 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         });
         getContentPane().add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 99, 36));
 
-        lbl_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_correo.setText("Correo:");
-        getContentPane().add(lbl_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 170, 81, 22));
+        lbl_telefono.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_telefono.setText("Telefono:");
+        getContentPane().add(lbl_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 81, 22));
 
         lbl_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_fecha.setText("Fecha de nacimiento:");
         getContentPane().add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 23));
 
-        txt_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_correo.addActionListener(new java.awt.event.ActionListener() {
+        txt_telefono.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_correoActionPerformed(evt);
+                txt_telefonoActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 100, -1));
+        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 100, -1));
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 100, -1));
@@ -101,35 +119,84 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         });
         getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 100, -1));
 
+        txt_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_correo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_correoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 100, -1));
+
+        lbl_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_correo.setText("Correo:");
+        getContentPane().add(lbl_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 170, 81, 22));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
-//        String id;
-//        String nombre;
-//        String fecha_nac;
-//        String contacto;
-
-    if ("".equals(this.txt_id.getText())) {
-        JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de identificación",
-                "ERROR", JOptionPane.WARNING_MESSAGE);
-    } else {
-        JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar cliente", JOptionPane.INFORMATION_MESSAGE);
-        ClienteVista ver_ventana = new ClienteVista();
-        InicioVista.escritorio.add(ver_ventana);
-        this.setVisible(false);
-        ver_ventana.show();
-    }    
-
+        coordinador.agregarCliente();
     }//GEN-LAST:event_cmd_agregarActionPerformed
 
-    private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
+    private void txt_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_correoActionPerformed
+    }//GEN-LAST:event_txt_telefonoActionPerformed
 
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idActionPerformed
+
+    private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_correoActionPerformed
+    
+    public void limpiar(){
+        this.setTxt_id(null);
+        this.setTxt_nombre(null);
+        this.setTxt_fecha_nac(null);
+        this.setTxt_telefono(null);
+        this.setTxt_correo(null);
+    }
+    
+    public JTextField getTxt_correo() {
+        return txt_correo;
+    }
+
+    public void setTxt_correo(JTextField txt_correo1) {
+        this.txt_correo = txt_correo1;
+    }
+
+    public JTextField getTxt_fecha_nac() {
+        return txt_fecha_nac;
+    }
+
+    public void setTxt_fecha_nac(JTextField txt_fecha_nac) {
+        this.txt_fecha_nac = txt_fecha_nac;
+    }
+
+    public JTextField getTxt_id() {
+        return txt_id;
+    }
+
+    public void setTxt_id(JTextField txt_id) {
+        this.txt_id = txt_id;
+    }
+
+    public JTextField getTxt_nombre() {
+        return txt_nombre;
+    }
+
+    public void setTxt_nombre(JTextField txt_nombre) {
+        this.txt_nombre = txt_nombre;
+    }
+
+    public JTextField getTxt_telefono() {
+        return txt_telefono;
+    }
+
+    public void setTxt_telefono(JTextField txt_telefono) {
+        this.txt_telefono = txt_telefono;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -138,9 +205,11 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JLabel lbl_nombre;
+    private javax.swing.JLabel lbl_telefono;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_fecha_nac;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
 }

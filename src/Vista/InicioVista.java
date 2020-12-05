@@ -46,6 +46,20 @@ public class InicioVista extends javax.swing.JFrame {
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
     }
+    
+    public InicioVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setSize(800,585);
+        this.setResizable(false);
+        this.setVisible(true);
+        this.setTitle("Droguería Prontitud");
+        this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
+        
+        escritorio.setBorder(new ImagenFondo());
+        this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
+    }
+    
     public void validar(){
         /*if(tipo.equals("Vendedor")){
             jm_prov.setEnabled(false);
@@ -145,7 +159,7 @@ public class InicioVista extends javax.swing.JFrame {
         jmi_agg_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jmi_agg_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         jmi_agg_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_resg_prod.png"))); // NOI18N
-        jmi_agg_prod.setText("Registrar");
+        jmi_agg_prod.setText("Agregar");
         jmi_agg_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmi_agg_prodActionPerformed(evt);
@@ -719,10 +733,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_buscar_provActionPerformed
 
     private void jmi_agg_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_clienteActionPerformed
-//        escritorio.removeAll();
-        AgregarClienteVista ver_ventana = new AgregarClienteVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
+        coordinador.registrarCliente();
     }//GEN-LAST:event_jmi_agg_clienteActionPerformed
 
     private void jmi_mostrar_lotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_lotesActionPerformed
@@ -788,7 +799,7 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_reg_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_reg_devActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmi_reg_devActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

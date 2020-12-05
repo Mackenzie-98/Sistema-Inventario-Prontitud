@@ -16,7 +16,8 @@ public class test {
     public static void main(String [] args) throws Exception{
         Conexion con=Conexion.getConexion();
         ClienteJpaController clienteController=new ClienteJpaController(con.getBd());
-        List<Cliente> clientes=clienteController.findClienteEntities();
-        for(Cliente x:clientes)System.out.println(x.getNombre());
+        Cliente cliente = new Cliente("12345", "Camila Cabello");
+        clienteController.create(cliente);
+        System.out.println(cliente.getNombre());
     }
 }

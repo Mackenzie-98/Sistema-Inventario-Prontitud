@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -17,6 +18,7 @@ public class Coordinador {
     public static ClienteVista clienteVista;
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
+    public static AgregarClienteVista agregarClienteVista;
     public static Conexion conexion=Conexion.getConexion();
 
     public static void main(String[] agrs) throws SQLException {
@@ -25,7 +27,7 @@ public class Coordinador {
     }
 
     public void iniciarSesion() {
-        inicio = new InicioVista();
+        inicio = new InicioVista(this);
         inicio.setVisible(true);
         login.setVisible(false);
     }
@@ -84,5 +86,37 @@ public class Coordinador {
         proveedorVista.getTabla_proveedor().setModel(model);
         inicio.getEscritorio().add(proveedorVista);
         proveedorVista.setVisible(true);
+    }
+    
+    public void agregarCliente()
+    {
+        String id = agregarClienteVista.getTxt_id().getText();
+        String nombre = agregarClienteVista.getTxt_nombre().getText();
+        String fecha_nac = agregarClienteVista.getTxt_fecha_nac().getText();
+        String telefono = agregarClienteVista.getTxt_telefono().getText();
+        String correo = agregarClienteVista.getTxt_correo().getText();
+        Date fecha = new Date(12239);
+        
+        if ("".equals(id))
+            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el número de identificación", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if("".equals(nombre))
+            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else{
+            try {
+                Cliente nuevo = new Cliente(id, nombre, fecha, telefono, correo);
+                ClienteJpaController controller = new ClienteJpaController(conexion.getBd());
+                controller.create(nuevo);
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar cliente", JOptionPane.INFORMATION_MESSAGE);
+                agregarClienteVista.limpiar();
+            } catch (Exception ex) {
+                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void registrarCliente(){
+        agregarClienteVista = new AgregarClienteVista(this);
+        inicio.getEscritorio().add(agregarClienteVista);
+        agregarClienteVista.show();
     }
 }
