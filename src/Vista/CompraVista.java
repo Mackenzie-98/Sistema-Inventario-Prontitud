@@ -7,6 +7,13 @@ package Vista;
 
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -39,7 +46,7 @@ public class CompraVista extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_compra = new javax.swing.JTable();
         lbl_id = new javax.swing.JLabel();
-        txt_id_prod = new javax.swing.JTextField();
+        txt_filtro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,23 +61,14 @@ public class CompraVista extends javax.swing.JInternalFrame {
         tabla_compra.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_compra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "2", "Prueba de embarazo", "8", "2020-06-12", "20000", "", "100000"},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Cod. Factura", "Cod. Producto", "Nombre producto", "Cantidad", "Fecha ", "Precio", "Descuento", "Total"
+                "Cod. Factura", "Cod. Producto", "Nombre producto", "Nombre proveedor", "Cantidad", "Fecha ", "Precio", "Descuento", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -89,13 +87,18 @@ public class CompraVista extends javax.swing.JInternalFrame {
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_id.setText("Identificador");
+        lbl_id.setText("Filtrar:");
         getContentPane().add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 80, -1));
 
-        txt_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_id_prod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_id_prod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        getContentPane().add(txt_id_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 120, -1));
+        txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyTyped(evt);
+            }
+        });
+        getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 120, -1));
 
         jLabel2.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,7 +119,35 @@ public class CompraVista extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    TableRowSorter trs;
+    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
+        this.getTxt_filtro().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4,5,6,7,8));
+            }            
+        });
+        trs = new TableRowSorter((DefaultTableModel)getTabla_compra().getModel());
+        this.getTabla_compra().setRowSorter(trs);
+    }//GEN-LAST:event_txt_filtroKeyTyped
 
+    public JTextField getTxt_filtro() {
+        return txt_filtro;
+    }
+
+    public void setTxt_filtro(JTextField txt_filtro) {
+        this.txt_filtro = txt_filtro;
+    }
+
+    public JTable getTabla_compra() {
+        return tabla_compra;
+    }
+
+    public void setTabla_compra(JTable tabla_compra) {
+        this.tabla_compra = tabla_compra;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -127,6 +158,6 @@ public class CompraVista extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JTable tabla_compra;
-    private javax.swing.JTextField txt_id_prod;
+    private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
 }

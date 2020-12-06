@@ -9,10 +9,15 @@ package Vista;
 import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -42,7 +47,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lbl_filtrar = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
+        txt_filtro = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_cliente = new javax.swing.JTable();
 
@@ -50,9 +55,14 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         setTitle("Tabla de clientes");
 
         lbl_filtrar.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        lbl_filtrar.setText("Filtrar");
+        lbl_filtrar.setText("Filtrar:");
 
-        txt_id.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        txt_filtro.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyTyped(evt);
+            }
+        });
 
         tabla_cliente.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_cliente.setModel(new javax.swing.table.DefaultTableModel(
@@ -84,7 +94,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
                         .addGap(55, 55, 55)
                         .addComponent(lbl_filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -96,7 +106,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
                 .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_filtrar)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
@@ -105,12 +115,24 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    TableRowSorter trs;
+    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
+        this.getTxt_filtro().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3));
+            }            
+        });
+        trs = new TableRowSorter((DefaultTableModel)getTabla_cliente().getModel());
+        this.getTabla_cliente().setRowSorter(trs);
+    }//GEN-LAST:event_txt_filtroKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_filtrar;
     private javax.swing.JTable tabla_cliente;
-    private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
 
     public JScrollPane getjScrollPane1() {
@@ -137,12 +159,11 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         this.tabla_cliente = tabla_cliente;
     }
 
-    public JTextField getTxt_id() {
-        return txt_id;
+    public JTextField getTxt_filtro() {
+        return txt_filtro;
     }
 
-    public void setTxt_id(JTextField txt_id) {
-        this.txt_id = txt_id;
+    public void setTxt_id(JTextField txt_filtro) {
+        this.txt_filtro = txt_filtro;
     }
-
 }

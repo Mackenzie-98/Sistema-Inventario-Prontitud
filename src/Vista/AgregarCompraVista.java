@@ -9,6 +9,7 @@ import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -135,7 +136,12 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha.setText("YYYY-MM-DD");
+        txt_fecha.setText("yyyy-mm-dd");
+        txt_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fechaMouseClicked(evt);
+            }
+        });
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fechaActionPerformed(evt);
@@ -282,6 +288,77 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         cmd_reg_c.setBackground(new Color(0, 51, 204));
     }//GEN-LAST:event_cmd_reg_cMouseExited
 
+    private void txt_fechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fechaMouseClicked
+       this.getTxt_fecha().setText("");
+    }//GEN-LAST:event_txt_fechaMouseClicked
+    
+    public void limpiar(){
+        this.getTxt_cant().setText("");
+        this.getTxt_dto().setText("");
+        this.getTxt_fecha().setText("");
+        this.getTxt_lote().setText("");
+        this.getTxt_nit().setText("");
+        this.getTxt_nombre_prod().setText("");
+        this.getTxt_precio_c().setText("");        
+    }
+    
+    public JTextField getTxt_cant() {
+        return txt_cant;
+    }
+
+    public void setTxt_cant(JTextField txt_cant) {
+        this.txt_cant = txt_cant;
+    }
+
+    public JTextField getTxt_dto() {
+        return txt_dto;
+    }
+
+    public void setTxt_dto(JTextField txt_dto) {
+        this.txt_dto = txt_dto;
+    }
+
+    public JTextField getTxt_fecha() {
+        return txt_fecha;
+    }
+
+    public void setTxt_fecha(JTextField txt_fecha) {
+        this.txt_fecha = txt_fecha;
+    }
+
+    public JTextField getTxt_lote() {
+        return txt_lote;
+    }
+
+    public void setTxt_lote(JTextField txt_lote) {
+        this.txt_lote = txt_lote;
+    }
+
+    public JTextField getTxt_nit() {
+        return txt_nit;
+    }
+
+    public void setTxt_nit(JTextField txt_nit) {
+        this.txt_nit = txt_nit;
+    }
+
+    public JTextField getTxt_nombre_prod() {
+        return txt_nombre_prod;
+    }
+
+    public void setTxt_nombre_prod(JTextField txt_nombre_prod) {
+        this.txt_nombre_prod = txt_nombre_prod;
+    }
+
+    public JTextField getTxt_precio_c() {
+        return txt_precio_c;
+    }
+
+    public void setTxt_precio_c(JTextField txt_precio_c) {
+        this.txt_precio_c = txt_precio_c;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmd_reg_c;

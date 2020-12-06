@@ -7,10 +7,15 @@ package Vista;
 
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 /**
@@ -46,8 +51,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_proveedor = new javax.swing.JTable();
         lbl_id = new javax.swing.JLabel();
-        txt_nit = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txt_filtro = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Tabla de proveedores");
@@ -74,13 +78,14 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_id.setText("Identificador");
+        lbl_id.setText("Fitrar:");
 
-        txt_nit.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Filtrar:");
+        txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,23 +97,19 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
                         .addGap(55, 55, 55)
                         .addComponent(lbl_id)
                         .addGap(33, 33, 33)
-                        .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_id)
-                    .addComponent(txt_nit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
@@ -116,17 +117,25 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    TableRowSorter trs;
+    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
+        this.getTxt_filtro().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4,5));
+            }            
+        });
+        trs = new TableRowSorter((DefaultTableModel)getTabla_proveedor().getModel());
+        this.getTabla_proveedor().setRowSorter(trs);
+    }//GEN-LAST:event_txt_filtroKeyTyped
 
-    public JLabel getjLabel1() {
-        return jLabel1;
+    public JTextField getTxt_filtro() {
+        return txt_filtro;
     }
 
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
+    public void setTxt_filtro(JTextField txt_filtro) {
+        this.txt_filtro = txt_filtro;
     }
 
     public void setjScrollPane1(JScrollPane jScrollPane1) {
@@ -149,19 +158,10 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         this.tabla_proveedor = tabla_proveedor;
     }
 
-    public JTextField getTxt_nit() {
-        return txt_nit;
-    }
-
-    public void setTxt_nit(JTextField txt_nit) {
-        this.txt_nit = txt_nit;
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JTable tabla_proveedor;
-    private javax.swing.JTextField txt_nit;
+    private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
 }

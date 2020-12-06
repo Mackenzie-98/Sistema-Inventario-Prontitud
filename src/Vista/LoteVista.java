@@ -8,7 +8,13 @@ package Vista;
 import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -59,10 +65,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_lote = new javax.swing.JTable();
         lbl_id_prod = new javax.swing.JLabel();
-        txt_id_prod = new javax.swing.JTextField();
-        lbl_id_lote = new javax.swing.JLabel();
-        txt_id_lote1 = new javax.swing.JTextField();
-        lbl_filtrar = new javax.swing.JLabel();
+        txt_filtro = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Tabla de lotes");
@@ -89,17 +92,14 @@ public class LoteVista extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tabla_lote);
 
         lbl_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_id_prod.setText("No de producto");
+        lbl_id_prod.setText("Filtrar:");
 
-        txt_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-
-        lbl_id_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_id_lote.setText("No de lote");
-
-        txt_id_lote1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-
-        lbl_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_filtrar.setText("Filtrar:");
+        txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,51 +111,54 @@ public class LoteVista extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lbl_id_prod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_id_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_id_lote1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_id_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(lbl_filtrar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(66, 66, 66)
+                        .addComponent(lbl_id_prod)
+                        .addGap(48, 48, 48)
+                        .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(lbl_filtrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_id_prod)
+                    .addComponent(txt_filtro)
                     .addComponent(lbl_id_prod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_id_lote1)
-                    .addComponent(lbl_id_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(80, 80, 80)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    TableRowSorter trs;    
+    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
+        this.getTxt_filtro().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4,5));
+            }            
+        });
+        trs = new TableRowSorter((DefaultTableModel)getTabla_lote().getModel());
+        this.getTabla_lote().setRowSorter(trs);
+    }//GEN-LAST:event_txt_filtroKeyTyped
+ 
+    public JTextField getTxt_filtro() {
+        return txt_filtro;
+    }
 
+    public void setTxt_filtrar(JTextField txt_filtrar) {
+        this.txt_filtro = txt_filtrar;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_filtrar;
-    private javax.swing.JLabel lbl_id_lote;
     private javax.swing.JLabel lbl_id_prod;
     private javax.swing.JTable tabla_lote;
-    private javax.swing.JTextField txt_id_lote1;
-    private javax.swing.JTextField txt_id_prod;
+    private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
 }
