@@ -49,10 +49,8 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_dto = new javax.swing.JLabel();
         lbl_fecha = new javax.swing.JLabel();
         lbl_cliente = new javax.swing.JLabel();
-        txt_dto = new javax.swing.JTextField();
         txt_fecha = new javax.swing.JTextField();
         cmd_registrar = new javax.swing.JButton();
         lbl_prod = new javax.swing.JLabel();
@@ -66,22 +64,17 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_cant = new javax.swing.JTextField();
         lbl_cant = new javax.swing.JLabel();
-        txt_precio = new javax.swing.JTextField();
-        lbl_previo_venta = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txt_lote = new javax.swing.JTextField();
         lbl_lote = new javax.swing.JLabel();
+        lbl_dto = new javax.swing.JLabel();
+        txt_dto = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setTitle("Registrar venta");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_vent.png"))); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_dto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_dto.setText("Descuento");
-        getContentPane().add(lbl_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 73, 22));
 
         lbl_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -90,18 +83,10 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
 
         lbl_cliente.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_cliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_cliente.setText("Identificación");
+        lbl_cliente.setText("Id Cliente:");
         getContentPane().add(lbl_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 90, 22));
         lbl_cliente.getAccessibleContext().setAccessibleName("Identificación ");
         lbl_cliente.getAccessibleContext().setAccessibleDescription("");
-
-        txt_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_dto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dtoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 129, 23));
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -136,7 +121,7 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
 
         lbl_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_prod.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_prod.setText("Producto:");
+        lbl_prod.setText("Id Producto:");
         getContentPane().add(lbl_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 73, 22));
         getContentPane().add(txt_id_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 129, 23));
 
@@ -183,14 +168,6 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
         lbl_cant.setText("Cantidad:");
         getContentPane().add(lbl_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 73, 22));
 
-        txt_precio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        getContentPane().add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 129, 23));
-
-        lbl_previo_venta.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        lbl_previo_venta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_previo_venta.setText("Precio:");
-        getContentPane().add(lbl_previo_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 73, 22));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -202,12 +179,25 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
                 txt_loteActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 130, -1));
+        jPanel1.add(txt_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 130, -1));
 
         lbl_lote.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_lote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_lote.setText("Lote:");
-        jPanel1.add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 60, 22));
+        jPanel1.add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 60, 22));
+
+        lbl_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_dto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_dto.setText("Descuento");
+        jPanel1.add(lbl_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 73, 22));
+
+        txt_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_dto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_dtoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 129, 23));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 330, 300));
 
@@ -223,10 +213,7 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_fechaActionPerformed
 
     private void cmd_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_registrarActionPerformed
-        VentaVista ver_ventana = new VentaVista();
-        escritorio.add(ver_ventana);
-        this.setVisible(false);
-        ver_ventana.show();
+        coordinador.agegarVenta();
     }//GEN-LAST:event_cmd_registrarActionPerformed
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
@@ -250,8 +237,8 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
         this.getTxt_dto().setText("");
         this.getTxt_fecha().setText("");
         this.getTxt_id_cliente().setText("");
-        this.getTxt_precio().setText("");
         this.getTxt_nombre_prod().setText("");
+        this.getTxt_lote().setText("");
 
     }
 
@@ -287,12 +274,12 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
         this.txt_id_cliente = txt_id_cliente;
     }
 
-    public JTextField getTxt_precio() {
-        return txt_precio;
+    public JTextField getTxt_lote() {
+        return txt_lote;
     }
 
-    public void setTxt_id_prod2(JTextField txt_id_prod2) {
-        this.txt_precio = txt_id_prod2;
+    public void setTxt_lote(JTextField txt_lote) {
+        this.txt_lote = txt_lote;
     }
 
     public JTextField getTxt_nombre_prod() {
@@ -318,7 +305,6 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_dto;
     private javax.swing.JLabel lbl_fecha;
     private javax.swing.JLabel lbl_lote;
-    private javax.swing.JLabel lbl_previo_venta;
     private javax.swing.JLabel lbl_prod;
     private javax.swing.JTextField txt_cant;
     private javax.swing.JTextField txt_dto;
@@ -326,6 +312,5 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_id_cliente;
     private javax.swing.JTextField txt_lote;
     private javax.swing.JTextField txt_nombre_prod;
-    private javax.swing.JTextField txt_precio;
     // End of variables declaration//GEN-END:variables
 }

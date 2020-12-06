@@ -69,6 +69,13 @@ public class FacturaCompra implements Serializable {
         this.idFactura = idFactura;
         this.fecha = fecha;
     }
+    
+    public FacturaCompra(Integer idFactura, Date fecha, Long importe, Proveedor nit) {
+        this.idFactura = idFactura;
+        this.fecha = fecha;
+        this.importe = importe;
+        this.nitFk = nit;
+    }
 
     public Integer getIdFactura() {
         return idFactura;
