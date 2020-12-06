@@ -123,6 +123,7 @@ public class Coordinador {
         String numLote = agregarProductoVista.getTxt_lote().getText();
         String fecha = agregarProductoVista.getTxt_fecha().getText();
         Integer numCategoria = agregarProductoVista.getCbx_categoria().getSelectedIndex() + 1;
+        System.out.println(numCategoria);
 
         //Validaciones
         if ("".equals(id)) {
@@ -151,13 +152,14 @@ public class Coordinador {
                 //Entidades
                 Categoria categoria = categoriaCon.findCategoria(numCategoria);
                 Lote lote = new Lote(Integer.parseInt(numLote), this.obtenerFecha(fecha), lab,Integer.parseInt(cantidad));
+                loteCon.create(lote);
                 Producto producto = new Producto(Integer.parseInt(id), nombre, Long.parseLong(precio), Integer.parseInt(stock), categoria,loteCon.findLote(Integer.parseInt(numLote)));
 
                 //Creacion
                 if (productoCon.findProducto(Integer.parseInt(id)) == null) {
                     productoCon.create(producto);
                 }
-                loteCon.create(lote);
+                
                 //Fin
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Producto", JOptionPane.INFORMATION_MESSAGE);
                 agregarProductoVista.limpiar();

@@ -61,11 +61,11 @@ public class FacturaVentaVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Cod. Factura", "Identificación", "Nombre del cliente", "Fecha ", "MONTO TOTAL"
+                "Cod. Factura", "Identificación", "Nombre del cliente", "Fecha ", "Importe", "Monto Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
