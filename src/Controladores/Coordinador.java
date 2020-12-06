@@ -393,6 +393,40 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void verCompras() {
+        DefaultTableModel model = (DefaultTableModel) compraVista.getTabla_compra().getModel();
+        List<DetalleCompra> compras = detalleCompraCon.findDetalleCompraEntities();
+        long descuento = 0;
+        for (DetalleCompra x : compras) {
+            if (x.getDescuento() != null)
+                descuento = x.getDescuento() * x.getPrecioUnitario();            
+            model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(),x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+        }
+
+        compraVista.getTabla_compra().setModel(model);
+        inicio.getEscritorio().add(compraVista);
+        compraVista.show();
+        compraVista.toFront();
+    }
+    
+     public void verVentas() {
+        DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
+        List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
+        long descuento = 0;
+        for (DetalleVenta x : ventas) {
+
+            if (x.getDescuento() != null) {
+                descuento = x.getDescuento() * x.getPrecioUnitario();
+            }
+            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(),x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+        }
+
+        ventaVista.getTabla_venta().setModel(model);
+        inicio.getEscritorio().add(ventaVista);
+        ventaVista.show();
+        ventaVista.toFront();
+    }
 
     /**
      * METODOS DE ELIMINACION
@@ -447,7 +481,7 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     /**
      * METODOS DE ACTUALIZACION
      */
@@ -467,23 +501,5 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return now;
-    }
-
-    public void verVentas() {
-        DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
-        List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
-        long descuento = 0;
-        for (DetalleVenta x : ventas) {
-
-            if (x.getDescuento() != null) {
-                descuento = x.getDescuento() * x.getPrecioUnitario();
-            }
-            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(),x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
-        }
-
-        ventaVista.getTabla_venta().setModel(model);
-        inicio.getEscritorio().add(ventaVista);
-        ventaVista.show();
-        ventaVista.toFront();
-    }
+    }    
 }

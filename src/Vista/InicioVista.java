@@ -596,9 +596,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_mostrar_vActionPerformed
 
     private void jmi_mostrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_cActionPerformed
-        CompraVista ver_ventana = new CompraVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();        
+       coordinador.verCompras();
     }//GEN-LAST:event_jmi_mostrar_cActionPerformed
 
     /**
