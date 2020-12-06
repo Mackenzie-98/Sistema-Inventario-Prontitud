@@ -606,6 +606,10 @@ public class InicioVista extends javax.swing.JFrame {
         this.jmi_registrar_v = jmi_registrar_v;
     }
 
+    private void jmi_buscar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_prodActionPerformed
+               
+    }//GEN-LAST:event_jmi_buscar_prodActionPerformed
+
     private void jmi_eliminar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_prodActionPerformed
 //        escritorio.removeAll();
         String nombre;
@@ -626,6 +630,10 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_mostrar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_provActionPerformed
         coordinador.verProveedores();
     }//GEN-LAST:event_jmi_mostrar_provActionPerformed
+
+    private void jmi_buscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_clienteActionPerformed
+        
+    }//GEN-LAST:event_jmi_buscar_clienteActionPerformed
 
     private void jmi_eliminar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_provActionPerformed
 //        escritorio.removeAll();

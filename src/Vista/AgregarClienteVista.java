@@ -143,7 +143,17 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
 
         txt_fecha_nac.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha_nac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha_nac.setText("YYYY-MM-DD");
+        txt_fecha_nac.setText("yyyy-mm-dd");
+        txt_fecha_nac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fecha_nacMouseClicked(evt);
+            }
+        });
+        txt_fecha_nac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fecha_nacActionPerformed(evt);
+            }
+        });
         jPanel2.add(txt_fecha_nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, 20));
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
@@ -209,6 +219,14 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
     private void txt_telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_telActionPerformed
+
+    private void txt_fecha_nacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fecha_nacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fecha_nacActionPerformed
+
+    private void txt_fecha_nacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fecha_nacMouseClicked
+        this.getTxt_fecha_nac().setText("");
+    }//GEN-LAST:event_txt_fecha_nacMouseClicked
     
     public void limpiar(){
         this.getTxt_id().setText("");
