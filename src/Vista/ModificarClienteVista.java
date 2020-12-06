@@ -74,7 +74,7 @@ public class ModificarClienteVista extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Modificar cliente");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_cli.png"))); // NOI18N
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_clie.png"))); // NOI18N
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${defaultCloseOperation}"), this, org.jdesktop.beansbinding.BeanProperty.create("defaultCloseOperation"));
         bindingGroup.addBinding(binding);
