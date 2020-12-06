@@ -99,7 +99,6 @@ public class ProductoVista extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabla_producto.setEnabled(false);
         tabla_producto.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_producto);
 
@@ -196,7 +195,7 @@ public class ProductoVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_modificarActionPerformed
 
     private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed
-        coordinador.eliminarCliente();
+        coordinador.eliminarProducto();
 
     }//GEN-LAST:event_cmd_eliminarActionPerformed
 

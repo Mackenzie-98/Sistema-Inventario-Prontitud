@@ -181,7 +181,7 @@ public class Coordinador
     
     public void verProductos() {
         try {
-            productoVista = new ProductoVista();
+            productoVista = new ProductoVista(this);
             DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
             Statement st = conexion.getConexionSQL().createStatement();
             ResultSet rs = st.executeQuery("SELECT p.id_producto, p.nombre, SUM(dl.cantidad), p.precio_unitario FROM Producto p\n"
@@ -220,6 +220,7 @@ public class Coordinador
     {
         ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
         proveedorVista = new ProveedorVista();
+        //proveedorVista = new ProveedorVista(this);
         DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
         
@@ -258,6 +259,24 @@ public class Coordinador
      *
      */
     
+    public void eliminarProducto()
+    {
+        ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
+        int fila = productoVista.getTabla_producto().getSelectedRow();
+        Integer id =  Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
+        
+        try {
+            productoCon.destroy(id);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Producto", JOptionPane.INFORMATION_MESSAGE);
+            productoVista.setVisible(false);
+            this.verProductos();
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void eliminarCliente()
     {
         ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
@@ -277,23 +296,24 @@ public class Coordinador
         }        
     }
     
-    public void eliminarProducto()
+    public void eliminarProveedor()
     {
-        ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
-        int fila = productoVista.getTabla_producto().getSelectedRow();
-        Integer id =  Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
+        ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
+        int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
+        String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
         
-        try {
-            productoCon.destroy(id);
-            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
-            productoVista.setVisible(false);
-            this.verProductos();
+        try{
+            proveedorCon.destroy(nit);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Proveedor", JOptionPane.INFORMATION_MESSAGE);
+            proveedorVista.setVisible(false);
+            this.verProveedores();
+            
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+        }        
+    }       
     
     /**
      * METODOS DE ACTUALIZACION
