@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
@@ -21,11 +22,15 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Genesis Vargas
  */
+    
+
 public class ProductoVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Prueba
      */
+    public static Coordinador coordinador;
+    
     public ProductoVista() {
         initComponents();
         this.setSize(784,401);
@@ -36,6 +41,19 @@ public class ProductoVista extends javax.swing.JInternalFrame {
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
            (desktopSize.height- jInternalFrameSize.height)/2);
     }
+    
+    public ProductoVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setSize(784,401);
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +68,8 @@ public class ProductoVista extends javax.swing.JInternalFrame {
         tabla_producto = new javax.swing.JTable();
         lbl_id = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
+        cmd_modificar = new javax.swing.JButton();
+        cmd_eliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Tabla de productos");
@@ -100,6 +120,20 @@ public class ProductoVista extends javax.swing.JInternalFrame {
             }
         });
 
+        cmd_modificar.setText("Modificar");
+        cmd_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_modificarActionPerformed(evt);
+            }
+        });
+
+        cmd_eliminar.setText("Eliminar");
+        cmd_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_eliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,17 +149,27 @@ public class ProductoVista extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cmd_modificar)
+                .addGap(18, 18, 18)
+                .addComponent(cmd_eliminar)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_id))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmd_modificar)
+                    .addComponent(cmd_eliminar))
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -146,6 +190,15 @@ public class ProductoVista extends javax.swing.JInternalFrame {
     private void txt_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_filtroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_filtroActionPerformed
+
+    private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
+        coordinador.modificarCliente();
+    }//GEN-LAST:event_cmd_modificarActionPerformed
+
+    private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed
+        coordinador.eliminarCliente();
+
+    }//GEN-LAST:event_cmd_eliminarActionPerformed
 
     public JTextField getTxt_filtro() {
         return txt_filtro;
@@ -188,6 +241,8 @@ public class ProductoVista extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmd_eliminar;
+    private javax.swing.JButton cmd_modificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JTable tabla_producto;
