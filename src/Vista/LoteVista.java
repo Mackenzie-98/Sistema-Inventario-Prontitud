@@ -19,7 +19,6 @@ public class LoteVista extends javax.swing.JInternalFrame {
     public static Coordinador coordinador;
     public LoteVista() {
         initComponents();
-        this.setSize(784,430);
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();

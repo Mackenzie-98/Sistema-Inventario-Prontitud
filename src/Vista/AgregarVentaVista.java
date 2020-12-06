@@ -200,7 +200,10 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_fechaActionPerformed
 
     private void cmd_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_registrarActionPerformed
-        // TODO add your handling code here:
+        VentaVista ver_ventana = new VentaVista();
+        escritorio.add(ver_ventana);
+        this.setVisible(false);
+        ver_ventana.show();
     }//GEN-LAST:event_cmd_registrarActionPerformed
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered

@@ -35,7 +35,6 @@ public class InicioVista extends javax.swing.JFrame {
     public InicioVista() {
 
         initComponents();
-        this.setSize(800, 585);
         this.setResizable(false);
         this.setVisible(true);
         this.setTitle("Droguería Prontitud");
@@ -95,12 +94,12 @@ public class InicioVista extends javax.swing.JFrame {
         jmi_eliminar_cliente = new javax.swing.JMenuItem();
         jm_registrar = new javax.swing.JMenu();
         jmi_mostrar_c = new javax.swing.JMenuItem();
-        jmi_registrar_c = new javax.swing.JMenuItem();
         jmi_factura_c = new javax.swing.JMenuItem();
+        jmi_registrar_c = new javax.swing.JMenuItem();
         jm_facturas = new javax.swing.JMenu();
         jmi_mostrar_v = new javax.swing.JMenuItem();
-        jmi_registrar_v = new javax.swing.JMenuItem();
         jmi_facturasV = new javax.swing.JMenuItem();
+        jmi_registrar_v = new javax.swing.JMenuItem();
         jm_dev = new javax.swing.JMenu();
         jmi_mostrar_dev = new javax.swing.JMenuItem();
         jmi_reg_dev = new javax.swing.JMenuItem();
@@ -262,6 +261,7 @@ public class InicioVista extends javax.swing.JFrame {
         jm_registrar.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
 
         jmi_mostrar_c.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
+        jmi_mostrar_c.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_compras.png"))); // NOI18N
         jmi_mostrar_c.setText("Ver compras");
         jmi_mostrar_c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +269,16 @@ public class InicioVista extends javax.swing.JFrame {
             }
         });
         jm_registrar.add(jmi_mostrar_c);
+
+        jmi_factura_c.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jmi_factura_c.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_comp.png"))); // NOI18N
+        jmi_factura_c.setText("Ver Facturas compra");
+        jmi_factura_c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_factura_cActionPerformed(evt);
+            }
+        });
+        jm_registrar.add(jmi_factura_c);
 
         jmi_registrar_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         jmi_registrar_c.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_comp.png"))); // NOI18N
@@ -280,16 +290,6 @@ public class InicioVista extends javax.swing.JFrame {
         });
         jm_registrar.add(jmi_registrar_c);
 
-        jmi_factura_c.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        jmi_factura_c.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_comp.png"))); // NOI18N
-        jmi_factura_c.setText("Facturas compra");
-        jmi_factura_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_factura_cActionPerformed(evt);
-            }
-        });
-        jm_registrar.add(jmi_factura_c);
-
         jMenuBar1.add(jm_registrar);
 
         jm_facturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_facturas.png"))); // NOI18N
@@ -298,6 +298,7 @@ public class InicioVista extends javax.swing.JFrame {
         jm_facturas.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
 
         jmi_mostrar_v.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_mostrar_v.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_ventas.png"))); // NOI18N
         jmi_mostrar_v.setText("Ver ventas");
         jmi_mostrar_v.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,6 +306,16 @@ public class InicioVista extends javax.swing.JFrame {
             }
         });
         jm_facturas.add(jmi_mostrar_v);
+
+        jmi_facturasV.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        jmi_facturasV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_vent.png"))); // NOI18N
+        jmi_facturasV.setText("Ver facturas venta");
+        jmi_facturasV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_facturasVActionPerformed(evt);
+            }
+        });
+        jm_facturas.add(jmi_facturasV);
 
         jmi_registrar_v.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         jmi_registrar_v.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_vent.png"))); // NOI18N
@@ -315,16 +326,6 @@ public class InicioVista extends javax.swing.JFrame {
             }
         });
         jm_facturas.add(jmi_registrar_v);
-
-        jmi_facturasV.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jmi_facturasV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_vent.png"))); // NOI18N
-        jmi_facturasV.setText("Facturas venta");
-        jmi_facturasV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_facturasVActionPerformed(evt);
-            }
-        });
-        jm_facturas.add(jmi_facturasV);
 
         jMenuBar1.add(jm_facturas);
 
@@ -644,13 +645,13 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_mostrar_lotesActionPerformed
 
     private void jmi_factura_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_factura_cActionPerformed
-        CompraVista ver_ventana = new CompraVista();
+        FacturaCompraVista ver_ventana = new FacturaCompraVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_factura_cActionPerformed
 
     private void jmi_facturasVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_facturasVActionPerformed
-        VentaVista ver_ventana = new VentaVista();
+        FacturaVentaVista ver_ventana = new FacturaVentaVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_facturasVActionPerformed
@@ -698,7 +699,9 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_reg_devActionPerformed
 
     private void jmi_mostrar_vActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_vActionPerformed
-        // TODO add your handling code here:
+        VentaVista ver_ventana = new VentaVista();
+        escritorio.add(ver_ventana);
+        ver_ventana.show();
     }//GEN-LAST:event_jmi_mostrar_vActionPerformed
 
     private void jmi_mostrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_cActionPerformed
