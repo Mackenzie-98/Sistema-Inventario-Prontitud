@@ -72,11 +72,11 @@ public class VentaVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Cod. Factura", "Cod. Producto", "Nombre producto", "No. Lote", "Nombre de cliente", "Cantidad", "Fecha ", "Precio", "Descuento", "Total"
+                "Cod. Factura", "Cod. Producto", "Nombre producto", "Nombre de cliente", "Cantidad", "Precio", "Descuento", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

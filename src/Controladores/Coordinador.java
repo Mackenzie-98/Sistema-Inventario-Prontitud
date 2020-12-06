@@ -478,7 +478,7 @@ public class Coordinador {
             if (x.getDescuento() != null) {
                 descuento = x.getDescuento() * x.getPrecioUnitario();
             }
-            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getProducto().getIdloteFK().getIdLote(), x.getProducto().getIdloteFK().getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(),x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
         }
 
         ventaVista.getTabla_venta().setModel(model);
