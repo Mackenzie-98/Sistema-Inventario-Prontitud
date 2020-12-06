@@ -29,7 +29,13 @@ public class Coordinador {
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
     public static VentaVista ventaVista;
+<<<<<<< HEAD
 
+=======
+    
+    
+    
+>>>>>>> origin/main
     //Creacion de Vistas para agregar
     public static AgregarClienteVista agregarClienteVista;
     public static AgregarCompraVista agregarCompraVista;
@@ -37,11 +43,17 @@ public class Coordinador {
     public static AgregarProductoVista agregarProductoVista;
     public static AgregarProveedorVista agregarProveedorVista;
     public static AgregarVentaVista agregarVentaVista;
+<<<<<<< HEAD
 
+=======
+    
+    
+>>>>>>> origin/main
     //Conexion
     public static Conexion conexion = Conexion.getConexion();
 
     //Controllers
+<<<<<<< HEAD
     public static CategoriaJpaController categoriaCon;
     public static ClienteJpaController clienteCon;
     public static DetalleCompraJpaController detalleCompraCon;
@@ -52,6 +64,18 @@ public class Coordinador {
     public static LoteJpaController loteCon;
     public static ProductoJpaController productoCon;
     public static ProveedorJpaController proveedorCon;
+=======
+    public static CategoriaJpaController categoriaCon ;
+    public static ClienteJpaController clienteCon ;
+    public static DetalleCompraJpaController detalleCompraCon;
+    public static DetalleVentaJpaController detalleVentaCon;
+    public static DevolucionJpaController devolucionCon ;
+    public static FacturaCompraJpaController facturaCompraCon;
+    public static FacturaVentaJpaController facturaVentaCon;
+    public static LoteJpaController loteCon ;
+    public static ProductoJpaController productoCon ;
+    public static ProveedorJpaController proveedorCon ;
+>>>>>>> origin/main
 
     public static void main(String[] agrs) throws SQLException {
         Coordinador control = new Coordinador();
