@@ -29,7 +29,9 @@ public class Coordinador {
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
     public static VentaVista ventaVista;
-
+    
+    
+    
     //Creacion de Vistas para agregar
     public static AgregarClienteVista agregarClienteVista;
     public static AgregarCompraVista agregarCompraVista;
@@ -37,21 +39,22 @@ public class Coordinador {
     public static AgregarProductoVista agregarProductoVista;
     public static AgregarProveedorVista agregarProveedorVista;
     public static AgregarVentaVista agregarVentaVista;
-
+    
+    
     //Conexion
     public static Conexion conexion = Conexion.getConexion();
 
     //Controllers
-    public static CategoriaJpaController categoriaCon = new CategoriaJpaController(conexion.getBd());
-    public static ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
-    public static DetalleCompraJpaController detalleCompraCon = new DetalleCompraJpaController(conexion.getBd());
-    public static DetalleVentaJpaController detalleVentaCon = new DetalleVentaJpaController(conexion.getBd());
-    public static DevolucionJpaController devolucionCon = new DevolucionJpaController(conexion.getBd());
-    public static FacturaCompraJpaController facturaCompraCon = new FacturaCompraJpaController(conexion.getBd());
-    public static FacturaVentaJpaController facturaVentaCon = new FacturaVentaJpaController(conexion.getBd());
-    public static LoteJpaController loteCon = new LoteJpaController(conexion.getBd());
-    public static ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
-    public static ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
+    public static CategoriaJpaController categoriaCon ;
+    public static ClienteJpaController clienteCon ;
+    public static DetalleCompraJpaController detalleCompraCon;
+    public static DetalleVentaJpaController detalleVentaCon;
+    public static DevolucionJpaController devolucionCon ;
+    public static FacturaCompraJpaController facturaCompraCon;
+    public static FacturaVentaJpaController facturaVentaCon;
+    public static LoteJpaController loteCon ;
+    public static ProductoJpaController productoCon ;
+    public static ProveedorJpaController proveedorCon ;
 
     public static void main(String[] agrs) throws SQLException {
         Coordinador control = new Coordinador();
@@ -103,35 +106,30 @@ public class Coordinador {
      * METODOS DE REGISTRAR
      */
     public void registrarProductoVista() {
-        agregarProductoVista = new AgregarProductoVista(this);
         inicio.getEscritorio().add(agregarProductoVista);
         agregarProductoVista.show();
         agregarProductoVista.toFront();
     }
 
     public void registrarCliente() {
-        agregarClienteVista = new AgregarClienteVista(this);
         inicio.getEscritorio().add(agregarClienteVista);
         agregarClienteVista.show();
         agregarClienteVista.toFront();
     }
 
     public void registrarProveedorVista() {
-        agregarProveedorVista = new AgregarProveedorVista(this);
         inicio.getEscritorio().add(agregarProveedorVista);
         agregarProveedorVista.show();
         agregarProveedorVista.toFront();
     }
 
     public void registrarCompraVista() {
-        agregarCompraVista = new AgregarCompraVista(this);
         inicio.getEscritorio().add(agregarCompraVista);
         agregarCompraVista.show();
         agregarCompraVista.toFront();
     }
 
     public void registrarDevolucionVista() {
-        agregarDevolucionVista = new AgregarDevolucionVista(this);
         inicio.getEscritorio().add(agregarDevolucionVista);
         agregarDevolucionVista.show();
         agregarDevolucionVista.toFront();
@@ -316,7 +314,6 @@ public class Coordinador {
      */
     public void verProductos() {
         try {
-            productoVista = new ProductoVista(this);
             DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
             Statement st = conexion.getConexionSQL().createStatement();
             ResultSet rs = st.executeQuery("SELECT p.id_producto, p.nombre, SUM(dl.cantidad), p.precio_unitario FROM Producto p\n"
@@ -338,7 +335,6 @@ public class Coordinador {
     }
 
     public void verClientes() {
-        clienteVista = new ClienteVista(this);
         DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
         List<Cliente> clientes = clienteCon.findClienteEntities();
 
@@ -353,7 +349,6 @@ public class Coordinador {
     }
 
     public void verProveedores() {
-        proveedorVista = new ProveedorVista(this);
         DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
 
@@ -368,7 +363,6 @@ public class Coordinador {
     }
 
     public void verDevoluciones() {
-        devolucionVista = new DevolucionVista(this);
         DefaultTableModel model = (DefaultTableModel) devolucionVista.getTabla_dev().getModel();
         List<Devolucion> registros = devolucionCon.findDevolucionEntities();
 
@@ -384,7 +378,6 @@ public class Coordinador {
 
     public void verLotes() {
         try {
-            loteVista = new LoteVista(this);
             DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
             Statement st = conexion.getConexionSQL().createStatement();
             ResultSet rs = st.executeQuery("SELECT P.id_producto, L.id_lote, P.nombre, DL.cantidad, L.fecha_vencimiento, L.laboratorio FROM Producto P\n"
@@ -480,7 +473,6 @@ public class Coordinador {
     }
 
     public void verVentas() {
-
         DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
         List<Cliente> clientes = clienteCon.findClienteEntities();
 
