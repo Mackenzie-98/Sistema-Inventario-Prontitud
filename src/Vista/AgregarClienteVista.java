@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
-
+ 
 import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
