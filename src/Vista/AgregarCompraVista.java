@@ -168,6 +168,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         jPanel1.add(lbl_dto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 73, 22));
 
         txt_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_dto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_dto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_dtoActionPerformed(evt);
@@ -181,6 +182,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         jPanel1.add(lbl_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 73, 22));
 
         txt_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_cant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_cant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cantActionPerformed(evt);
@@ -194,6 +196,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         jPanel1.add(lbl_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 100, -1));
 
         txt_precio_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_precio_c.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_precio_c.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_precio_cActionPerformed(evt);

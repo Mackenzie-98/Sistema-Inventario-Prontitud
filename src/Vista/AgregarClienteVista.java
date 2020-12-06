@@ -104,10 +104,10 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         });
         jPanel1.add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 99, 36));
 
-        jLabel3.setFont(new java.awt.Font("Bodoni MT Black", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Registrar Cliente");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 370, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/fondo_top.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -134,6 +134,7 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         jPanel2.add(lbl_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 81, 22));
 
         txt_correo.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_correoActionPerformed(evt);
@@ -157,9 +158,11 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         jPanel2.add(txt_fecha_nac, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 140, 20));
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 140, 20));
 
         txt_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idActionPerformed(evt);
@@ -168,6 +171,7 @@ public class AgregarClienteVista extends javax.swing.JInternalFrame {
         jPanel2.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 140, 20));
 
         txt_tel.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_tel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_telActionPerformed(evt);

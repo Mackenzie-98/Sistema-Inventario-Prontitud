@@ -181,6 +181,7 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
         jLabel1.getAccessibleContext().setAccessibleDescription("");
 
         txt_id.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        txt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 120, 23));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
