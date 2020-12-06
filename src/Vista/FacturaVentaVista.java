@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package Vista;
-
 /**
  *
- * @author Genes
+ * @author Genesis Vargas
  */
+import java.awt.Color;
 public class FacturaVentaVista extends javax.swing.JInternalFrame {
 
     /**
@@ -27,15 +27,16 @@ public class FacturaVentaVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_filtrar = new javax.swing.JLabel();
-        txt_filtrar = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_filtro = new javax.swing.JLabel();
+        txt_filtro = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_compra = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
+        tabla_factura_v = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cmd_modificar = new javax.swing.JButton();
+        cmd_eliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Tabla Factura venta");
@@ -43,40 +44,21 @@ public class FacturaVentaVista extends javax.swing.JInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_vent.png"))); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_filtrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_filtrar.setText("Filtrar:");
-        getContentPane().add(lbl_filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 110, -1));
+        lbl_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_filtro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_filtro.setText("Filtrar:");
+        getContentPane().add(lbl_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 110, -1));
 
-        txt_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_filtrar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_filtrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        getContentPane().add(txt_filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 120, -1));
+        txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 120, -1));
 
-        jLabel2.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Datos de factura venta:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 190, 30));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_arriba.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 220, 70));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 30));
-
-        tabla_compra.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        tabla_compra.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_factura_v.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        tabla_factura_v.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        tabla_factura_v.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "2", "Pablo Emilio", "2020-06-12", "666000"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cod. Factura", "Identificación", "Nombre del cliente", "Fecha ", "MONTO TOTAL"
@@ -90,34 +72,87 @@ public class FacturaVentaVista extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        tabla_compra.setGridColor(new java.awt.Color(0, 51, 204));
-        tabla_compra.setName(""); // NOI18N
-        tabla_compra.setRequestFocusEnabled(false);
-        tabla_compra.setSelectionBackground(new java.awt.Color(0, 51, 204));
-        tabla_compra.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabla_compra);
+        tabla_factura_v.setGridColor(new java.awt.Color(0, 51, 204));
+        tabla_factura_v.setName(""); // NOI18N
+        tabla_factura_v.setRequestFocusEnabled(false);
+        tabla_factura_v.setSelectionBackground(new java.awt.Color(0, 51, 204));
+        tabla_factura_v.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabla_factura_v);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 704, 180));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_arriba.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 220, 70));
+        jLabel7.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Factura venta");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 220, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 390, 800, 40));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 770, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_abajoLL.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 380, 780, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 770, 40));
+
+        cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
+        cmd_modificar.setText("Modificar");
+        cmd_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_modificarMouseExited(evt);
+            }
+        });
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 120, 23));
+
+        cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
+        cmd_eliminar.setText("Eliminar");
+        cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_eliminarMouseExited(evt);
+            }
+        });
+        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 120, 23));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cmd_modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseEntered
+        cmd_modificar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_modificarMouseEntered
+
+    private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
+        cmd_modificar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_modificarMouseExited
+
+    private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
+        cmd_eliminar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_eliminarMouseEntered
+
+    private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
+        cmd_eliminar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_eliminarMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmd_eliminar;
+    private javax.swing.JButton cmd_modificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_filtrar;
-    private javax.swing.JTable tabla_compra;
-    private javax.swing.JTextField txt_filtrar;
+    private javax.swing.JLabel lbl_filtro;
+    private javax.swing.JTable tabla_factura_v;
+    private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package Vista;
 
 import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -63,11 +64,15 @@ public class LoteVista extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_lote = new javax.swing.JTable();
-        lbl_id_prod = new javax.swing.JLabel();
+        lbl_filtro = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
+        cmd_modificar = new javax.swing.JButton();
+        cmd_eliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Tabla de lotes");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_lot.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabla_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_lote.setModel(new javax.swing.table.DefaultTableModel(
@@ -90,60 +95,66 @@ public class LoteVista extends javax.swing.JInternalFrame {
         tabla_lote.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_lote);
 
-        lbl_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_id_prod.setText("Filtrar:");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 163, 748, 207));
+
+        lbl_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_filtro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_filtro.setText("Filtrar");
+        getContentPane().add(lbl_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, -1));
 
         txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_filtroKeyTyped(evt);
+        txt_filtro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 120, -1));
+
+        cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
+        cmd_modificar.setText("Modificar");
+        cmd_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_modificarMouseExited(evt);
             }
         });
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 120, 23));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(lbl_id_prod)
-                        .addGap(48, 48, 48)
-                        .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_filtro)
-                    .addComponent(lbl_id_prod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(80, 80, 80)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
+        cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
+        cmd_eliminar.setText("Eliminar");
+        cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_eliminarMouseExited(evt);
+            }
+        });
+        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 23));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmd_modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseEntered
+        cmd_modificar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_modificarMouseEntered
+
+    private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
+        cmd_modificar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_modificarMouseExited
+
+    private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
+        cmd_eliminar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_eliminarMouseEntered
+
+    private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
+        cmd_eliminar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_eliminarMouseExited
     
-    TableRowSorter trs;    
-    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
-        this.getTxt_filtro().addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent e) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4,5));
-            }            
-        });
-        trs = new TableRowSorter((DefaultTableModel)getTabla_lote().getModel());
-        this.getTabla_lote().setRowSorter(trs);
-    }//GEN-LAST:event_txt_filtroKeyTyped
- 
+    TableRowSorter trs;     
     public JTextField getTxt_filtro() {
         return txt_filtro;
     }
@@ -155,8 +166,10 @@ public class LoteVista extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmd_eliminar;
+    private javax.swing.JButton cmd_modificar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_id_prod;
+    private javax.swing.JLabel lbl_filtro;
     private javax.swing.JTable tabla_lote;
     private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables

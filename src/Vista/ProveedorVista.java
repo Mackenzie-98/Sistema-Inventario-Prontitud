@@ -64,7 +64,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabla_proveedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        tabla_proveedor.setFont(tabla_proveedor.getFont().deriveFont(tabla_proveedor.getFont().getSize()+3f));
+        tabla_proveedor.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         tabla_proveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
