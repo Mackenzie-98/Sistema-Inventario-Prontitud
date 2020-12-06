@@ -570,9 +570,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_facturasVActionPerformed
 
     private void jmi_registrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrar_cActionPerformed
-        AgregarCompraVista ver_ventana = new AgregarCompraVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
+        coordinador.registrarCompraVista();
     }//GEN-LAST:event_jmi_registrar_cActionPerformed
 
     private void jmi_registrar_vActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrar_vActionPerformed
@@ -604,9 +602,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_mostrar_vActionPerformed
 
     private void jmi_mostrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_cActionPerformed
-        CompraVista ver_ventana = new CompraVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
+        
     }//GEN-LAST:event_jmi_mostrar_cActionPerformed
 
     /**

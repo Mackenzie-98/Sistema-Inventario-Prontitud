@@ -4,6 +4,7 @@ import Controladores.exceptions.IllegalOrphanException;
 import Controladores.exceptions.NonexistentEntityException;
 import Modelo.*;
 import Vista.*;
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +26,9 @@ public class Coordinador
     public static AgregarClienteVista agregarClienteVista;    
     public static AgregarProveedorVista agregarProveedorVista;
     public static AgregarProductoVista agregarProductoVista;
+    public static AgregarCompraVista agregarCompraVista;
+    public static AgregarVentaVista agregarVentaVista;
+    public static AgregarDevolucionVista agregarDevolucionVista;
     //Conexion
     public static Conexion conexion = Conexion.getConexion();
     
@@ -60,6 +64,12 @@ public class Coordinador
         agregarProveedorVista = new AgregarProveedorVista(this);
         inicio.getEscritorio().add(agregarProveedorVista);
         agregarProveedorVista.show();
+    }
+    
+    public void registrarCompraVista() {
+        agregarCompraVista = new AgregarCompraVista(this);
+        inicio.getEscritorio().add(agregarCompraVista);
+        agregarCompraVista.show();
     }
     
     /**
@@ -173,6 +183,59 @@ public class Coordinador
                 Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public void agegarCompra()
+    {
+        //Atributos
+        String nit = String.valueOf(agregarCompraVista.getTxt_nit());
+        String fecha = String.valueOf(agregarCompraVista.getTxt_fecha());
+        String descuento = String.valueOf(agregarCompraVista.getTxt_dto());
+        String cantidad = String.valueOf(agregarCompraVista.getTxt_cant());
+        String precio = String.valueOf(agregarCompraVista.getTxt_precio_c());
+        String id = String.valueOf(agregarCompraVista.getTxt_nombre_prod());
+        String lote = String.valueOf(agregarCompraVista.getTxt_lote());
+        
+        //Validaciones
+        if ("".equals(nit)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el NIT", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(fecha)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la fecha", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(descuento)) descuento = String.valueOf(0);
+        else if ("".equals(cantidad)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la cantidad", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(precio)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el precioo", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(id)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la identifiacion del Producto", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else if ("".equals(lote)) JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el lote", "ERROR", JOptionPane.WARNING_MESSAGE);
+        else
+        {
+            try 
+            {
+                //Controllers
+                ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
+                ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
+                DetalleCompraJpaController detalleCompraCon = new DetalleCompraJpaController(conexion.getBd());
+                FacturaCompraJpaController facturaCompraCon = new FacturaCompraJpaController(conexion.getBd());
+                
+                System.out.println(id);
+                Producto producto = productoCon.findProducto(Integer.parseInt(id));
+                Proveedor proveedor = proveedorCon.findProveedor(nit);
+                FacturaCompra facturaCompra = new FacturaCompra(0, this.obtenerFecha(fecha)); facturaCompraCon.create(facturaCompra);
+                facturaCompra.setNitFk(proveedor);
+                DetalleCompraPK detalleCompraPK = new DetalleCompraPK(producto.getIdProducto(), facturaCompra.getIdFactura());
+                
+                DetalleCompra detalleCompra = new DetalleCompra(detalleCompraPK, Integer.parseInt(cantidad), Long.parseLong(precio));
+                detalleCompra.setProducto(producto);
+                detalleCompra.setFacturaCompra(facturaCompra);
+                detalleCompraCon.create(detalleCompra);           
+                
+                JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Proveedor", JOptionPane.INFORMATION_MESSAGE);
+                agregarCompraVista.limpiar();
+            } 
+            catch (Exception ex) {
+                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+        
     }
     
     /**
