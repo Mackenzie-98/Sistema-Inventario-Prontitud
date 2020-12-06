@@ -9,6 +9,9 @@ import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -175,4 +178,37 @@ public class VentaVista extends javax.swing.JInternalFrame {
     private javax.swing.JTable tabla_venta;
     private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getCmd_eliminar() {
+        return cmd_eliminar;
+    }
+
+    public void setCmd_eliminar(JButton cmd_eliminar) {
+        this.cmd_eliminar = cmd_eliminar;
+    }
+
+    public JButton getCmd_modificar() {
+        return cmd_modificar;
+    }
+
+    public void setCmd_modificar(JButton cmd_modificar) {
+        this.cmd_modificar = cmd_modificar;
+    }
+
+    public JTable getTabla_venta() {
+        return tabla_venta;
+    }
+
+    public void setTabla_venta(JTable tabla_venta) {
+        this.tabla_venta = tabla_venta;
+    }
+
+    public JTextField getTxt_filtro() {
+        return txt_filtro;
+    }
+
+    public void setTxt_filtro(JTextField txt_filtro) {
+        this.txt_filtro = txt_filtro;
+    }
+
 }

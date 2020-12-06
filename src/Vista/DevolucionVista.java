@@ -161,6 +161,11 @@ public class DevolucionVista extends javax.swing.JInternalFrame {
                 cmd_modificarMouseExited(evt);
             }
         });
+        cmd_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_modificarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 120, 23));
 
         cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
@@ -201,6 +206,13 @@ public class DevolucionVista extends javax.swing.JInternalFrame {
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
         cmd_eliminar.setBackground(Color.DARK_GRAY);
     }//GEN-LAST:event_cmd_eliminarMouseExited
+
+    private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
+        ModificarDevolucionVista ver_ventana = new ModificarDevolucionVista();
+        escritorio.add(ver_ventana);
+        this.setVisible(false);
+        ver_ventana.show();
+    }//GEN-LAST:event_cmd_modificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

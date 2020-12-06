@@ -95,7 +95,7 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
         tabla_compra.setGridColor(new java.awt.Color(0, 51, 204));
         tabla_compra.setName(""); // NOI18N
         tabla_compra.setRequestFocusEnabled(false);
-        tabla_compra.setSelectionBackground(new java.awt.Color(0, 51, 204));
+        tabla_compra.setSelectionBackground(new java.awt.Color(153, 204, 255));
         tabla_compra.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tabla_compra.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_compra);
