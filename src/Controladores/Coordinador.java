@@ -92,11 +92,12 @@ public class Coordinador {
         loteCon = new LoteJpaController(conexion.getBd());
         productoCon = new ProductoJpaController(conexion.getBd());
         proveedorCon = new ProveedorJpaController(conexion.getBd());
+
+        inicio.setVisible(true);
     }
 
     public void iniciarSesion() {
-        inicio = new InicioVista(this);
-        inicio.show();
+        inicio.setVisible(true);
         login.setVisible(false);
     }
 
@@ -126,7 +127,7 @@ public class Coordinador {
         agregarCompraVista.show();
         agregarCompraVista.toFront();
     }
-    
+
     public void registrarVentaVista() {
         inicio.getEscritorio().add(agregarVentaVista);
         agregarVentaVista.show();
@@ -295,9 +296,9 @@ public class Coordinador {
                 //Creacion
                 Producto producto = productoCon.findProducto(Integer.parseInt(id));
                 Proveedor proveedor = proveedorCon.findProveedor(nit);
-                FacturaCompra facturaCompra = new FacturaCompra(0, this.obtenerFecha(fecha), 19l, proveedor);                
+                FacturaCompra facturaCompra = new FacturaCompra(0, this.obtenerFecha(fecha), 19l, proveedor);
                 facturaCompraCon.create(facturaCompra);
-                
+
                 DetalleCompraPK detalleCompraPK = new DetalleCompraPK(producto.getIdProducto(), facturaCompra.getIdFactura());
                 DetalleCompra detalleCompra = new DetalleCompra(detalleCompraPK, Integer.parseInt(cantidad), Long.parseLong(precio));
                 detalleCompra.setProducto(producto);
@@ -311,7 +312,7 @@ public class Coordinador {
             }
         }
     }
-    
+
     public void agegarVenta() {
         //Atributos
         String id_cliente = agregarVentaVista.getTxt_id_cliente().getText();
@@ -320,21 +321,21 @@ public class Coordinador {
         String fecha = agregarVentaVista.getTxt_fecha().getText();
         String descuento = agregarVentaVista.getTxt_dto().getText();
         String lote = agregarVentaVista.getTxt_lote().getText();
-        
+
         //Validaciones
-        if ("".equals(id_cliente)) 
+        if ("".equals(id_cliente)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la identificaicon del Cliente", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else if ("".equals(id_producto))
+        } else if ("".equals(id_producto)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el id del producto", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else if ("".equals(cantidad))
+        } else if ("".equals(cantidad)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la cantidad", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else if ("".equals(fecha))
+        } else if ("".equals(fecha)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la fecha", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else if ("".equals(descuento))
+        } else if ("".equals(descuento)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el descuento", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else if ("".equals(lote))
+        } else if ("".equals(lote)) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el lote", "ERROR", JOptionPane.WARNING_MESSAGE);
-        else {
+        } else {
             try {
                 //Creacion
                 Producto producto = productoCon.findProducto(Integer.parseInt(id_producto));
@@ -342,7 +343,7 @@ public class Coordinador {
                 FacturaVenta facturaVenta = new FacturaVenta(0, this.obtenerFecha(fecha));
                 facturaVenta.setIdentificacionFK(cliente);
                 facturaVentaCon.create(facturaVenta);
-                
+
                 DetalleVentaPK detalleVentaPK = new DetalleVentaPK(facturaVenta.getIdFactura(), producto.getIdProducto());
                 DetalleVenta detalleVenta = new DetalleVenta(detalleVentaPK, Integer.parseInt(cantidad), producto.getPrecioUnitario());
                 detalleVenta.setProducto(producto);
@@ -362,109 +363,141 @@ public class Coordinador {
      */
     public void verProductos() {
         DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
-        List<Producto> productos = productoCon.findProductoEntities();
+        try {
+            List<Producto> productos = productoCon.findProductoEntities();
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
+            for (Producto x : productos) {
+                model.addRow(new Object[]{x.getIdProducto(), x.getIdloteFK().getIdLote(), x.getNombre(), x.getPrecioUnitario()});
+            }
 
-        for (Producto x : productos) {
-            model.addRow(new Object[]{x.getIdProducto(), x.getIdloteFK().getIdLote(), x.getNombre(), x.getPrecioUnitario()});
+            productoVista.getTabla_producto().setModel(model);
+            inicio.getEscritorio().add(productoVista, 0);
+            productoVista.setVisible(true);
+            productoVista.toFront();
+
+        } catch (Exception e) {
+            System.err.println(e);
         }
-
-        productoVista.getTabla_producto().setModel(model);
-        inicio.getEscritorio().add(productoVista);
-        productoVista.show();
-        productoVista.toFront();
 
     }
 
     public void verClientes() {
-        DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
-        List<Cliente> clientes = clienteCon.findClienteEntities();
+        try {
+            DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
+            List<Cliente> clientes = clienteCon.findClienteEntities();
 
-        for (Cliente x : clientes) {
-            model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getTelefono(), x.getCorreo()});
+            for (Cliente x : clientes) {
+                model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getTelefono(), x.getCorreo()});
+            }
+
+            clienteVista.getTabla_cliente().setModel(model);
+            inicio.getEscritorio().add(clienteVista, 0);
+            clienteVista.setVisible(true);
+            clienteVista.toFront();
+        } catch (Exception e) {
+            System.err.println(e);
         }
-
-        clienteVista.getTabla_cliente().setModel(model);
-        inicio.getEscritorio().add(clienteVista);
-        clienteVista.show();
-        clienteVista.toFront();
     }
 
     public void verProveedores() {
-        DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
-        List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
+        try {
+            DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
+            List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
 
-        for (Proveedor x : proveedores) {
-            model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono(), x.getDireccion()});
+            for (Proveedor x : proveedores) {
+                model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono(), x.getDireccion()});
+            }
+
+            proveedorVista.getTabla_proveedor().setModel(model);
+            inicio.getEscritorio().add(proveedorVista, 0);
+            proveedorVista.setVisible(true);
+            proveedorVista.toFront();
+        } catch (Exception e) {
+            System.err.println(e);
         }
-
-        proveedorVista.getTabla_proveedor().setModel(model);
-        inicio.getEscritorio().add(proveedorVista);
-        proveedorVista.show();
-        proveedorVista.toFront();
     }
 
     public void verDevoluciones() {
-        DefaultTableModel model = (DefaultTableModel) devolucionVista.getTabla_dev().getModel();
-        List<Devolucion> registros = devolucionCon.findDevolucionEntities();
+        try {
+            DefaultTableModel model = (DefaultTableModel) devolucionVista.getTabla_dev().getModel();
+            List<Devolucion> registros = devolucionCon.findDevolucionEntities();
 
-        for (Devolucion x : registros) {
-            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getDescripcion()});
+            for (Devolucion x : registros) {
+                model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getDescripcion()});
+            }
+
+            devolucionVista.getTabla_dev().setModel(model);
+            inicio.getEscritorio().add(devolucionVista, 0);
+            devolucionVista.setVisible(true);
+            devolucionVista.toFront();
+        } catch (Exception e) {
+            System.err.println(e);
         }
-
-        devolucionVista.getTabla_dev().setModel(model);
-        inicio.getEscritorio().add(devolucionVista);
-        devolucionVista.show();
-        devolucionVista.toFront();
     }
 
     public void verLotes() {
-        DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
-        List<Lote> lotes=loteCon.findLoteEntities();
+        try {
+            DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
+            List<Lote> lotes = loteCon.findLoteEntities();
 
-        for (Lote x : lotes) {
-            model.addRow(new Object[]{x.getIdLote(),x.getCantidad(),x.getStringFecha(),x.getLaboratorio()});
+            for (Lote x : lotes) {
+                model.addRow(new Object[]{x.getIdLote(), x.getCantidad(), x.getStringFecha(), x.getLaboratorio()});
+            }
+
+            loteVista.getTabla_lote().setModel(model);
+            inicio.getEscritorio().add(loteVista, 0);
+            loteVista.setVisible(true);
+            loteVista.toFront();
+        } catch (Exception e) {
+            System.err.println(e);
         }
-
-        loteVista.getTabla_lote().setModel(model);
-        inicio.getEscritorio().add(loteVista);
-        loteVista.show();
-        loteVista.toFront();
 
     }
 
     public void verCompras() {
-        DefaultTableModel model = (DefaultTableModel) compraVista.getTabla_compra().getModel();
-        List<DetalleCompra> compras = detalleCompraCon.findDetalleCompraEntities();
-        long descuento = 0;
-        for (DetalleCompra x : compras) {
-            if (x.getDescuento() != null) {
-                descuento = x.getDescuento() * x.getPrecioUnitario();
+        try {
+            DefaultTableModel model = (DefaultTableModel) compraVista.getTabla_compra().getModel();
+            List<DetalleCompra> compras = detalleCompraCon.findDetalleCompraEntities();
+            long descuento = 0;
+            for (DetalleCompra x : compras) {
+                if (x.getDescuento() != null) {
+                    descuento = x.getDescuento() * x.getPrecioUnitario();
+                }
+                model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
             }
-            model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
-        }
 
-        compraVista.getTabla_compra().setModel(model);
-        inicio.getEscritorio().add(compraVista);
-        compraVista.show();
-        compraVista.toFront();
+            compraVista.getTabla_compra().setModel(model);
+            inicio.getEscritorio().add(compraVista, 0);
+            compraVista.setVisible(true);
+            compraVista.toFront();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     public void verVentas() {
-        DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
-        List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
-        long descuento = 0;
-        for (DetalleVenta x : ventas) {
+        try {
+            DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
+            List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
+            long descuento = 0;
+            for (DetalleVenta x : ventas) {
 
-            if (x.getDescuento() != null) {
-                descuento = x.getDescuento() * x.getPrecioUnitario();
+                if (x.getDescuento() != null) {
+                    descuento = x.getDescuento() * x.getPrecioUnitario();
+                }
+                model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
             }
-            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
-        }
 
-        ventaVista.getTabla_venta().setModel(model);
-        inicio.getEscritorio().add(ventaVista);
-        ventaVista.show();
-        ventaVista.toFront();
+            ventaVista.getTabla_venta().setModel(model);
+            inicio.getEscritorio().add(ventaVista, 0);
+            ventaVista.setVisible(true);
+            ventaVista.toFront();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     /**
@@ -472,31 +505,29 @@ public class Coordinador {
      *
      */
     public void eliminarProducto() {
-        int fila = productoVista.getTabla_producto().getSelectedRow();
-        Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
-
         try {
+            int fila = productoVista.getTabla_producto().getSelectedRow();
+            Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
             productoCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Producto", JOptionPane.INFORMATION_MESSAGE);
-            productoVista.setVisible(false);
-            this.verProductos();
+            productoVista.repaint();
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     public void eliminarCliente() {
-        int fila = clienteVista.getTabla_cliente().getSelectedRow();
-        String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
-
         try {
+            int fila = clienteVista.getTabla_cliente().getSelectedRow();
+            String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
             clienteCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
-            clienteVista.setVisible(false);
-            this.verClientes();
-
+            clienteVista.invalidate();
+            clienteVista.validate();
+            clienteVista.repaint();
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NonexistentEntityException ex) {
@@ -505,15 +536,14 @@ public class Coordinador {
     }
 
     public void eliminarProveedor() {
-        int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
-        String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
-
         try {
+            int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
+            String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
+
             proveedorCon.destroy(nit);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Proveedor", JOptionPane.INFORMATION_MESSAGE);
             proveedorVista.setVisible(false);
             this.verProveedores();
-
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NonexistentEntityException ex) {

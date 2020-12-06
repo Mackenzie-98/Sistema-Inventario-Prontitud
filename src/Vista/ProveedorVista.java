@@ -155,6 +155,11 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
                 cmd_eliminarMouseExited(evt);
             }
         });
+        cmd_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_eliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 120, 23));
 
         pack();
@@ -187,6 +192,10 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
         cmd_eliminar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_eliminarMouseExited
+
+    private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed
+        coordinador.eliminarProveedor();
+    }//GEN-LAST:event_cmd_eliminarActionPerformed
 
     public JTextField getTxt_filtro() {
         return txt_filtro;

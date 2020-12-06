@@ -36,7 +36,6 @@ public class InicioVista extends javax.swing.JFrame {
 
         initComponents();
         this.setResizable(false);
-        this.setVisible(true);
         this.setTitle("Droguería Prontitud");
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
 

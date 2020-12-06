@@ -5,17 +5,20 @@
  */
 package Controladores;
 
+import Controladores.exceptions.IllegalOrphanException;
 import Controladores.exceptions.NonexistentEntityException;
 import Controladores.exceptions.PreexistingEntityException;
 import Modelo.Lote;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Modelo.Producto;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -33,11 +36,29 @@ public class LoteJpaController implements Serializable {
     }
 
     public void create(Lote lote) throws PreexistingEntityException, Exception {
+        if (lote.getProductoList() == null) {
+            lote.setProductoList(new ArrayList<Producto>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            List<Producto> attachedProductoList = new ArrayList<Producto>();
+            for (Producto productoListProductoToAttach : lote.getProductoList()) {
+                productoListProductoToAttach = em.getReference(productoListProductoToAttach.getClass(), productoListProductoToAttach.getIdProducto());
+                attachedProductoList.add(productoListProductoToAttach);
+            }
+            lote.setProductoList(attachedProductoList);
             em.persist(lote);
+            for (Producto productoListProducto : lote.getProductoList()) {
+                Lote oldIdloteFKOfProductoListProducto = productoListProducto.getIdloteFK();
+                productoListProducto.setIdloteFK(lote);
+                productoListProducto = em.merge(productoListProducto);
+                if (oldIdloteFKOfProductoListProducto != null) {
+                    oldIdloteFKOfProductoListProducto.getProductoList().remove(productoListProducto);
+                    oldIdloteFKOfProductoListProducto = em.merge(oldIdloteFKOfProductoListProducto);
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findLote(lote.getIdLote()) != null) {
@@ -51,12 +72,45 @@ public class LoteJpaController implements Serializable {
         }
     }
 
-    public void edit(Lote lote) throws NonexistentEntityException, Exception {
+    public void edit(Lote lote) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Lote persistentLote = em.find(Lote.class, lote.getIdLote());
+            List<Producto> productoListOld = persistentLote.getProductoList();
+            List<Producto> productoListNew = lote.getProductoList();
+            List<String> illegalOrphanMessages = null;
+            for (Producto productoListOldProducto : productoListOld) {
+                if (!productoListNew.contains(productoListOldProducto)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Producto " + productoListOldProducto + " since its idloteFK field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            List<Producto> attachedProductoListNew = new ArrayList<Producto>();
+            for (Producto productoListNewProductoToAttach : productoListNew) {
+                productoListNewProductoToAttach = em.getReference(productoListNewProductoToAttach.getClass(), productoListNewProductoToAttach.getIdProducto());
+                attachedProductoListNew.add(productoListNewProductoToAttach);
+            }
+            productoListNew = attachedProductoListNew;
+            lote.setProductoList(productoListNew);
             lote = em.merge(lote);
+            for (Producto productoListNewProducto : productoListNew) {
+                if (!productoListOld.contains(productoListNewProducto)) {
+                    Lote oldIdloteFKOfProductoListNewProducto = productoListNewProducto.getIdloteFK();
+                    productoListNewProducto.setIdloteFK(lote);
+                    productoListNewProducto = em.merge(productoListNewProducto);
+                    if (oldIdloteFKOfProductoListNewProducto != null && !oldIdloteFKOfProductoListNewProducto.equals(lote)) {
+                        oldIdloteFKOfProductoListNewProducto.getProductoList().remove(productoListNewProducto);
+                        oldIdloteFKOfProductoListNewProducto = em.merge(oldIdloteFKOfProductoListNewProducto);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -74,7 +128,7 @@ public class LoteJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -85,6 +139,17 @@ public class LoteJpaController implements Serializable {
                 lote.getIdLote();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The lote with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            List<Producto> productoListOrphanCheck = lote.getProductoList();
+            for (Producto productoListOrphanCheckProducto : productoListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Lote (" + lote + ") cannot be destroyed since the Producto " + productoListOrphanCheckProducto + " in its productoList field has a non-nullable idloteFK field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             em.remove(lote);
             em.getTransaction().commit();

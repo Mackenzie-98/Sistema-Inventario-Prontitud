@@ -14,6 +14,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Modelo.Categoria;
+import Modelo.Lote;
 import Modelo.DetalleCompra;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,11 @@ public class ProductoJpaController implements Serializable {
                 idcategoriaFK = em.getReference(idcategoriaFK.getClass(), idcategoriaFK.getIdCategoria());
                 producto.setIdcategoriaFK(idcategoriaFK);
             }
+            Lote idloteFK = producto.getIdloteFK();
+            if (idloteFK != null) {
+                idloteFK = em.getReference(idloteFK.getClass(), idloteFK.getIdLote());
+                producto.setIdloteFK(idloteFK);
+            }
             List<DetalleCompra> attachedDetalleCompraList = new ArrayList<DetalleCompra>();
             for (DetalleCompra detalleCompraListDetalleCompraToAttach : producto.getDetalleCompraList()) {
                 detalleCompraListDetalleCompraToAttach = em.getReference(detalleCompraListDetalleCompraToAttach.getClass(), detalleCompraListDetalleCompraToAttach.getDetalleCompraPK());
@@ -79,6 +85,10 @@ public class ProductoJpaController implements Serializable {
             if (idcategoriaFK != null) {
                 idcategoriaFK.getProductoList().add(producto);
                 idcategoriaFK = em.merge(idcategoriaFK);
+            }
+            if (idloteFK != null) {
+                idloteFK.getProductoList().add(producto);
+                idloteFK = em.merge(idloteFK);
             }
             for (DetalleCompra detalleCompraListDetalleCompra : producto.getDetalleCompraList()) {
                 Producto oldProductoOfDetalleCompraListDetalleCompra = detalleCompraListDetalleCompra.getProducto();
@@ -128,6 +138,8 @@ public class ProductoJpaController implements Serializable {
             Producto persistentProducto = em.find(Producto.class, producto.getIdProducto());
             Categoria idcategoriaFKOld = persistentProducto.getIdcategoriaFK();
             Categoria idcategoriaFKNew = producto.getIdcategoriaFK();
+            Lote idloteFKOld = persistentProducto.getIdloteFK();
+            Lote idloteFKNew = producto.getIdloteFK();
             List<DetalleCompra> detalleCompraListOld = persistentProducto.getDetalleCompraList();
             List<DetalleCompra> detalleCompraListNew = producto.getDetalleCompraList();
             List<Devolucion> devolucionListOld = persistentProducto.getDevolucionList();
@@ -166,6 +178,10 @@ public class ProductoJpaController implements Serializable {
                 idcategoriaFKNew = em.getReference(idcategoriaFKNew.getClass(), idcategoriaFKNew.getIdCategoria());
                 producto.setIdcategoriaFK(idcategoriaFKNew);
             }
+            if (idloteFKNew != null) {
+                idloteFKNew = em.getReference(idloteFKNew.getClass(), idloteFKNew.getIdLote());
+                producto.setIdloteFK(idloteFKNew);
+            }
             List<DetalleCompra> attachedDetalleCompraListNew = new ArrayList<DetalleCompra>();
             for (DetalleCompra detalleCompraListNewDetalleCompraToAttach : detalleCompraListNew) {
                 detalleCompraListNewDetalleCompraToAttach = em.getReference(detalleCompraListNewDetalleCompraToAttach.getClass(), detalleCompraListNewDetalleCompraToAttach.getDetalleCompraPK());
@@ -195,6 +211,14 @@ public class ProductoJpaController implements Serializable {
             if (idcategoriaFKNew != null && !idcategoriaFKNew.equals(idcategoriaFKOld)) {
                 idcategoriaFKNew.getProductoList().add(producto);
                 idcategoriaFKNew = em.merge(idcategoriaFKNew);
+            }
+            if (idloteFKOld != null && !idloteFKOld.equals(idloteFKNew)) {
+                idloteFKOld.getProductoList().remove(producto);
+                idloteFKOld = em.merge(idloteFKOld);
+            }
+            if (idloteFKNew != null && !idloteFKNew.equals(idloteFKOld)) {
+                idloteFKNew.getProductoList().add(producto);
+                idloteFKNew = em.merge(idloteFKNew);
             }
             for (DetalleCompra detalleCompraListNewDetalleCompra : detalleCompraListNew) {
                 if (!detalleCompraListOld.contains(detalleCompraListNewDetalleCompra)) {
@@ -287,6 +311,11 @@ public class ProductoJpaController implements Serializable {
             if (idcategoriaFK != null) {
                 idcategoriaFK.getProductoList().remove(producto);
                 idcategoriaFK = em.merge(idcategoriaFK);
+            }
+            Lote idloteFK = producto.getIdloteFK();
+            if (idloteFK != null) {
+                idloteFK.getProductoList().remove(producto);
+                idloteFK = em.merge(idloteFK);
             }
             em.remove(producto);
             em.getTransaction().commit();
