@@ -4,6 +4,9 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="Registrar proveedor"/>
+    <Property name="frameIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+      <Image iconType="3" name="/Vista/icons/icon_reg_prov.png"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>

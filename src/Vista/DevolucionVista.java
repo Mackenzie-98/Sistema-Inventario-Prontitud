@@ -19,7 +19,6 @@ public class DevolucionVista extends javax.swing.JInternalFrame {
      */
     public DevolucionVista() {
         initComponents();
-        this.setSize(605,430);
         this.setResizable(false);
         this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();

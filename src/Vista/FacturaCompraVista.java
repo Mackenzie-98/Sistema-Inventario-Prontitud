@@ -36,31 +36,29 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_id_fac = new javax.swing.JLabel();
-        txt_id_fac_c = new javax.swing.JTextField();
+        lbl_filtrar = new javax.swing.JLabel();
+        txt_filtrar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_compra = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lbl_id_prod = new javax.swing.JLabel();
-        txt_id_fac_prod = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Tabla Factura compra");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_comp.png"))); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_id_fac.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_id_fac.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_id_fac.setText("Cod. Factura");
-        getContentPane().add(lbl_id_fac, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 110, -1));
+        lbl_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_filtrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_filtrar.setText("Filtrar:");
+        getContentPane().add(lbl_filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 110, -1));
 
-        txt_id_fac_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_id_fac_c.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_id_fac_c.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        getContentPane().add(txt_id_fac_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 120, -1));
+        txt_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtrar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_filtrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        getContentPane().add(txt_filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 120, -1));
 
         jLabel2.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,16 +109,6 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 390, 800, 40));
 
-        lbl_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_id_prod.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_id_prod.setText("Cod. Producto");
-        getContentPane().add(lbl_id_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 110, -1));
-
-        txt_id_fac_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_id_fac_prod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_id_fac_prod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        getContentPane().add(txt_id_fac_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 120, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,10 +119,8 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_id_fac;
-    private javax.swing.JLabel lbl_id_prod;
+    private javax.swing.JLabel lbl_filtrar;
     private javax.swing.JTable tabla_compra;
-    private javax.swing.JTextField txt_id_fac_c;
-    private javax.swing.JTextField txt_id_fac_prod;
+    private javax.swing.JTextField txt_filtrar;
     // End of variables declaration//GEN-END:variables
 }
