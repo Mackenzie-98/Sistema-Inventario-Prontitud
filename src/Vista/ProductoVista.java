@@ -94,6 +94,9 @@ public class ProductoVista extends javax.swing.JInternalFrame {
         });
         tabla_producto.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_producto);
+        if (tabla_producto.getColumnModel().getColumnCount() > 0) {
+            tabla_producto.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -172,7 +175,7 @@ public class ProductoVista extends javax.swing.JInternalFrame {
         this.getTxt_filtro().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3));
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4));
             }            
         });
         trs = new TableRowSorter((DefaultTableModel)getTabla_producto().getModel());
