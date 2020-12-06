@@ -1,5 +1,7 @@
 package Controladores;
 
+import Controladores.exceptions.IllegalOrphanException;
+import Controladores.exceptions.NonexistentEntityException;
 import Modelo.*;
 import Vista.*;
 import java.sql.*;
@@ -202,12 +204,12 @@ public class Coordinador
     public void verClientes() 
     {
         ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
-        clienteVista = new ClienteVista();
+        clienteVista = new ClienteVista(this);
         DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
         List<Cliente> clientes = clienteCon.findClienteEntities();
         
         for (Cliente x : clientes)
-            model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getCorreo()});
+            model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getTelefono(), x.getCorreo()});
    
         clienteVista.getTabla_cliente().setModel(model);
         inicio.getEscritorio().add(clienteVista);
@@ -249,6 +251,56 @@ public class Coordinador
         catch (SQLException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    /**
+     * METODOS DE ELIMINACION
+     *
+     */
+    
+    public void eliminarCliente()
+    {
+        ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
+        int fila = clienteVista.getTabla_cliente().getSelectedRow();
+        String id =  clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
+        
+        try{
+            clienteCon.destroy(id);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
+            clienteVista.setVisible(false);
+            this.verClientes();
+            
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    
+    public void eliminarProducto()
+    {
+        ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
+        int fila = productoVista.getTabla_producto().getSelectedRow();
+        Integer id =  Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
+        
+        try {
+            productoCon.destroy(id);
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
+            productoVista.setVisible(false);
+            this.verProductos();
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
+    /**
+     * METODOS DE ACTUALIZACION
+     */
+    
+    public void modificarCliente(){
+        
     }
     
     /**

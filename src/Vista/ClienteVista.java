@@ -26,7 +26,21 @@ import javax.swing.table.TableRowSorter;
 public class ClienteVista extends javax.swing.JInternalFrame {
 
     /** Creates new form Cliente */
+    public static Coordinador coordinador;
+    
     public ClienteVista() {
+        initComponents();
+        this.setSize(600,420);
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);  
+    }
+    
+    public ClienteVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
         initComponents();
         this.setSize(600,420);
         this.setResizable(false);
@@ -50,6 +64,8 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         txt_filtro = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_cliente = new javax.swing.JTable();
+        cmd_modificar = new javax.swing.JButton();
+        cmd_eliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Tabla de clientes");
@@ -70,11 +86,11 @@ public class ClienteVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Identificación", "Nombre", "Fecha de nacimiento", "Correo"
+                "Identificación", "Nombre", "Fecha de nacimiento", "Telefono", "Correo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -83,6 +99,20 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         });
         tabla_cliente.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_cliente);
+
+        cmd_modificar.setText("Modificar");
+        cmd_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_modificarActionPerformed(evt);
+            }
+        });
+
+        cmd_eliminar.setText("Eliminar");
+        cmd_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_eliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,6 +129,12 @@ public class ClienteVista extends javax.swing.JInternalFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cmd_modificar)
+                .addGap(18, 18, 18)
+                .addComponent(cmd_eliminar)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +145,11 @@ public class ClienteVista extends javax.swing.JInternalFrame {
                     .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmd_modificar)
+                    .addComponent(cmd_eliminar))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -127,8 +167,19 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         this.getTabla_cliente().setRowSorter(trs);
     }//GEN-LAST:event_txt_filtroKeyTyped
 
+    private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
+        coordinador.modificarCliente();
+    }//GEN-LAST:event_cmd_modificarActionPerformed
+
+    private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed
+        coordinador.eliminarCliente(); 
+        
+    }//GEN-LAST:event_cmd_eliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmd_eliminar;
+    private javax.swing.JButton cmd_modificar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_filtrar;
     private javax.swing.JTable tabla_cliente;
