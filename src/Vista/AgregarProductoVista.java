@@ -25,7 +25,6 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     
     public AgregarProductoVista() {
         initComponents();
-        this.setSize(600,300);
         this.setResizable(false);
         this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
@@ -37,7 +36,6 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     public AgregarProductoVista(Coordinador coordinador) {
         this.coordinador = coordinador;
         initComponents();
-        this.setSize(600,300);
         this.setResizable(false);
         this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
@@ -55,7 +53,8 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_id = new javax.swing.JLabel();
+        lbl_nombre = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         lbl_cant = new javax.swing.JLabel();
         txt_cant = new javax.swing.JTextField();
@@ -64,36 +63,52 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
         lbl_categoria = new javax.swing.JLabel();
         cbx_categoria = new javax.swing.JComboBox<>();
         cmd_agregar = new javax.swing.JButton();
-        lbl_lab = new javax.swing.JLabel();
-        txt_lab = new javax.swing.JTextField();
-        lbl_lote = new javax.swing.JLabel();
-        txt_lote = new javax.swing.JTextField();
-        txt_fecha = new javax.swing.JTextField();
-        lbl_fecha = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lbl_stock = new javax.swing.JLabel();
         txt_precio = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
-        lbl_nombre1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_fecha = new javax.swing.JLabel();
+        txt_fecha = new javax.swing.JTextField();
+        txt_lote = new javax.swing.JTextField();
+        lbl_lote = new javax.swing.JLabel();
+        lbl_lab = new javax.swing.JLabel();
+        txt_lab = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
         setClosable(true);
         setTitle("Agregar producto");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_resg_prod.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_id.setText("Id:");
+        lbl_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_nombre.setText("Nombre:");
+        getContentPane().add(lbl_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 81, 23));
+
+        jLabel4.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Agregar producto");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 150, 30));
 
         txt_nombre.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 123, 23));
 
         lbl_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_cant.setText("Cantidad:");
+        getContentPane().add(lbl_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 81, 23));
 
         txt_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_cant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(txt_cant, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 123, 23));
 
         lbl_precio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_precio.setText("Precio:");
+        getContentPane().add(lbl_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 81, 22));
 
         txt_stock.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         txt_stock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -102,62 +117,53 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
                 txt_stockActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 123, 23));
 
         lbl_categoria.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_categoria.setText("Categoría:");
+        getContentPane().add(lbl_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 81, 22));
 
+        cbx_categoria.setBackground(new java.awt.Color(0, 51, 204));
         cbx_categoria.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cbx_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicamento", "Aseo Personal", "Otro" }));
+        cbx_categoria.setForeground(new java.awt.Color(255, 255, 255));
+        cbx_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicamento", "Aseo personal", "Agregar otro" }));
         cbx_categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_categoriaActionPerformed(evt);
             }
         });
+        getContentPane().add(cbx_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 123, -1));
 
+        cmd_agregar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_agregar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_agregar.setText("Agregar");
+        cmd_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmd_agregarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_agregarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_agregarMouseExited(evt);
+            }
+        });
         cmd_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmd_agregarActionPerformed(evt);
             }
         });
+        getContentPane().add(cmd_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 110, 40));
 
-        lbl_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_lab.setText("Laboratorio:");
-
-        txt_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_lab.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        lbl_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        lbl_lote.setText("No. Lote:");
-
-        txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_lote.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_lote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_loteActionPerformed(evt);
-            }
-        });
-
-        txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha.setText("yyyy-mm-dd");
-        txt_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_fechaMouseClicked(evt);
-            }
-        });
-        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fechaActionPerformed(evt);
-            }
-        });
-
-        lbl_fecha.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        lbl_fecha.setText("Fecha ven:");
+        jSeparator1.setBackground(new java.awt.Color(0, 51, 204));
+        jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 20, 300));
 
         lbl_stock.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_stock.setText("Stock mínimo:");
+        getContentPane().add(lbl_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, 22));
 
         txt_precio.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -166,134 +172,65 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
                 txt_precioActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 123, 23));
 
-        txt_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_id.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        jLabel1.setText("Código:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 70, 23));
+        jLabel1.getAccessibleContext().setAccessibleName("lbl_id");
+        jLabel1.getAccessibleContext().setAccessibleDescription("");
 
-        lbl_nombre1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_nombre1.setText("Nombre:");
+        txt_id.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 120, 23));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(87, 87, 87))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(65, 65, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbx_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmd_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_stock)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lbl_id, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addComponent(lbl_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(493, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_id, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_cant, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_lab))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_lote, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_stock, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(cmd_agregar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbx_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(27, 27, 27)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(39, 39, 39)
-                    .addComponent(lbl_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(245, Short.MAX_VALUE)))
-        );
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_fecha.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        lbl_fecha.setText("Fecha ven:");
+        jPanel1.add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 77, 23));
+
+        txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_fecha.setText("yyyy-mm-dd");
+        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 123, 23));
+
+        txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_lote.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_lote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_loteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 123, 23));
+
+        lbl_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
+        lbl_lote.setText("No. Lote:");
+        jPanel1.add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 77, 23));
+
+        lbl_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_lab.setText("Laboratorio:");
+        jPanel1.add(lbl_lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 77, 23));
+
+        txt_lab.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_lab.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(txt_lab, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 123, 23));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 260, 150));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_abajo.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 660, 60));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_arriba.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -301,10 +238,6 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     private void txt_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_stockActionPerformed
-
-    private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
-        coordinador.agregarProducto();    
-    }//GEN-LAST:event_cmd_agregarActionPerformed
 
     private void txt_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loteActionPerformed
         // TODO add your handling code here:
@@ -325,6 +258,22 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     private void txt_fechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fechaMouseClicked
        this.getTxt_fecha().setText("");
     }//GEN-LAST:event_txt_fechaMouseClicked
+
+    private void cmd_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_agregarActionPerformed
+        coordinador.agregarProducto();
+    }//GEN-LAST:event_cmd_agregarActionPerformed
+
+    private void cmd_agregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_agregarMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmd_agregarMouseExited
+
+    private void cmd_agregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_agregarMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmd_agregarMouseEntered
+
+    private void cmd_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_agregarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmd_agregarMouseClicked
     
     public void limpiar(){
         this.getTxt_cant().setText("");
@@ -416,14 +365,18 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbx_categoria;
     private javax.swing.JButton cmd_agregar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbl_cant;
     private javax.swing.JLabel lbl_categoria;
     private javax.swing.JLabel lbl_fecha;
-    private javax.swing.JLabel lbl_id;
     private javax.swing.JLabel lbl_lab;
     private javax.swing.JLabel lbl_lote;
-    private javax.swing.JLabel lbl_nombre1;
+    private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_precio;
     private javax.swing.JLabel lbl_stock;
     private javax.swing.JTextField txt_cant;

@@ -57,7 +57,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         lbl_precio_c = new javax.swing.JLabel();
         txt_precio_c = new javax.swing.JTextField();
         lbl_prod = new javax.swing.JLabel();
-        txt_nombre_prod = new javax.swing.JTextField();
+        txt_id_prod = new javax.swing.JTextField();
         lbl_lote = new javax.swing.JLabel();
         txt_lote = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -131,22 +131,22 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         lbl_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_fecha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_fecha.setText("Fecha:");
-        jPanel1.add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 73, 22));
+        jPanel1.add(lbl_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 73, 20));
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha.setText("YYYY-MM-DD");
+        txt_fecha.setText("yyyy-mm-dd");
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fechaActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 149, -1));
+        jPanel1.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 149, -1));
 
         lbl_dto1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_dto1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_dto1.setText("Descuento:");
-        jPanel1.add(lbl_dto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 73, 22));
+        jPanel1.add(lbl_dto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 73, 22));
 
         txt_dto.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_dto.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +154,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
                 txt_dtoActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 150, -1));
+        jPanel1.add(txt_dto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 150, -1));
 
         lbl_cant.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_cant.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -172,7 +172,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         lbl_precio_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_precio_c.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_precio_c.setText("Precio compra:");
-        jPanel1.add(lbl_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 100, -1));
+        jPanel1.add(lbl_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 100, -1));
 
         txt_precio_c.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_precio_c.addActionListener(new java.awt.event.ActionListener() {
@@ -180,21 +180,21 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
                 txt_precio_cActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 150, -1));
+        jPanel1.add(txt_precio_c, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 150, -1));
 
         lbl_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_prod.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_prod.setText("Nombre producto");
-        jPanel1.add(lbl_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 120, 22));
+        lbl_prod.setText("Código Producto");
+        jPanel1.add(lbl_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, 22));
 
-        txt_nombre_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_nombre_prod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_nombre_prod.addActionListener(new java.awt.event.ActionListener() {
+        txt_id_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_id_prod.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_id_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombre_prodActionPerformed(evt);
+                txt_id_prodActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nombre_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 150, -1));
+        jPanel1.add(txt_id_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 150, -1));
 
         lbl_lote.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_lote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -239,7 +239,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         
 
 
-        if ("".equals(this.txt_nit.getText()) || "".equals(this.txt_nombre_prod.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_dto.getText())
+        if ("".equals(this.txt_nit.getText()) || "".equals(this.txt_id_prod.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_dto.getText())
                 || "".equals(this.txt_lote.getText())|| "".equals(this.txt_precio_c.getText()) || "".equals(this.txt_fecha.getText())) {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese todos los datos", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -260,9 +260,9 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nitActionPerformed
 
-    private void txt_nombre_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombre_prodActionPerformed
+    private void txt_id_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_prodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombre_prodActionPerformed
+    }//GEN-LAST:event_txt_id_prodActionPerformed
 
     private void txt_dtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dtoActionPerformed
         // TODO add your handling code here:
@@ -302,9 +302,9 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_cant;
     private javax.swing.JTextField txt_dto;
     private javax.swing.JTextField txt_fecha;
+    private javax.swing.JTextField txt_id_prod;
     private javax.swing.JTextField txt_lote;
     private javax.swing.JTextField txt_nit;
-    private javax.swing.JTextField txt_nombre_prod;
     private javax.swing.JTextField txt_precio_c;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
