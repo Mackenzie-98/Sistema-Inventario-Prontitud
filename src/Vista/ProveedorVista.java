@@ -6,6 +6,7 @@
 package Vista;
 
 import static Vista.InicioVista.escritorio;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -29,7 +30,6 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
      */
     public ProveedorVista() {
         initComponents();
-        this.setSize(653,430);
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
@@ -52,10 +52,18 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         tabla_proveedor = new javax.swing.JTable();
         lbl_id = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cmd_modificar = new javax.swing.JButton();
+        cmd_eliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Tabla de proveedores");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_prov.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabla_proveedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         tabla_proveedor.setFont(tabla_proveedor.getFont().deriveFont(tabla_proveedor.getFont().getSize()+3f));
         tabla_proveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,47 +81,68 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tabla_proveedor.setToolTipText("");
+        tabla_proveedor.setFocusable(false);
+        tabla_proveedor.setGridColor(new java.awt.Color(0, 51, 204));
+        tabla_proveedor.setSelectionBackground(new java.awt.Color(0, 51, 204));
         tabla_proveedor.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_proveedor);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 580, 220));
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_id.setText("Fitrar:");
+        getContentPane().add(lbl_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_filtroKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 120, 23));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(lbl_id)
-                        .addGap(33, 33, 33)
-                        .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_id)
-                    .addComponent(txt_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_abajo.png"))); // NOI18N
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 640, 40));
+
+        jLabel6.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Proveedores");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 140, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo_dos.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 40));
+
+        cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
+        cmd_modificar.setText("Modificar");
+        cmd_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_modificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_modificarMouseExited(evt);
+            }
+        });
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 120, 23));
+
+        cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
+        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
+        cmd_eliminar.setText("Eliminar");
+        cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cmd_eliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmd_eliminarMouseExited(evt);
+            }
+        });
+        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 120, 23));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,6 +158,22 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
         trs = new TableRowSorter((DefaultTableModel)getTabla_proveedor().getModel());
         this.getTabla_proveedor().setRowSorter(trs);
     }//GEN-LAST:event_txt_filtroKeyTyped
+
+    private void cmd_modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseEntered
+        cmd_modificar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_modificarMouseEntered
+
+    private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
+        cmd_modificar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_modificarMouseExited
+
+    private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
+        cmd_eliminar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_eliminarMouseEntered
+
+    private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
+        cmd_eliminar.setBackground(Color.DARK_GRAY);
+    }//GEN-LAST:event_cmd_eliminarMouseExited
 
     public JTextField getTxt_filtro() {
         return txt_filtro;
@@ -159,6 +204,11 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmd_eliminar;
+    private javax.swing.JButton cmd_modificar;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JTable tabla_proveedor;
