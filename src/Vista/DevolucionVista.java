@@ -5,9 +5,13 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,17 +19,61 @@ import java.awt.Dimension;
  */
 public class DevolucionVista extends javax.swing.JInternalFrame {
 
+    public JButton getCmd_eliminar() {
+        return cmd_eliminar;
+    }
+
+    public void setCmd_eliminar(JButton cmd_eliminar) {
+        this.cmd_eliminar = cmd_eliminar;
+    }
+
+    public JButton getCmd_modificar() {
+        return cmd_modificar;
+    }
+
+    public void setCmd_modificar(JButton cmd_modificar) {
+        this.cmd_modificar = cmd_modificar;
+    }
+
+    public JTable getTabla_dev() {
+        return tabla_dev;
+    }
+
+    public void setTabla_dev(JTable tabla_dev) {
+        this.tabla_dev = tabla_dev;
+    }
+
+    public JTextField getTxt_filtro() {
+        return txt_filtro;
+    }
+
     /**
      * Creates new form Devolucion
      */
+    public void setTxt_filtro(JTextField txt_filtro) {
+        this.txt_filtro = txt_filtro;
+    }
+
+    public static Coordinador coordinador;
+    public DevolucionVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+
     public DevolucionVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
+        this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
     }
 
     /**

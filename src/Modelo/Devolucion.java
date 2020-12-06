@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Controladores.FacturaVentaJpaController;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -44,6 +45,11 @@ public class Devolucion implements Serializable {
 
     public Devolucion() {
     }
+    public Devolucion(FacturaVenta factura,Producto producto,String descripcion){
+        this.facturaVenta=factura;
+        this.producto=producto;
+        this.descripcion=descripcion;
+    }
 
     public Devolucion(DevolucionPK devolucionPK) {
         this.devolucionPK = devolucionPK;
@@ -52,6 +58,7 @@ public class Devolucion implements Serializable {
     public Devolucion(int idFactura, int idProducto) {
         this.devolucionPK = new DevolucionPK(idFactura, idProducto);
     }
+    
 
     public DevolucionPK getDevolucionPK() {
         return devolucionPK;

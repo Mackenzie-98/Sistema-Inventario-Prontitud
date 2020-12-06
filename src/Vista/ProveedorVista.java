@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,24 +19,34 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-
 /**
  *
  * @author Genesis Vargas
  */
 public class ProveedorVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Proveedor
-     */
+    public static Coordinador coordinador;
+
+    public ProveedorVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+
+    }
+
     public ProveedorVista() {
         initComponents();
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);   
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
 
     }
 
@@ -146,16 +157,16 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     TableRowSorter trs;
     private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
         this.getTxt_filtro().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4,5));
-            }            
+                trs.setRowFilter(RowFilter.regexFilter("(?i)" + getTxt_filtro().getText(), 0, 1, 2, 3, 4, 5));
+            }
         });
-        trs = new TableRowSorter((DefaultTableModel)getTabla_proveedor().getModel());
+        trs = new TableRowSorter((DefaultTableModel) getTabla_proveedor().getModel());
         this.getTabla_proveedor().setRowSorter(trs);
     }//GEN-LAST:event_txt_filtroKeyTyped
 

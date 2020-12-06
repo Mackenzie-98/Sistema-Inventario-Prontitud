@@ -5,9 +5,13 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,17 +19,63 @@ import java.awt.Dimension;
  */
 public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AgregarDevolucion
-     */
+    public static Coordinador coordinador;
+
     public AgregarDevolucionVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
+        this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+
+    public JButton getCmd_devolucion() {
+        return cmd_devolucion;
+    }
+
+    public void setCmd_devolucion(JButton cmd_devolucion) {
+        this.cmd_devolucion = cmd_devolucion;
+    }
+
+    public JTextArea getTxtArea_descrip() {
+        return txtArea_descrip;
+    }
+
+    public void setTxtArea_descrip(JTextArea txtArea_descrip) {
+        this.txtArea_descrip = txtArea_descrip;
+    }
+
+    public JTextField getTxt_id_factura() {
+        return txt_id_factura;
+    }
+
+    public void setTxt_id_factura(JTextField txt_id_factura) {
+        this.txt_id_factura = txt_id_factura;
+    }
+
+    public JTextField getTxt_id_prod() {
+        return txt_id_prod;
+    }
+
+    public void setTxt_id_prod(JTextField txt_id_prod) {
+        this.txt_id_prod = txt_id_prod;
+    }
+    public void limpiar(){
+        this.getTxt_id_factura().setText("");
+        this.getTxt_id_prod().setText("");
+        this.getTxtArea_descrip().setText("");
+    }
+    public AgregarDevolucionVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
     }
 
     /**
@@ -148,10 +198,7 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_devolucionMouseExited
 
     private void cmd_devolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_devolucionActionPerformed
-        DevolucionVista ver_ventana = new DevolucionVista();
-        escritorio.add(ver_ventana);
-        this.setVisible(false);
-        ver_ventana.show();
+        coordinador.agregarDevolucion();
     }//GEN-LAST:event_cmd_devolucionActionPerformed
 
 
