@@ -53,6 +53,7 @@ public class ProductoVista extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Tabla de productos");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_prod.png"))); // NOI18N
 
         tabla_producto.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_producto.setModel(new javax.swing.table.DefaultTableModel(

@@ -136,6 +136,7 @@ public class AgregarProveedorVista extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Registrar proveedor");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_reg_prov.png"))); // NOI18N
 
         cmd_agregar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N

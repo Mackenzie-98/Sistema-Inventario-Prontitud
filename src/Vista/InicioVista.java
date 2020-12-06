@@ -703,7 +703,9 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_eliminar_devActionPerformed
 
     private void jmi_reg_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_reg_devActionPerformed
-        // TODO add your handling code here:
+        AgregarDevolucionVista ver_ventana = new AgregarDevolucionVista();
+        escritorio.add(ver_ventana);
+        ver_ventana.show();
     }//GEN-LAST:event_jmi_reg_devActionPerformed
 
     private void jmi_mostrar_vActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_vActionPerformed
