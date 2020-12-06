@@ -17,25 +17,45 @@ import javax.swing.table.DefaultTableModel;
 
 public class Coordinador {
 
-    //Creacion de Vistas
+    //Creacion de Vistas para mostrar
     public static LoginVista login;
     public static InicioVista inicio;
     public static ClienteVista clienteVista;
+    public static CompraVista compraVista;
+    public static DevolucionVista devolucionVista;
+    public static FacturaCompra facturaCompra;
+    public static FacturaVenta facturaVenta;
+    public static LoteVista loteVista;
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
-    public static LoteVista loteVista;
-    public static DevolucionVista devolucionVista;
-
+    public static VentaVista ventaVista;
+    
+    
+    
+    //Creacion de Vistas para agregar
     public static AgregarClienteVista agregarClienteVista;
-    public static AgregarProveedorVista agregarProveedorVista;
-    public static AgregarProductoVista agregarProductoVista;
     public static AgregarCompraVista agregarCompraVista;
-    public static AgregarVentaVista agregarVentaVista;
     public static AgregarDevolucionVista agregarDevolucionVista;
-
+    public static AgregarProductoVista agregarProductoVista;
+    public static AgregarProveedorVista agregarProveedorVista;
+    public static AgregarVentaVista agregarVentaVista;
+    
+    
     //Conexion
     public static Conexion conexion = Conexion.getConexion();
-
+    
+    //Controllers
+    public static CategoriaJpaController categoriaCon = new CategoriaJpaController(conexion.getBd());
+    public static ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
+    public static DetalleCompraJpaController detalleCompraCon = new DetalleCompraJpaController(conexion.getBd());
+    public static DetalleVentaJpaController detalleVentaCon = new DetalleVentaJpaController(conexion.getBd());
+    public static DevolucionJpaController devolucionCon = new DevolucionJpaController(conexion.getBd());
+    public static FacturaCompraJpaController facturaCompraCon = new FacturaCompraJpaController(conexion.getBd());
+    public static FacturaVentaJpaController facturaVentaCon = new FacturaVentaJpaController(conexion.getBd());
+    public static LoteJpaController loteCon = new LoteJpaController(conexion.getBd());
+    public static ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
+    public static ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
+    
     public static void main(String[] agrs) throws SQLException {
         login = new LoginVista();
         login.setVisible(true);
@@ -99,11 +119,8 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el identificador de Producto y Factura", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                DevolucionJpaController devCon = new DevolucionJpaController(conexion.getBd());
-                FacturaVentaJpaController facVenCon = new FacturaVentaJpaController(conexion.getBd());
-                ProductoJpaController prodCon = new ProductoJpaController(conexion.getBd());
-                Devolucion nuevo = new Devolucion(facVenCon.findFacturaVenta(Integer.parseInt(idFactura)), prodCon.findProducto(Integer.parseInt(idProducto)), descrip);
-                devCon.create(nuevo);
+                Devolucion devolucion = new Devolucion(facturaVentaCon.findFacturaVenta(Integer.parseInt(idFactura)), productoCon.findProducto(Integer.parseInt(idProducto)), descrip);
+                devolucionCon.create(devolucion);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Proveedor", JOptionPane.INFORMATION_MESSAGE);
                 agregarDevolucionVista.limpiar();
             } catch (Exception ex) {
@@ -123,7 +140,6 @@ public class Coordinador {
         String numLote = agregarProductoVista.getTxt_lote().getText();
         String fecha = agregarProductoVista.getTxt_fecha().getText();
         Integer numCategoria = agregarProductoVista.getCbx_categoria().getSelectedIndex() + 1;
-        System.out.println(numCategoria);
 
         //Validaciones
         if ("".equals(id)) {
@@ -144,11 +160,6 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese la fecha de vencimiento", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                //Controllers
-                CategoriaJpaController categoriaCon = new CategoriaJpaController(conexion.getBd());
-                ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
-                LoteJpaController loteCon = new LoteJpaController(conexion.getBd());
-
                 //Entidades
                 Categoria categoria = categoriaCon.findCategoria(numCategoria);
                 Lote lote = new Lote(Integer.parseInt(numLote), this.obtenerFecha(fecha), lab,Integer.parseInt(cantidad));
@@ -184,9 +195,8 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                ClienteJpaController controller = new ClienteJpaController(conexion.getBd());
                 Cliente nuevo = new Cliente(id, nombre, this.obtenerFecha(fecha_nac), telefono, correo);
-                controller.create(nuevo);
+                clienteCon.create(nuevo);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Cliente", JOptionPane.INFORMATION_MESSAGE);
                 agregarClienteVista.limpiar();
             } catch (Exception ex) {
@@ -211,9 +221,8 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el nombre", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                ProveedorJpaController controller = new ProveedorJpaController(conexion.getBd());
                 Proveedor nuevo = new Proveedor(nit, nombre, direccion, ciudad, correo, telefono);
-                controller.create(nuevo);
+                proveedorCon.create(nuevo);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Proveedor", JOptionPane.INFORMATION_MESSAGE);
                 agregarProveedorVista.limpiar();
             } catch (Exception ex) {
@@ -249,13 +258,7 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el lote", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                //Controllers
-                ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
-                ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
-                DetalleCompraJpaController detalleCompraCon = new DetalleCompraJpaController(conexion.getBd());
-                FacturaCompraJpaController facturaCompraCon = new FacturaCompraJpaController(conexion.getBd());
-
-                System.out.println(id);
+                //Creacion
                 Producto producto = productoCon.findProducto(Integer.parseInt(id));
                 Proveedor proveedor = proveedorCon.findProveedor(nit);
                 FacturaCompra facturaCompra = new FacturaCompra(0, this.obtenerFecha(fecha));
@@ -303,7 +306,6 @@ public class Coordinador {
     }
 
     public void verClientes() {
-        ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
         clienteVista = new ClienteVista(this);
         DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
         List<Cliente> clientes = clienteCon.findClienteEntities();
@@ -319,7 +321,6 @@ public class Coordinador {
     }
 
     public void verProveedores() {
-        ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
         proveedorVista = new ProveedorVista(this);
         DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
         List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
@@ -335,10 +336,9 @@ public class Coordinador {
     }
 
     public void verDevoluciones() {
-        DevolucionJpaController devCon = new DevolucionJpaController(conexion.getBd());
         devolucionVista = new DevolucionVista(this);
         DefaultTableModel model = (DefaultTableModel) devolucionVista.getTabla_dev().getModel();
-        List<Devolucion> registros = devCon.findDevolucionEntities();
+        List<Devolucion> registros = devolucionCon.findDevolucionEntities();
 
         for (Devolucion x : registros) {
             model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getDescripcion()});
@@ -377,7 +377,6 @@ public class Coordinador {
      *
      */
     public void eliminarProducto() {
-        ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
         int fila = productoVista.getTabla_producto().getSelectedRow();
         Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
 
@@ -394,7 +393,6 @@ public class Coordinador {
     }
 
     public void eliminarCliente() {
-        ClienteJpaController clienteCon = new ClienteJpaController(conexion.getBd());
         int fila = clienteVista.getTabla_cliente().getSelectedRow();
         String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
 
@@ -412,7 +410,6 @@ public class Coordinador {
     }
 
     public void eliminarProveedor() {
-        ProveedorJpaController proveedorCon = new ProveedorJpaController(conexion.getBd());
         int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
         String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
 
@@ -444,7 +441,6 @@ public class Coordinador {
         java.util.Date now = null;
         try {
             now = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
-            //System.out.println(now.getDate()+"-"+(now.getMonth()+1)+"-"+(now.getYear()+1900));
         } catch (ParseException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
