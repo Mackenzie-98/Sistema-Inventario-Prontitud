@@ -21,9 +21,9 @@ import javax.persistence.criteria.Root;
  *
  * @author garun
  */
-public class LoteJpaController implements Serializable {
+public class LoteJpaController1 implements Serializable {
 
-    public LoteJpaController(EntityManagerFactory emf) {
+    public LoteJpaController1(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;

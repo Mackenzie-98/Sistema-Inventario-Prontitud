@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "FacturaCompra.findAll", query = "SELECT f FROM FacturaCompra f")
     , @NamedQuery(name = "FacturaCompra.findByIdFactura", query = "SELECT f FROM FacturaCompra f WHERE f.idFactura = :idFactura")
     , @NamedQuery(name = "FacturaCompra.findByFecha", query = "SELECT f FROM FacturaCompra f WHERE f.fecha = :fecha")
-    , @NamedQuery(name = "FacturaCompra.findByDescuento", query = "SELECT f FROM FacturaCompra f WHERE f.descuento = :descuento")})
+    , @NamedQuery(name = "FacturaCompra.findByImporte", query = "SELECT f FROM FacturaCompra f WHERE f.importe = :importe")})
 public class FacturaCompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +50,8 @@ public class FacturaCompra implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Column(name = "descuento")
-    private Long descuento;
+    @Column(name = "importe")
+    private Long importe;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaCompra")
     private List<DetalleCompra> detalleCompraList;
     @JoinColumn(name = "NIT_FK", referencedColumnName = "NIT")
@@ -69,21 +69,7 @@ public class FacturaCompra implements Serializable {
         this.idFactura = idFactura;
         this.fecha = fecha;
     }
-    
-    public FacturaCompra(Integer idFactura, Date fecha, Long descuento) {
-        this.idFactura = idFactura;
-        this.fecha = fecha;
-        this.descuento = descuento;
-    }
-    
-    public String getStringFecha(){
-        String fecha_ = "";
-        if(fecha != null){
-            fecha_ = fecha.getDate() + "-" + (fecha.getMonth()+1) + "-" + (fecha.getYear()+1900);
-        }
-        return fecha_;
-    }
-    
+
     public Integer getIdFactura() {
         return idFactura;
     }
@@ -95,17 +81,17 @@ public class FacturaCompra implements Serializable {
     public Date getFecha() {
         return fecha;
     }
-    
+
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    public Long getDescuento() {
-        return descuento;
+    public Long getImporte() {
+        return importe;
     }
 
-    public void setDescuento(Long descuento) {
-        this.descuento = descuento;
+    public void setImporte(Long importe) {
+        this.importe = importe;
     }
 
     @XmlTransient

@@ -58,13 +58,14 @@ public class Cliente implements Serializable {
 
     public Cliente() {
     }
-    public Cliente(String id, String nombre, Date fecha_nac,String telefono,String correo){
+        public Cliente(String id, String nombre, Date fecha_nac,String telefono,String correo){
         this.identificacion=id;
         this.nombre=nombre;
         this.fechaNacimiento=fecha_nac;
         this.telefono=telefono;
         this.correo=correo;
     }
+
     public Cliente(String identificacion) {
         this.identificacion = identificacion;
     }
@@ -72,6 +73,10 @@ public class Cliente implements Serializable {
     public Cliente(String identificacion, String nombre) {
         this.identificacion = identificacion;
         this.nombre = nombre;
+    }
+
+    public String getIdentificacion() {
+        return identificacion;
     }
     
     public String getStringFecha(){
@@ -81,11 +86,6 @@ public class Cliente implements Serializable {
         }
         return fecha;
     }
-
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
     public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
@@ -155,4 +155,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "Modelo.Cliente[ identificacion=" + identificacion + " ]";
     }
+    
 }

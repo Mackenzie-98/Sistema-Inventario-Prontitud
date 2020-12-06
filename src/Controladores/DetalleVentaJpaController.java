@@ -39,8 +39,8 @@ public class DetalleVentaJpaController implements Serializable {
         if (detalleVenta.getDetalleVentaPK() == null) {
             detalleVenta.setDetalleVentaPK(new DetalleVentaPK());
         }
-        detalleVenta.getDetalleVentaPK().setIdproductoFK(detalleVenta.getProducto().getIdProducto());
         detalleVenta.getDetalleVentaPK().setIdfacturaFK(detalleVenta.getFacturaVenta().getIdFactura());
+        detalleVenta.getDetalleVentaPK().setIdproductoFK(detalleVenta.getProducto().getIdProducto());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -78,8 +78,8 @@ public class DetalleVentaJpaController implements Serializable {
     }
 
     public void edit(DetalleVenta detalleVenta) throws NonexistentEntityException, Exception {
-        detalleVenta.getDetalleVentaPK().setIdproductoFK(detalleVenta.getProducto().getIdProducto());
         detalleVenta.getDetalleVentaPK().setIdfacturaFK(detalleVenta.getFacturaVenta().getIdFactura());
+        detalleVenta.getDetalleVentaPK().setIdproductoFK(detalleVenta.getProducto().getIdProducto());
         EntityManager em = null;
         try {
             em = getEntityManager();

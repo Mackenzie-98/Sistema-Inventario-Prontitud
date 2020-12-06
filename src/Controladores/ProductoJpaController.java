@@ -7,6 +7,7 @@ package Controladores;
 
 import Controladores.exceptions.IllegalOrphanException;
 import Controladores.exceptions.NonexistentEntityException;
+import Controladores.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -17,12 +18,10 @@ import Modelo.DetalleCompra;
 import java.util.ArrayList;
 import java.util.List;
 import Modelo.Devolucion;
-import Modelo.DetalleLote;
 import Modelo.DetalleVenta;
 import Modelo.Producto;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,15 +38,12 @@ public class ProductoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Producto producto) {
+    public void create(Producto producto) throws PreexistingEntityException, Exception {
         if (producto.getDetalleCompraList() == null) {
             producto.setDetalleCompraList(new ArrayList<DetalleCompra>());
         }
         if (producto.getDevolucionList() == null) {
             producto.setDevolucionList(new ArrayList<Devolucion>());
-        }
-        if (producto.getDetalleLoteList() == null) {
-            producto.setDetalleLoteList(new ArrayList<DetalleLote>());
         }
         if (producto.getDetalleVentaList() == null) {
             producto.setDetalleVentaList(new ArrayList<DetalleVenta>());
@@ -73,12 +69,6 @@ public class ProductoJpaController implements Serializable {
                 attachedDevolucionList.add(devolucionListDevolucionToAttach);
             }
             producto.setDevolucionList(attachedDevolucionList);
-            List<DetalleLote> attachedDetalleLoteList = new ArrayList<DetalleLote>();
-            for (DetalleLote detalleLoteListDetalleLoteToAttach : producto.getDetalleLoteList()) {
-                detalleLoteListDetalleLoteToAttach = em.getReference(detalleLoteListDetalleLoteToAttach.getClass(), detalleLoteListDetalleLoteToAttach.getDetalleLotePK());
-                attachedDetalleLoteList.add(detalleLoteListDetalleLoteToAttach);
-            }
-            producto.setDetalleLoteList(attachedDetalleLoteList);
             List<DetalleVenta> attachedDetalleVentaList = new ArrayList<DetalleVenta>();
             for (DetalleVenta detalleVentaListDetalleVentaToAttach : producto.getDetalleVentaList()) {
                 detalleVentaListDetalleVentaToAttach = em.getReference(detalleVentaListDetalleVentaToAttach.getClass(), detalleVentaListDetalleVentaToAttach.getDetalleVentaPK());
@@ -108,15 +98,6 @@ public class ProductoJpaController implements Serializable {
                     oldProductoOfDevolucionListDevolucion = em.merge(oldProductoOfDevolucionListDevolucion);
                 }
             }
-            for (DetalleLote detalleLoteListDetalleLote : producto.getDetalleLoteList()) {
-                Producto oldProductoOfDetalleLoteListDetalleLote = detalleLoteListDetalleLote.getProducto();
-                detalleLoteListDetalleLote.setProducto(producto);
-                detalleLoteListDetalleLote = em.merge(detalleLoteListDetalleLote);
-                if (oldProductoOfDetalleLoteListDetalleLote != null) {
-                    oldProductoOfDetalleLoteListDetalleLote.getDetalleLoteList().remove(detalleLoteListDetalleLote);
-                    oldProductoOfDetalleLoteListDetalleLote = em.merge(oldProductoOfDetalleLoteListDetalleLote);
-                }
-            }
             for (DetalleVenta detalleVentaListDetalleVenta : producto.getDetalleVentaList()) {
                 Producto oldProductoOfDetalleVentaListDetalleVenta = detalleVentaListDetalleVenta.getProducto();
                 detalleVentaListDetalleVenta.setProducto(producto);
@@ -126,11 +107,10 @@ public class ProductoJpaController implements Serializable {
                     oldProductoOfDetalleVentaListDetalleVenta = em.merge(oldProductoOfDetalleVentaListDetalleVenta);
                 }
             }
-            em.getTransaction().commit(); 
+            em.getTransaction().commit();
         } catch (Exception ex) {
             if (findProducto(producto.getIdProducto()) != null) {
-                JOptionPane.showMessageDialog(null, "ERROR: Producto ya existente", "ERROR", JOptionPane.WARNING_MESSAGE);
-                //throw new PreexistingEntityException("Cliente " + cliente + " already exists.", ex);
+                throw new PreexistingEntityException("Producto " + producto + " already exists.", ex);
             }
             throw ex;
         } finally {
@@ -152,8 +132,6 @@ public class ProductoJpaController implements Serializable {
             List<DetalleCompra> detalleCompraListNew = producto.getDetalleCompraList();
             List<Devolucion> devolucionListOld = persistentProducto.getDevolucionList();
             List<Devolucion> devolucionListNew = producto.getDevolucionList();
-            List<DetalleLote> detalleLoteListOld = persistentProducto.getDetalleLoteList();
-            List<DetalleLote> detalleLoteListNew = producto.getDetalleLoteList();
             List<DetalleVenta> detalleVentaListOld = persistentProducto.getDetalleVentaList();
             List<DetalleVenta> detalleVentaListNew = producto.getDetalleVentaList();
             List<String> illegalOrphanMessages = null;
@@ -171,14 +149,6 @@ public class ProductoJpaController implements Serializable {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
                     illegalOrphanMessages.add("You must retain Devolucion " + devolucionListOldDevolucion + " since its producto field is not nullable.");
-                }
-            }
-            for (DetalleLote detalleLoteListOldDetalleLote : detalleLoteListOld) {
-                if (!detalleLoteListNew.contains(detalleLoteListOldDetalleLote)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain DetalleLote " + detalleLoteListOldDetalleLote + " since its producto field is not nullable.");
                 }
             }
             for (DetalleVenta detalleVentaListOldDetalleVenta : detalleVentaListOld) {
@@ -210,13 +180,6 @@ public class ProductoJpaController implements Serializable {
             }
             devolucionListNew = attachedDevolucionListNew;
             producto.setDevolucionList(devolucionListNew);
-            List<DetalleLote> attachedDetalleLoteListNew = new ArrayList<DetalleLote>();
-            for (DetalleLote detalleLoteListNewDetalleLoteToAttach : detalleLoteListNew) {
-                detalleLoteListNewDetalleLoteToAttach = em.getReference(detalleLoteListNewDetalleLoteToAttach.getClass(), detalleLoteListNewDetalleLoteToAttach.getDetalleLotePK());
-                attachedDetalleLoteListNew.add(detalleLoteListNewDetalleLoteToAttach);
-            }
-            detalleLoteListNew = attachedDetalleLoteListNew;
-            producto.setDetalleLoteList(detalleLoteListNew);
             List<DetalleVenta> attachedDetalleVentaListNew = new ArrayList<DetalleVenta>();
             for (DetalleVenta detalleVentaListNewDetalleVentaToAttach : detalleVentaListNew) {
                 detalleVentaListNewDetalleVentaToAttach = em.getReference(detalleVentaListNewDetalleVentaToAttach.getClass(), detalleVentaListNewDetalleVentaToAttach.getDetalleVentaPK());
@@ -255,17 +218,6 @@ public class ProductoJpaController implements Serializable {
                     }
                 }
             }
-            for (DetalleLote detalleLoteListNewDetalleLote : detalleLoteListNew) {
-                if (!detalleLoteListOld.contains(detalleLoteListNewDetalleLote)) {
-                    Producto oldProductoOfDetalleLoteListNewDetalleLote = detalleLoteListNewDetalleLote.getProducto();
-                    detalleLoteListNewDetalleLote.setProducto(producto);
-                    detalleLoteListNewDetalleLote = em.merge(detalleLoteListNewDetalleLote);
-                    if (oldProductoOfDetalleLoteListNewDetalleLote != null && !oldProductoOfDetalleLoteListNewDetalleLote.equals(producto)) {
-                        oldProductoOfDetalleLoteListNewDetalleLote.getDetalleLoteList().remove(detalleLoteListNewDetalleLote);
-                        oldProductoOfDetalleLoteListNewDetalleLote = em.merge(oldProductoOfDetalleLoteListNewDetalleLote);
-                    }
-                }
-            }
             for (DetalleVenta detalleVentaListNewDetalleVenta : detalleVentaListNew) {
                 if (!detalleVentaListOld.contains(detalleVentaListNewDetalleVenta)) {
                     Producto oldProductoOfDetalleVentaListNewDetalleVenta = detalleVentaListNewDetalleVenta.getProducto();
@@ -283,7 +235,7 @@ public class ProductoJpaController implements Serializable {
             if (msg == null || msg.length() == 0) {
                 Integer id = producto.getIdProducto();
                 if (findProducto(id) == null) {
-                    throw new NonexistentEntityException("The producto with nombre " + id + " no longer exists.");
+                    throw new NonexistentEntityException("The producto with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -320,13 +272,6 @@ public class ProductoJpaController implements Serializable {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Producto (" + producto + ") cannot be destroyed since the Devolucion " + devolucionListOrphanCheckDevolucion + " in its devolucionList field has a non-nullable producto field.");
-            }
-            List<DetalleLote> detalleLoteListOrphanCheck = producto.getDetalleLoteList();
-            for (DetalleLote detalleLoteListOrphanCheckDetalleLote : detalleLoteListOrphanCheck) {
-                if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<String>();
-                }
-                illegalOrphanMessages.add("This Producto (" + producto + ") cannot be destroyed since the DetalleLote " + detalleLoteListOrphanCheckDetalleLote + " in its detalleLoteList field has a non-nullable producto field.");
             }
             List<DetalleVenta> detalleVentaListOrphanCheck = producto.getDetalleVentaList();
             for (DetalleVenta detalleVentaListOrphanCheckDetalleVenta : detalleVentaListOrphanCheck) {
@@ -383,7 +328,7 @@ public class ProductoJpaController implements Serializable {
         } finally {
             em.close();
         }
-    } 
+    }
 
     public int getProductoCount() {
         EntityManager em = getEntityManager();

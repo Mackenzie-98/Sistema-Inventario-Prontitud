@@ -39,8 +39,8 @@ public class DetalleCompraJpaController implements Serializable {
         if (detalleCompra.getDetalleCompraPK() == null) {
             detalleCompra.setDetalleCompraPK(new DetalleCompraPK());
         }
-        detalleCompra.getDetalleCompraPK().setIdfacturaFK(detalleCompra.getFacturaCompra().getIdFactura());
         detalleCompra.getDetalleCompraPK().setIdproductoFK(detalleCompra.getProducto().getIdProducto());
+        detalleCompra.getDetalleCompraPK().setIdfacturaFK(detalleCompra.getFacturaCompra().getIdFactura());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -78,8 +78,8 @@ public class DetalleCompraJpaController implements Serializable {
     }
 
     public void edit(DetalleCompra detalleCompra) throws NonexistentEntityException, Exception {
-        detalleCompra.getDetalleCompraPK().setIdfacturaFK(detalleCompra.getFacturaCompra().getIdFactura());
         detalleCompra.getDetalleCompraPK().setIdproductoFK(detalleCompra.getProducto().getIdProducto());
+        detalleCompra.getDetalleCompraPK().setIdfacturaFK(detalleCompra.getFacturaCompra().getIdFactura());
         EntityManager em = null;
         try {
             em = getEntityManager();

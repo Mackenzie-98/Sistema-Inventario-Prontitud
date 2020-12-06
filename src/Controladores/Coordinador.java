@@ -1,5 +1,6 @@
 package Controladores;
 
+import Modelo.Lote;
 import Controladores.exceptions.IllegalOrphanException;
 import Controladores.exceptions.NonexistentEntityException;
 import Modelo.*;
@@ -109,7 +110,6 @@ public class Coordinador {
                 Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
     }
 
     public void agregarProducto() {
@@ -147,23 +147,17 @@ public class Coordinador {
                 CategoriaJpaController categoriaCon = new CategoriaJpaController(conexion.getBd());
                 ProductoJpaController productoCon = new ProductoJpaController(conexion.getBd());
                 LoteJpaController loteCon = new LoteJpaController(conexion.getBd());
-                DetalleLoteJpaController detalleLoteCon = new DetalleLoteJpaController(conexion.getBd());
 
                 //Entidades
                 Categoria categoria = categoriaCon.findCategoria(numCategoria);
-                Producto producto = new Producto(Integer.parseInt(id), nombre, Long.parseLong(precio), Integer.parseInt(stock), categoria);
-                Lote lote = new Lote(Integer.parseInt(numLote), this.obtenerFecha(fecha), lab);
-                DetalleLote detalleLote = new DetalleLote(new DetalleLotePK(), cantidad);
+                Lote lote = new Lote(Integer.parseInt(numLote), this.obtenerFecha(fecha), lab,Integer.parseInt(cantidad));
+                Producto producto = new Producto(Integer.parseInt(id), nombre, Long.parseLong(precio), Integer.parseInt(stock), categoria,loteCon.findLote(Integer.parseInt(numLote)));
 
                 //Creacion
                 if (productoCon.findProducto(Integer.parseInt(id)) == null) {
                     productoCon.create(producto);
                 }
                 loteCon.create(lote);
-                detalleLote.setProducto(producto);
-                detalleLote.setLote(lote);
-                detalleLoteCon.create(detalleLote);
-
                 //Fin
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Producto", JOptionPane.INFORMATION_MESSAGE);
                 agregarProductoVista.limpiar();

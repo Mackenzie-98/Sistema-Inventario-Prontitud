@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,8 +62,7 @@ public class ClienteJpaController implements Serializable {
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findCliente(cliente.getIdentificacion()) != null) {
-                JOptionPane.showMessageDialog(null, "ERROR: Cliente ya existente", "ERROR", JOptionPane.WARNING_MESSAGE);
-                //throw new PreexistingEntityException("Cliente " + cliente + " already exists.", ex);
+                throw new PreexistingEntityException("Cliente " + cliente + " already exists.", ex);
             }
             throw ex;
         } finally {

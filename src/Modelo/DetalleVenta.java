@@ -29,7 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DetalleVenta.findByIdfacturaFK", query = "SELECT d FROM DetalleVenta d WHERE d.detalleVentaPK.idfacturaFK = :idfacturaFK")
     , @NamedQuery(name = "DetalleVenta.findByIdproductoFK", query = "SELECT d FROM DetalleVenta d WHERE d.detalleVentaPK.idproductoFK = :idproductoFK")
     , @NamedQuery(name = "DetalleVenta.findByCantidad", query = "SELECT d FROM DetalleVenta d WHERE d.cantidad = :cantidad")
-    , @NamedQuery(name = "DetalleVenta.findByPrecioVenta", query = "SELECT d FROM DetalleVenta d WHERE d.precioVenta = :precioVenta")})
+    , @NamedQuery(name = "DetalleVenta.findByPrecioUnitario", query = "SELECT d FROM DetalleVenta d WHERE d.precioUnitario = :precioUnitario")
+    , @NamedQuery(name = "DetalleVenta.findByDescuento", query = "SELECT d FROM DetalleVenta d WHERE d.descuento = :descuento")
+    , @NamedQuery(name = "DetalleVenta.findByDetalleVentacol", query = "SELECT d FROM DetalleVenta d WHERE d.detalleVentacol = :detalleVentacol")})
 public class DetalleVenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +41,12 @@ public class DetalleVenta implements Serializable {
     @Column(name = "cantidad")
     private int cantidad;
     @Basic(optional = false)
-    @Column(name = "precio_venta")
-    private long precioVenta;
+    @Column(name = "precio_unitario")
+    private long precioUnitario;
+    @Column(name = "descuento")
+    private Long descuento;
+    @Column(name = "Detalle_Ventacol")
+    private String detalleVentacol;
     @JoinColumn(name = "id_factura_FK", referencedColumnName = "id_factura", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private FacturaVenta facturaVenta;
@@ -55,10 +61,10 @@ public class DetalleVenta implements Serializable {
         this.detalleVentaPK = detalleVentaPK;
     }
 
-    public DetalleVenta(DetalleVentaPK detalleVentaPK, int cantidad, long precioVenta) {
+    public DetalleVenta(DetalleVentaPK detalleVentaPK, int cantidad, long precioUnitario) {
         this.detalleVentaPK = detalleVentaPK;
         this.cantidad = cantidad;
-        this.precioVenta = precioVenta;
+        this.precioUnitario = precioUnitario;
     }
 
     public DetalleVenta(int idfacturaFK, int idproductoFK) {
@@ -81,12 +87,28 @@ public class DetalleVenta implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public long getPrecioVenta() {
-        return precioVenta;
+    public long getPrecioUnitario() {
+        return precioUnitario;
     }
 
-    public void setPrecioVenta(long precioVenta) {
-        this.precioVenta = precioVenta;
+    public void setPrecioUnitario(long precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+    public Long getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Long descuento) {
+        this.descuento = descuento;
+    }
+
+    public String getDetalleVentacol() {
+        return detalleVentacol;
+    }
+
+    public void setDetalleVentacol(String detalleVentacol) {
+        this.detalleVentacol = detalleVentacol;
     }
 
     public FacturaVenta getFacturaVenta() {

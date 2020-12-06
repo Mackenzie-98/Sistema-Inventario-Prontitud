@@ -39,8 +39,8 @@ public class DevolucionJpaController implements Serializable {
         if (devolucion.getDevolucionPK() == null) {
             devolucion.setDevolucionPK(new DevolucionPK());
         }
-        devolucion.getDevolucionPK().setIdFactura(devolucion.getFacturaVenta().getIdFactura());
         devolucion.getDevolucionPK().setIdProducto(devolucion.getProducto().getIdProducto());
+        devolucion.getDevolucionPK().setIdFactura(devolucion.getFacturaVenta().getIdFactura());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -78,8 +78,8 @@ public class DevolucionJpaController implements Serializable {
     }
 
     public void edit(Devolucion devolucion) throws NonexistentEntityException, Exception {
-        devolucion.getDevolucionPK().setIdFactura(devolucion.getFacturaVenta().getIdFactura());
         devolucion.getDevolucionPK().setIdProducto(devolucion.getProducto().getIdProducto());
+        devolucion.getDevolucionPK().setIdFactura(devolucion.getFacturaVenta().getIdFactura());
         EntityManager em = null;
         try {
             em = getEntityManager();

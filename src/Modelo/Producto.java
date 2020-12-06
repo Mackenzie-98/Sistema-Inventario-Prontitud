@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -40,7 +38,6 @@ public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_producto")
     private Integer idProducto;
@@ -56,11 +53,12 @@ public class Producto implements Serializable {
     private List<DetalleCompra> detalleCompraList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private List<Devolucion> devolucionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private List<DetalleLote> detalleLoteList;
     @JoinColumn(name = "id_categoria_FK", referencedColumnName = "id_categoria")
     @ManyToOne(optional = false)
     private Categoria idcategoriaFK;
+    @JoinColumn(name = "id_lote_FK", referencedColumnName = "id_lote")
+    @ManyToOne(optional = false)
+    private Lote idloteFK;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private List<DetalleVenta> detalleVentaList;
 
@@ -70,15 +68,21 @@ public class Producto implements Serializable {
     public Producto(Integer idProducto) {
         this.idProducto = idProducto;
     }
-
-    public Producto(Integer idProducto, String nombre, long precioUnitario, Integer stock, Categoria categoria) {
+        public Producto(Integer idProducto, String nombre, long precioUnitario, Integer stock, Categoria categoria,Lote lote) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
         this.stockMinimo = stock;
         this.idcategoriaFK = categoria;
+        this.idloteFK=lote;
     }
-    
+
+    public Producto(Integer idProducto, String nombre, long precioUnitario) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.precioUnitario = precioUnitario;
+    }
+
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -129,21 +133,20 @@ public class Producto implements Serializable {
         this.devolucionList = devolucionList;
     }
 
-    @XmlTransient
-    public List<DetalleLote> getDetalleLoteList() {
-        return detalleLoteList;
-    }
-
-    public void setDetalleLoteList(List<DetalleLote> detalleLoteList) {
-        this.detalleLoteList = detalleLoteList;
-    }
-
     public Categoria getIdcategoriaFK() {
         return idcategoriaFK;
     }
 
     public void setIdcategoriaFK(Categoria idcategoriaFK) {
         this.idcategoriaFK = idcategoriaFK;
+    }
+
+    public Lote getIdloteFK() {
+        return idloteFK;
+    }
+
+    public void setIdloteFK(Lote idloteFK) {
+        this.idloteFK = idloteFK;
     }
 
     @XmlTransient

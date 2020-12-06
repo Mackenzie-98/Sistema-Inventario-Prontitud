@@ -7,22 +7,16 @@ package Modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,12 +29,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Lote.findAll", query = "SELECT l FROM Lote l")
     , @NamedQuery(name = "Lote.findByIdLote", query = "SELECT l FROM Lote l WHERE l.idLote = :idLote")
     , @NamedQuery(name = "Lote.findByFechaVencimiento", query = "SELECT l FROM Lote l WHERE l.fechaVencimiento = :fechaVencimiento")
-    , @NamedQuery(name = "Lote.findByLaboratorio", query = "SELECT l FROM Lote l WHERE l.laboratorio = :laboratorio")})
+    , @NamedQuery(name = "Lote.findByLaboratorio", query = "SELECT l FROM Lote l WHERE l.laboratorio = :laboratorio")
+    , @NamedQuery(name = "Lote.findByCantidad", query = "SELECT l FROM Lote l WHERE l.cantidad = :cantidad")})
 public class Lote implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_lote")
     private Integer idLote;
@@ -51,8 +45,9 @@ public class Lote implements Serializable {
     @Basic(optional = false)
     @Column(name = "laboratorio")
     private String laboratorio;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote")
-    private List<DetalleLote> detalleLoteList;
+    @Basic(optional = false)
+    @Column(name = "cantidad")
+    private int cantidad;
 
     public Lote() {
     }
@@ -61,20 +56,17 @@ public class Lote implements Serializable {
         this.idLote = idLote;
     }
 
-    public Lote(Integer idLote, Date fechaVencimiento, String laboratorio) {
+    public Lote(Integer idLote, Date fechaVencimiento, String laboratorio, int cantidad) {
         this.idLote = idLote;
         this.fechaVencimiento = fechaVencimiento;
         this.laboratorio = laboratorio;
+        this.cantidad = cantidad;
     }
 
     public Integer getIdLote() {
         return idLote;
     }
-    
-    public String getStringFecha(){
-        return fechaVencimiento.getDate()+"-"+(fechaVencimiento.getMonth()+1)+"-"+(fechaVencimiento.getYear()+1900);
-    }
-    
+
     public void setIdLote(Integer idLote) {
         this.idLote = idLote;
     }
@@ -95,13 +87,12 @@ public class Lote implements Serializable {
         this.laboratorio = laboratorio;
     }
 
-    @XmlTransient
-    public List<DetalleLote> getDetalleLoteList() {
-        return detalleLoteList;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setDetalleLoteList(List<DetalleLote> detalleLoteList) {
-        this.detalleLoteList = detalleLoteList;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     @Override
@@ -126,7 +117,7 @@ public class Lote implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.Lote[ idLote=" + idLote + " ]";
+        return "Controladores.Lote[ idLote=" + idLote + " ]";
     }
     
 }

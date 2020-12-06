@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DetalleCompra.findByIdproductoFK", query = "SELECT d FROM DetalleCompra d WHERE d.detalleCompraPK.idproductoFK = :idproductoFK")
     , @NamedQuery(name = "DetalleCompra.findByIdfacturaFK", query = "SELECT d FROM DetalleCompra d WHERE d.detalleCompraPK.idfacturaFK = :idfacturaFK")
     , @NamedQuery(name = "DetalleCompra.findByCantidad", query = "SELECT d FROM DetalleCompra d WHERE d.cantidad = :cantidad")
-    , @NamedQuery(name = "DetalleCompra.findByPrecioCompra", query = "SELECT d FROM DetalleCompra d WHERE d.precioCompra = :precioCompra")})
+    , @NamedQuery(name = "DetalleCompra.findByPrecioUnitario", query = "SELECT d FROM DetalleCompra d WHERE d.precioUnitario = :precioUnitario")
+    , @NamedQuery(name = "DetalleCompra.findByDescuento", query = "SELECT d FROM DetalleCompra d WHERE d.descuento = :descuento")})
 public class DetalleCompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +40,10 @@ public class DetalleCompra implements Serializable {
     @Column(name = "cantidad")
     private int cantidad;
     @Basic(optional = false)
-    @Column(name = "precio_compra")
-    private long precioCompra;
+    @Column(name = "precio_unitario")
+    private long precioUnitario;
+    @Column(name = "descuento")
+    private Long descuento;
     @JoinColumn(name = "id_factura_FK", referencedColumnName = "id_factura", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private FacturaCompra facturaCompra;
@@ -55,10 +58,10 @@ public class DetalleCompra implements Serializable {
         this.detalleCompraPK = detalleCompraPK;
     }
 
-    public DetalleCompra(DetalleCompraPK detalleCompraPK, int cantidad, long precioCompra) {
+    public DetalleCompra(DetalleCompraPK detalleCompraPK, int cantidad, long precioUnitario) {
         this.detalleCompraPK = detalleCompraPK;
         this.cantidad = cantidad;
-        this.precioCompra = precioCompra;
+        this.precioUnitario = precioUnitario;
     }
 
     public DetalleCompra(int idproductoFK, int idfacturaFK) {
@@ -81,12 +84,20 @@ public class DetalleCompra implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public long getPrecioCompra() {
-        return precioCompra;
+    public long getPrecioUnitario() {
+        return precioUnitario;
     }
 
-    public void setPrecioCompra(long precioCompra) {
-        this.precioCompra = precioCompra;
+    public void setPrecioUnitario(long precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+    public Long getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Long descuento) {
+        this.descuento = descuento;
     }
 
     public FacturaCompra getFacturaCompra() {

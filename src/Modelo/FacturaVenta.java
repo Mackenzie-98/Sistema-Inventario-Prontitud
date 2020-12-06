@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "FacturaVenta.findAll", query = "SELECT f FROM FacturaVenta f")
     , @NamedQuery(name = "FacturaVenta.findByIdFactura", query = "SELECT f FROM FacturaVenta f WHERE f.idFactura = :idFactura")
     , @NamedQuery(name = "FacturaVenta.findByFecha", query = "SELECT f FROM FacturaVenta f WHERE f.fecha = :fecha")
-    , @NamedQuery(name = "FacturaVenta.findByDescuento", query = "SELECT f FROM FacturaVenta f WHERE f.descuento = :descuento")})
+    , @NamedQuery(name = "FacturaVenta.findByImporte", query = "SELECT f FROM FacturaVenta f WHERE f.importe = :importe")})
 public class FacturaVenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +50,8 @@ public class FacturaVenta implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Column(name = "descuento")
-    private Long descuento;
+    @Column(name = "importe")
+    private Long importe;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaVenta")
     private List<Devolucion> devolucionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaVenta")
@@ -71,14 +71,7 @@ public class FacturaVenta implements Serializable {
         this.idFactura = idFactura;
         this.fecha = fecha;
     }
-    
-    public String getStringFecha(){
-        String fecha_ = "";
-        if(fecha != null){
-            fecha_ = fecha.getDate() + "-" + (fecha.getMonth()+1) + "-" + (fecha.getYear()+1900);
-        }
-        return fecha_;
-    }
+
     public Integer getIdFactura() {
         return idFactura;
     }
@@ -95,12 +88,12 @@ public class FacturaVenta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Long getDescuento() {
-        return descuento;
+    public Long getImporte() {
+        return importe;
     }
 
-    public void setDescuento(Long descuento) {
-        this.descuento = descuento;
+    public void setImporte(Long importe) {
+        this.importe = importe;
     }
 
     @XmlTransient

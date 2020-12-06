@@ -81,22 +81,15 @@ public class ProductoVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código", "Nombre", "Cantidad", "Precio Venta"
+                "Cód. Producto", "Cod. Lote", "Nombre", "Categoría", "Precio Unitario"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, false
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         tabla_producto.getTableHeader().setReorderingAllowed(false);
