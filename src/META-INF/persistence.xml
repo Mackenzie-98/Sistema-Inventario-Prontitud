@@ -4,7 +4,6 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Modelo.FacturaVenta</class>
     <class>Modelo.Devolucion</class>
-    <class>Modelo.DetalleVenta</class>
     <class>Modelo.Categoria</class>
     <class>Modelo.DetalleLote</class>
     <class>Modelo.Cliente</class>
@@ -13,6 +12,7 @@
     <class>Modelo.DetalleCompra</class>
     <class>Modelo.Lote</class>
     <class>Modelo.FacturaCompra</class>
+    <class>Modelo.DetalleVenta</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-prontitud.chjhoyymvqtv.us-east-1.rds.amazonaws.com:3306/Prontitud?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="admin"/>

@@ -1,5 +1,6 @@
 package Controladores;
 
+import Modelo.DetalleVenta;
 import Modelo.Lote;
 import Controladores.exceptions.IllegalOrphanException;
 import Controladores.exceptions.NonexistentEntityException;

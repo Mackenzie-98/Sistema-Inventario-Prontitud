@@ -30,8 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DetalleVenta.findByIdproductoFK", query = "SELECT d FROM DetalleVenta d WHERE d.detalleVentaPK.idproductoFK = :idproductoFK")
     , @NamedQuery(name = "DetalleVenta.findByCantidad", query = "SELECT d FROM DetalleVenta d WHERE d.cantidad = :cantidad")
     , @NamedQuery(name = "DetalleVenta.findByPrecioUnitario", query = "SELECT d FROM DetalleVenta d WHERE d.precioUnitario = :precioUnitario")
-    , @NamedQuery(name = "DetalleVenta.findByDescuento", query = "SELECT d FROM DetalleVenta d WHERE d.descuento = :descuento")
-    , @NamedQuery(name = "DetalleVenta.findByDetalleVentacol", query = "SELECT d FROM DetalleVenta d WHERE d.detalleVentacol = :detalleVentacol")})
+    , @NamedQuery(name = "DetalleVenta.findByDescuento", query = "SELECT d FROM DetalleVenta d WHERE d.descuento = :descuento")})
 public class DetalleVenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +44,6 @@ public class DetalleVenta implements Serializable {
     private long precioUnitario;
     @Column(name = "descuento")
     private Long descuento;
-    @Column(name = "Detalle_Ventacol")
-    private String detalleVentacol;
     @JoinColumn(name = "id_factura_FK", referencedColumnName = "id_factura", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private FacturaVenta facturaVenta;
@@ -101,14 +98,6 @@ public class DetalleVenta implements Serializable {
 
     public void setDescuento(Long descuento) {
         this.descuento = descuento;
-    }
-
-    public String getDetalleVentacol() {
-        return detalleVentacol;
-    }
-
-    public void setDetalleVentacol(String detalleVentacol) {
-        this.detalleVentacol = detalleVentacol;
     }
 
     public FacturaVenta getFacturaVenta() {
