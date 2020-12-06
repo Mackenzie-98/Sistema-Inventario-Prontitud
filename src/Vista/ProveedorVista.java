@@ -129,6 +129,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
 
         cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_modificar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
         cmd_modificar.setText("Modificar");
         cmd_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,6 +144,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
 
         cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         cmd_eliminar.setText("Eliminar");
         cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,7 +177,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_modificarMouseEntered
 
     private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
-        cmd_modificar.setBackground(Color.DARK_GRAY);
+        cmd_modificar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_modificarMouseExited
 
     private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
@@ -183,7 +185,7 @@ public class ProveedorVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_eliminarMouseEntered
 
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
+        cmd_eliminar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_eliminarMouseExited
 
     public JTextField getTxt_filtro() {

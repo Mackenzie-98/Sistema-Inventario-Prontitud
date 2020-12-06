@@ -81,11 +81,11 @@ public class ProductoVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Cód. Producto", "Cod. Lote", "Nombre", "Categoría", "Precio Unitario"
+                "Cod. Producto", "Cod. Lote", "Nombre", "Precio Unitario"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -95,7 +95,7 @@ public class ProductoVista extends javax.swing.JInternalFrame {
         tabla_producto.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_producto);
         if (tabla_producto.getColumnModel().getColumnCount() > 0) {
-            tabla_producto.getColumnModel().getColumn(4).setResizable(false);
+            tabla_producto.getColumnModel().getColumn(3).setResizable(false);
         }
 
         lbl_id.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N

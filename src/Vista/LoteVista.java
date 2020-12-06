@@ -84,11 +84,11 @@ public class LoteVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "No de lote", "Cantidad", "Fecha de vencimiento", "Laboratorio"
+                "Cod. Lote", "Cantidad", "Fecha de vencimiento", "Laboratorio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

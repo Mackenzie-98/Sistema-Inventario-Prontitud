@@ -1,5 +1,6 @@
 package Controladores;
 
+import Modelo.DetalleVenta;
 import Modelo.Lote;
 import Controladores.exceptions.IllegalOrphanException;
 import Controladores.exceptions.NonexistentEntityException;
@@ -310,24 +311,17 @@ public class Coordinador {
      * METODOS DE MOSTRAR
      */
     public void verProductos() {
-        try {
-            DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
-            Statement st = conexion.getConexionSQL().createStatement();
-            ResultSet rs = st.executeQuery("SELECT p.id_producto, p.nombre, SUM(dl.cantidad), p.precio_unitario FROM Producto p\n"
-                    + "LEFT JOIN Detalle_Lote dl on dl.id_producto_FK=p.id_producto\n"
-                    + "GROUP BY p.id_producto, p.nombre,p.precio_unitario;");
+        DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
+        List<Producto> productos = productoCon.findProductoEntities();
 
-            while (rs.next()) {
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
-            }
-
-            productoVista.getTabla_producto().setModel(model);
-            inicio.getEscritorio().add(productoVista);
-            productoVista.show();
-            productoVista.toFront();
-        } catch (SQLException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        for (Producto x : productos) {
+            model.addRow(new Object[]{x.getIdProducto(), x.getIdloteFK().getIdLote(), x.getNombre(), x.getPrecioUnitario()});
         }
+
+        productoVista.getTabla_producto().setModel(model);
+        inicio.getEscritorio().add(productoVista);
+        productoVista.show();
+        productoVista.toFront();
 
     }
 
@@ -374,34 +368,29 @@ public class Coordinador {
     }
 
     public void verLotes() {
-        try {
-            DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
-            Statement st = conexion.getConexionSQL().createStatement();
-            ResultSet rs = st.executeQuery("SELECT P.id_producto, L.id_lote, P.nombre, DL.cantidad, L.fecha_vencimiento, L.laboratorio FROM Producto P\n"
-                    + "INNER JOIN Detalle_Lote DL on DL.id_producto_FK=P.id_producto\n"
-                    + "INNER JOIN Lote L on L.id_lote=DL.id_lote_FK;");
+        DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
+        List<Lote> lotes=loteCon.findLoteEntities();
 
-            while (rs.next()) {
-                model.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)});
-            }
-
-            loteVista.getTabla_lote().setModel(model);
-            inicio.getEscritorio().add(loteVista);
-            loteVista.show();
-            loteVista.toFront();
-        } catch (SQLException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        for (Lote x : lotes) {
+            model.addRow(new Object[]{x.getIdLote(),x.getCantidad(),x.getStringFecha(),x.getLaboratorio()});
         }
+
+        loteVista.getTabla_lote().setModel(model);
+        inicio.getEscritorio().add(loteVista);
+        loteVista.show();
+        loteVista.toFront();
+
     }
-    
+
     public void verCompras() {
         DefaultTableModel model = (DefaultTableModel) compraVista.getTabla_compra().getModel();
         List<DetalleCompra> compras = detalleCompraCon.findDetalleCompraEntities();
         long descuento = 0;
         for (DetalleCompra x : compras) {
-            if (x.getDescuento() != null)
-                descuento = x.getDescuento() * x.getPrecioUnitario();            
-            model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(),x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+            if (x.getDescuento() != null) {
+                descuento = x.getDescuento() * x.getPrecioUnitario();
+            }
+            model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
         }
 
         compraVista.getTabla_compra().setModel(model);
@@ -409,8 +398,8 @@ public class Coordinador {
         compraVista.show();
         compraVista.toFront();
     }
-    
-     public void verVentas() {
+
+    public void verVentas() {
         DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
         List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
         long descuento = 0;
@@ -419,7 +408,7 @@ public class Coordinador {
             if (x.getDescuento() != null) {
                 descuento = x.getDescuento() * x.getPrecioUnitario();
             }
-            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(),x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
         }
 
         ventaVista.getTabla_venta().setModel(model);
@@ -481,7 +470,7 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * METODOS DE ACTUALIZACION
      */
@@ -501,5 +490,5 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return now;
-    }    
+    }
 }
