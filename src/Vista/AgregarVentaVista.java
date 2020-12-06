@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,17 +17,27 @@ import javax.swing.JTextField;
  */
 public class AgregarVentaVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form RegistrarVenta
-     */
+    public static Coordinador coordinador = new Coordinador();
+
     public AgregarVentaVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
+        this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+
+    public AgregarVentaVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
     }
 
     /**
@@ -227,23 +238,23 @@ public class AgregarVentaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_registrarMouseEntered
 
     private void txt_fechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fechaMouseClicked
-       this.getTxt_fecha().setText("");
+        this.getTxt_fecha().setText("");
     }//GEN-LAST:event_txt_fechaMouseClicked
 
     private void txt_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_loteActionPerformed
-    
-    public void limpiar(){
+
+    public void limpiar() {
         this.getTxt_cant().setText("");
         this.getTxt_dto().setText("");
         this.getTxt_fecha().setText("");
         this.getTxt_id_cliente().setText("");
         this.getTxt_precio().setText("");
         this.getTxt_nombre_prod().setText("");
-        
+
     }
-    
+
     public JTextField getTxt_cant() {
         return txt_cant;
     }

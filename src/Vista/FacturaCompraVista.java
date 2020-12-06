@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,17 +16,27 @@ import java.awt.Dimension;
  */
 public class FacturaCompraVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FacturaCompra
-     */
+    public static Coordinador coordinador = new Coordinador();
+
     public FacturaCompraVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
+        this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+
+    public FacturaCompraVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true);
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
     }
 
     /**
@@ -143,7 +154,7 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_modificarMouseEntered
 
     private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
-        cmd_modificar.setBackground(new Color(0,51,204));
+        cmd_modificar.setBackground(new Color(0, 51, 204));
     }//GEN-LAST:event_cmd_modificarMouseExited
 
     private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
@@ -151,7 +162,7 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_eliminarMouseEntered
 
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(new Color(0,51,204));
+        cmd_eliminar.setBackground(new Color(0, 51, 204));
     }//GEN-LAST:event_cmd_eliminarMouseExited
 
 

@@ -16,14 +16,19 @@ import javax.swing.ImageIcon;
  */
 public class LoginVista extends javax.swing.JFrame {
 
-    Coordinador coordinador=new Coordinador();
+    public static Coordinador coordinador=new Coordinador();
 
 
     public LoginVista() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_login.png")).getImage());
         this.setTitle("Drogueria prontitud - Inicio de sesión");
-        
+    }
+        public LoginVista(Coordinador coordinador) {
+        this.coordinador=coordinador;
+        initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_login.png")).getImage());
+        this.setTitle("Drogueria prontitud - Inicio de sesión");
     }
 
     /** This method is called from within the constructor to

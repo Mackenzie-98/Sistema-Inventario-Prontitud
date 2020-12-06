@@ -8,13 +8,19 @@ package Vista;
  *
  * @author Genesis Vargas
  */
+import Controladores.Coordinador;
 import java.awt.Color;
 public class FacturaVentaVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FacturaVenta
      */
+    public static Coordinador coordinador=new Coordinador();
     public FacturaVentaVista() {
+        initComponents();
+    }
+    public FacturaVentaVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
         initComponents();
     }
 

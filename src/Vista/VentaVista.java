@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,10 +16,18 @@ import java.awt.Dimension;
  */
 public class VentaVista extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Venta
-     */
+    public static Coordinador coordinador=new Coordinador();
     public VentaVista() {
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true); 
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);
+    }
+        public VentaVista(Coordinador coordinador) {
+            this.coordinador=coordinador;
         initComponents();
         this.setResizable(false);
         this.setVisible(true); 
