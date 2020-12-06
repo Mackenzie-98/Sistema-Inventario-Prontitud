@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,6 +21,8 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
     /**
      * Creates new form RegistrarCompra
      */
+    public static Coordinador coordinador;
+    
     public AgregarCompraVista() {
         initComponents();
         this.setResizable(false);
@@ -27,8 +30,18 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-           (desktopSize.height- jInternalFrameSize.height)/2);
+           (desktopSize.height- jInternalFrameSize.height)/2);    
+    }
     
+    public AgregarCompraVista(Coordinador coordinador) {
+        this.coordinador = coordinador;
+        initComponents();
+        this.setResizable(false);
+        this.setVisible(true); 
+        Dimension desktopSize = escritorio.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+           (desktopSize.height- jInternalFrameSize.height)/2);    
     }
 
     /**
@@ -190,7 +203,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
 
         lbl_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_prod.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_prod.setText("Nombre producto");
+        lbl_prod.setText("Id producto:");
         jPanel1.add(lbl_prod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 120, 22));
 
         txt_nombre_prod.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
@@ -204,7 +217,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
 
         lbl_lote.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_lote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_lote.setText("Lote");
+        lbl_lote.setText("Lote:");
         jPanel1.add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 60, 22));
 
         txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
@@ -242,20 +255,7 @@ public class AgregarCompraVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_fechaActionPerformed
 
     private void cmd_reg_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_reg_cActionPerformed
-        
-
-
-        if ("".equals(this.txt_nit.getText()) || "".equals(this.txt_nombre_prod.getText()) || "".equals(this.txt_cant.getText()) || "".equals(this.txt_dto.getText())
-                || "".equals(this.txt_lote.getText())|| "".equals(this.txt_precio_c.getText()) || "".equals(this.txt_fecha.getText())) {
-            JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese todos los datos", "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Registrar producto", JOptionPane.INFORMATION_MESSAGE);
-            CompraVista ver_ventana = new CompraVista();
-            escritorio.add(ver_ventana);
-            this.setVisible(false);
-            ver_ventana.show(); 
-
-        }
+        coordinador.agegarCompra();
     }//GEN-LAST:event_cmd_reg_cActionPerformed
 
     private void txt_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loteActionPerformed

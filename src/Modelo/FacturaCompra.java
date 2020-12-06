@@ -70,6 +70,12 @@ public class FacturaCompra implements Serializable {
         this.fecha = fecha;
     }
     
+    public FacturaCompra(Integer idFactura, Date fecha, Long descuento) {
+        this.idFactura = idFactura;
+        this.fecha = fecha;
+        this.descuento = descuento;
+    }
+    
     public String getStringFecha(){
         String fecha_ = "";
         if(fecha != null){
