@@ -41,7 +41,6 @@ public class VentaVista extends javax.swing.JInternalFrame {
         tabla_venta = new javax.swing.JTable();
         lbl_filtro = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         cmd_modificar = new javax.swing.JButton();
         cmd_eliminar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -61,11 +60,11 @@ public class VentaVista extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Cod. Factura", "Cod. Producto", "Nombre producto", "Nombre de cliente", "Cantidad", "Fecha ", "Precio", "Descuento", "Total"
+                "Cod. Factura", "Cod. Producto", "Nombre producto", "No. Lote", "Nombre de cliente", "Cantidad", "Fecha ", "Precio", "Descuento", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -91,11 +90,9 @@ public class VentaVista extends javax.swing.JInternalFrame {
         txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 120, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 370, 800, -1));
-
         cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_modificar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
         cmd_modificar.setText("Modificar");
         cmd_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,6 +107,7 @@ public class VentaVista extends javax.swing.JInternalFrame {
 
         cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
         cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         cmd_eliminar.setText("Eliminar");
         cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,8 +131,8 @@ public class VentaVista extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 770, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 380, 800, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_abajoLL.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 360, 780, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,7 +142,7 @@ public class VentaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_modificarMouseEntered
 
     private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
-        cmd_modificar.setBackground(Color.DARK_GRAY);
+        cmd_modificar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_modificarMouseExited
 
     private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
@@ -152,14 +150,13 @@ public class VentaVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_eliminarMouseEntered
 
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
+        cmd_eliminar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_eliminarMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmd_eliminar;
     private javax.swing.JButton cmd_modificar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
