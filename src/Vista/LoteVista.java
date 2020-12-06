@@ -68,11 +68,13 @@ public class LoteVista extends javax.swing.JInternalFrame {
         cmd_modificar = new javax.swing.JButton();
         cmd_eliminar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setTitle("Tabla de lotes");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_ver_lot.png"))); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabla_lote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         tabla_lote.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_lote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,10 +93,11 @@ public class LoteVista extends javax.swing.JInternalFrame {
             }
         });
         tabla_lote.setEnabled(false);
+        tabla_lote.setSelectionBackground(new java.awt.Color(153, 204, 255));
         tabla_lote.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_lote);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 163, 748, 207));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 730, 200));
 
         lbl_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         lbl_filtro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
