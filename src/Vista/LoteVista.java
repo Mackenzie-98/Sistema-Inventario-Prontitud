@@ -36,7 +36,6 @@ public class LoteVista extends javax.swing.JInternalFrame {
         public LoteVista(Coordinador coordinador) {
         this.coordinador=coordinador;
         initComponents();
-        this.setSize(784,430);
         this.setResizable(false);
         this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
@@ -108,7 +107,8 @@ public class LoteVista extends javax.swing.JInternalFrame {
         getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 120, -1));
 
         cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
-        cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_modificar.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
+        cmd_modificar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_buscar_prov.png"))); // NOI18N
         cmd_modificar.setText("Modificar");
         cmd_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,10 +119,11 @@ public class LoteVista extends javax.swing.JInternalFrame {
                 cmd_modificarMouseExited(evt);
             }
         });
-        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 120, 23));
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 130, 23));
 
         cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
-        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
+        cmd_eliminar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
         cmd_eliminar.setText("Eliminar");
         cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,7 +134,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
                 cmd_eliminarMouseExited(evt);
             }
         });
-        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 23));
+        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 130, 23));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,7 +144,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_modificarMouseEntered
 
     private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
-        cmd_modificar.setBackground(Color.DARK_GRAY);
+        cmd_modificar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_modificarMouseExited
 
     private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
@@ -151,7 +152,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_eliminarMouseEntered
 
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
+        cmd_eliminar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_eliminarMouseExited
     
     TableRowSorter trs;     

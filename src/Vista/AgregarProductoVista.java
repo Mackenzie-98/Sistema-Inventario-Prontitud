@@ -7,6 +7,7 @@ package Vista;
 
 import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -135,7 +136,7 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
         getContentPane().add(cbx_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 123, -1));
 
         cmd_agregar.setBackground(new java.awt.Color(0, 51, 204));
-        cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        cmd_agregar.setFont(new java.awt.Font("Microsoft YaHei Light", 1, 14)); // NOI18N
         cmd_agregar.setForeground(new java.awt.Color(255, 255, 255));
         cmd_agregar.setText("Agregar");
         cmd_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -270,11 +271,11 @@ public class AgregarProductoVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_agregarActionPerformed
 
     private void cmd_agregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_agregarMouseExited
-        // TODO add your handling code here:
+         cmd_agregar.setBackground(new Color(0, 51, 204));
     }//GEN-LAST:event_cmd_agregarMouseExited
 
     private void cmd_agregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_agregarMouseEntered
-        // TODO add your handling code here:
+        cmd_agregar.setBackground(Color.DARK_GRAY);
     }//GEN-LAST:event_cmd_agregarMouseEntered
 
     private void cmd_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_agregarMouseClicked
