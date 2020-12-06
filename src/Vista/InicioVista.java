@@ -82,16 +82,13 @@ public class InicioVista extends javax.swing.JFrame {
         jmi_mostrar_prod = new javax.swing.JMenuItem();
         jmi_mostrar_lotes = new javax.swing.JMenuItem();
         jmi_agg_prod = new javax.swing.JMenuItem();
-        jmi_eliminar_prod = new javax.swing.JMenuItem();
         jm_prov = new javax.swing.JMenu();
         jmi_mostrar_prov = new javax.swing.JMenuItem();
         jmi_agg_prov = new javax.swing.JMenuItem();
-        jmi_eliminar_prov = new javax.swing.JMenuItem();
         jm_cliente = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmi_mostrar_clientes = new javax.swing.JMenuItem();
         jmi_agg_cliente = new javax.swing.JMenuItem();
-        jmi_eliminar_cliente = new javax.swing.JMenuItem();
         jm_registrar = new javax.swing.JMenu();
         jmi_mostrar_c = new javax.swing.JMenuItem();
         jmi_factura_c = new javax.swing.JMenuItem();
@@ -103,7 +100,6 @@ public class InicioVista extends javax.swing.JFrame {
         jm_dev = new javax.swing.JMenu();
         jmi_mostrar_dev = new javax.swing.JMenuItem();
         jmi_reg_dev = new javax.swing.JMenuItem();
-        jmi_eliminar_dev = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,17 +159,6 @@ public class InicioVista extends javax.swing.JFrame {
         });
         jm_prod.add(jmi_agg_prod);
 
-        jmi_eliminar_prod.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
-        jmi_eliminar_prod.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        jmi_eliminar_prod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        jmi_eliminar_prod.setText("Eliminar");
-        jmi_eliminar_prod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_eliminar_prodActionPerformed(evt);
-            }
-        });
-        jm_prod.add(jmi_eliminar_prod);
-
         jMenuBar1.add(jm_prod);
 
         jm_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_prov.png"))); // NOI18N
@@ -201,16 +186,6 @@ public class InicioVista extends javax.swing.JFrame {
             }
         });
         jm_prov.add(jmi_agg_prov);
-
-        jmi_eliminar_prov.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        jmi_eliminar_prov.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        jmi_eliminar_prov.setText("Eliminar");
-        jmi_eliminar_prov.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_eliminar_provActionPerformed(evt);
-            }
-        });
-        jm_prov.add(jmi_eliminar_prov);
 
         jMenuBar1.add(jm_prov);
 
@@ -243,16 +218,6 @@ public class InicioVista extends javax.swing.JFrame {
             }
         });
         jm_cliente.add(jmi_agg_cliente);
-
-        jmi_eliminar_cliente.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        jmi_eliminar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        jmi_eliminar_cliente.setText("Eliminar ");
-        jmi_eliminar_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_eliminar_clienteActionPerformed(evt);
-            }
-        });
-        jm_cliente.add(jmi_eliminar_cliente);
 
         jMenuBar1.add(jm_cliente);
 
@@ -352,16 +317,6 @@ public class InicioVista extends javax.swing.JFrame {
             }
         });
         jm_dev.add(jmi_reg_dev);
-
-        jmi_eliminar_dev.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
-        jmi_eliminar_dev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        jmi_eliminar_dev.setText("Eliminar");
-        jmi_eliminar_dev.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmi_eliminar_devActionPerformed(evt);
-            }
-        });
-        jm_dev.add(jmi_eliminar_dev);
 
         jMenuBar1.add(jm_dev);
 
@@ -494,38 +449,6 @@ public class InicioVista extends javax.swing.JFrame {
         this.jmi_agg_prov = jmi_agg_prov;
     }
 
-    public JMenuItem getJmi_eliminar_cliente() {
-        return jmi_eliminar_cliente;
-    }
-
-    public void setJmi_eliminar_cliente(JMenuItem jmi_eliminar_cliente) {
-        this.jmi_eliminar_cliente = jmi_eliminar_cliente;
-    }
-
-    public JMenuItem getJmi_eliminar_dev() {
-        return jmi_eliminar_dev;
-    }
-
-    public void setJmi_eliminar_dev(JMenuItem jmi_eliminar_dev) {
-        this.jmi_eliminar_dev = jmi_eliminar_dev;
-    }
-
-    public JMenuItem getJmi_eliminar_prod() {
-        return jmi_eliminar_prod;
-    }
-
-    public void setJmi_eliminar_prod(JMenuItem jmi_eliminar_prod) {
-        this.jmi_eliminar_prod = jmi_eliminar_prod;
-    }
-
-    public JMenuItem getJmi_eliminar_prov() {
-        return jmi_eliminar_prov;
-    }
-
-    public void setJmi_eliminar_prov(JMenuItem jmi_eliminar_prov) {
-        this.jmi_eliminar_prov = jmi_eliminar_prov;
-    }
-
     public JMenuItem getJmi_facturasC() {
         return jmi_factura_c;
     }
@@ -610,15 +533,6 @@ public class InicioVista extends javax.swing.JFrame {
                
     }//GEN-LAST:event_jmi_buscar_prodActionPerformed
 
-    private void jmi_eliminar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_prodActionPerformed
-//        escritorio.removeAll();
-        String nombre;
-        nombre = JOptionPane.showInputDialog("Digita el nombre del producto:  ");
-        ProductoVista ver_ventana = new ProductoVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
-    }//GEN-LAST:event_jmi_eliminar_prodActionPerformed
-
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
         coordinador.verProductos();
     }//GEN-LAST:event_jmi_mostrar_prodActionPerformed
@@ -634,15 +548,6 @@ public class InicioVista extends javax.swing.JFrame {
     private void jmi_buscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_clienteActionPerformed
         
     }//GEN-LAST:event_jmi_buscar_clienteActionPerformed
-
-    private void jmi_eliminar_provActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_provActionPerformed
-//        escritorio.removeAll();
-        String nombre;
-        nombre = JOptionPane.showInputDialog("Digita el número de NIT:  ");
-        ProveedorVista ver_ventana = new ProveedorVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
-    }//GEN-LAST:event_jmi_eliminar_provActionPerformed
 
     private void jmi_agg_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_clienteActionPerformed
         coordinador.registrarCliente();
@@ -680,27 +585,11 @@ public class InicioVista extends javax.swing.JFrame {
         coordinador.verClientes();
     }//GEN-LAST:event_jmi_mostrar_clientesActionPerformed
 
-    private void jmi_eliminar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_clienteActionPerformed
-        String nombre;
-        nombre = JOptionPane.showInputDialog("Digita número de documento:  ");
-        ClienteVista ver_ventana = new ClienteVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
-    }//GEN-LAST:event_jmi_eliminar_clienteActionPerformed
-
     private void jmi_mostrar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_devActionPerformed
         DevolucionVista ver_ventana = new DevolucionVista();
         escritorio.add(ver_ventana);
         ver_ventana.show();
     }//GEN-LAST:event_jmi_mostrar_devActionPerformed
-
-    private void jmi_eliminar_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminar_devActionPerformed
-        String nombre;
-        nombre = JOptionPane.showInputDialog("Digita número de devolución:  ");
-        DevolucionVista ver_ventana = new DevolucionVista();
-        escritorio.add(ver_ventana);
-        ver_ventana.show();
-    }//GEN-LAST:event_jmi_eliminar_devActionPerformed
 
     private void jmi_reg_devActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_reg_devActionPerformed
         AgregarDevolucionVista ver_ventana = new AgregarDevolucionVista();
@@ -771,10 +660,6 @@ public class InicioVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_agg_cliente;
     private javax.swing.JMenuItem jmi_agg_prod;
     private javax.swing.JMenuItem jmi_agg_prov;
-    private javax.swing.JMenuItem jmi_eliminar_cliente;
-    private javax.swing.JMenuItem jmi_eliminar_dev;
-    private javax.swing.JMenuItem jmi_eliminar_prod;
-    private javax.swing.JMenuItem jmi_eliminar_prov;
     private javax.swing.JMenuItem jmi_factura_c;
     private javax.swing.JMenuItem jmi_facturasV;
     private javax.swing.JMenuItem jmi_mostrar_c;

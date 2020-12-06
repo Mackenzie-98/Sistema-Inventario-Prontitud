@@ -36,8 +36,8 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_filtrar = new javax.swing.JLabel();
-        txt_filtrar = new javax.swing.JTextField();
+        lbl_filtro = new javax.swing.JLabel();
+        txt_filtro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -50,15 +50,15 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_fac_comp.png"))); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        lbl_filtrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_filtrar.setText("Filtrar:");
-        getContentPane().add(lbl_filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 110, -1));
+        lbl_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        lbl_filtro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_filtro.setText("Filtrar:");
+        getContentPane().add(lbl_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 110, -1));
 
-        txt_filtrar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_filtrar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_filtrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        getContentPane().add(txt_filtrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 120, -1));
+        txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
+        txt_filtro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 120, -1));
 
         jLabel2.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,6 +68,7 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 30));
 
+        tabla_compra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         tabla_compra.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_compra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,8 +120,8 @@ public class FacturaCompraVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_filtrar;
+    private javax.swing.JLabel lbl_filtro;
     private javax.swing.JTable tabla_compra;
-    private javax.swing.JTextField txt_filtrar;
+    private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
 }

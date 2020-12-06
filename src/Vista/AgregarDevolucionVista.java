@@ -39,12 +39,12 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txt_id_productp = new javax.swing.JTextField();
+        txt_id_prod = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txt_id_factura = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtArea_descrip = new javax.swing.JTextArea();
         cmd_devolucion = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -62,9 +62,9 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Descripción:");
 
-        txt_id_productp.addActionListener(new java.awt.event.ActionListener() {
+        txt_id_prod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_id_productpActionPerformed(evt);
+                txt_id_prodActionPerformed(evt);
             }
         });
 
@@ -72,9 +72,9 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Id. Factura");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtArea_descrip.setColumns(20);
+        txtArea_descrip.setRows(5);
+        jScrollPane1.setViewportView(txtArea_descrip);
 
         cmd_devolucion.setBackground(new java.awt.Color(0, 51, 204));
         cmd_devolucion.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 12)); // NOI18N
@@ -111,7 +111,7 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
                             .addContainerGap()
                             .addComponent(jLabel2)
                             .addGap(13, 13, 13)
-                            .addComponent(txt_id_productp, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_id_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(83, 83, 83)
                             .addComponent(cmd_devolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -134,7 +134,7 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
                             .addComponent(txt_id_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_id_productp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_id_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addComponent(cmd_devolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -145,15 +145,15 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_abajo.png"))); // NOI18N
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 700, 40));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 630, 40));
 
         jLabel6.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Generar Devolución");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 230, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 230, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/ImagenFondo/fondo_largo_dos.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 40));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 40));
 
         jLabel7.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 12)); // NOI18N
         jLabel7.setText("Datos de devolución:");
@@ -162,9 +162,9 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_id_productpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_productpActionPerformed
+    private void txt_id_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_id_prodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_id_productpActionPerformed
+    }//GEN-LAST:event_txt_id_prodActionPerformed
 
     private void cmd_devolucionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_devolucionMouseEntered
         // TODO add your handling code here:
@@ -195,8 +195,8 @@ public class AgregarDevolucionVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txtArea_descrip;
     private javax.swing.JTextField txt_id_factura;
-    private javax.swing.JTextField txt_id_productp;
+    private javax.swing.JTextField txt_id_prod;
     // End of variables declaration//GEN-END:variables
 }
