@@ -29,9 +29,13 @@ public class Coordinador {
     public static ProductoVista productoVista;
     public static ProveedorVista proveedorVista;
     public static VentaVista ventaVista;
+<<<<<<< HEAD
+
+=======
     
     
     
+>>>>>>> origin/main
     //Creacion de Vistas para agregar
     public static AgregarClienteVista agregarClienteVista;
     public static AgregarCompraVista agregarCompraVista;
@@ -39,12 +43,28 @@ public class Coordinador {
     public static AgregarProductoVista agregarProductoVista;
     public static AgregarProveedorVista agregarProveedorVista;
     public static AgregarVentaVista agregarVentaVista;
+<<<<<<< HEAD
+
+=======
     
     
+>>>>>>> origin/main
     //Conexion
     public static Conexion conexion = Conexion.getConexion();
 
     //Controllers
+<<<<<<< HEAD
+    public static CategoriaJpaController categoriaCon;
+    public static ClienteJpaController clienteCon;
+    public static DetalleCompraJpaController detalleCompraCon;
+    public static DetalleVentaJpaController detalleVentaCon;
+    public static DevolucionJpaController devolucionCon;
+    public static FacturaCompraJpaController facturaCompraCon;
+    public static FacturaVentaJpaController facturaVentaCon;
+    public static LoteJpaController loteCon;
+    public static ProductoJpaController productoCon;
+    public static ProveedorJpaController proveedorCon;
+=======
     public static CategoriaJpaController categoriaCon ;
     public static ClienteJpaController clienteCon ;
     public static DetalleCompraJpaController detalleCompraCon;
@@ -55,6 +75,7 @@ public class Coordinador {
     public static LoteJpaController loteCon ;
     public static ProductoJpaController productoCon ;
     public static ProveedorJpaController proveedorCon ;
+>>>>>>> origin/main
 
     public static void main(String[] agrs) throws SQLException {
         Coordinador control = new Coordinador();
@@ -473,16 +494,20 @@ public class Coordinador {
     }
 
     public void verVentas() {
-        DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
-        List<Cliente> clientes = clienteCon.findClienteEntities();
+        DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
+        List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
+        long descuento = 0;
+        for (DetalleVenta x : ventas) {
 
-        for (Cliente x : clientes) {
-            model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getTelefono(), x.getCorreo()});
+            if (x.getDescuento() != null) {
+                descuento = x.getDescuento() * x.getPrecioUnitario();
+            }
+            model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getProducto().getIdloteFK().getIdLote(), x.getProducto().getIdloteFK().getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
         }
 
-        clienteVista.getTabla_cliente().setModel(model);
-        inicio.getEscritorio().add(clienteVista);
-        clienteVista.show();
-        clienteVista.toFront();
+        ventaVista.getTabla_venta().setModel(model);
+        inicio.getEscritorio().add(ventaVista);
+        ventaVista.show();
+        ventaVista.toFront();
     }
 }
