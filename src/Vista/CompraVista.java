@@ -62,7 +62,6 @@ public class CompraVista extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         cmd_modificar = new javax.swing.JButton();
-        cmd_eliminar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Tabla de compras");
@@ -139,22 +138,12 @@ public class CompraVista extends javax.swing.JInternalFrame {
                 cmd_modificarMouseExited(evt);
             }
         });
-        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 120, 23));
-
-        cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
-        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cmd_eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        cmd_eliminar.setText("Eliminar");
-        cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cmd_eliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cmd_eliminarMouseExited(evt);
+        cmd_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 23));
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 23));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,13 +168,9 @@ public class CompraVista extends javax.swing.JInternalFrame {
         cmd_modificar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_modificarMouseExited
 
-    private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_cmd_eliminarMouseEntered
-
-    private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(new Color(0,51,204));
-    }//GEN-LAST:event_cmd_eliminarMouseExited
+    private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
+        coordinador.verModCompraVista();
+    }//GEN-LAST:event_cmd_modificarActionPerformed
 
     public JTextField getTxt_filtro() {
         return txt_filtro;
@@ -205,7 +190,6 @@ public class CompraVista extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cmd_eliminar;
     private javax.swing.JButton cmd_modificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

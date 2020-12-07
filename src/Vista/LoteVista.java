@@ -95,7 +95,6 @@ public class LoteVista extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        tabla_lote.setEnabled(false);
         tabla_lote.setGridColor(new java.awt.Color(0, 51, 204));
         tabla_lote.setSelectionBackground(new java.awt.Color(153, 204, 255));
         tabla_lote.getTableHeader().setReorderingAllowed(false);
@@ -111,6 +110,16 @@ public class LoteVista extends javax.swing.JInternalFrame {
         txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_filtro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        txt_filtro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_filtroActionPerformed(evt);
+            }
+        });
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyTyped(evt);
+            }
+        });
         getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 120, -1));
 
         cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
@@ -124,6 +133,11 @@ public class LoteVista extends javax.swing.JInternalFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 cmd_modificarMouseExited(evt);
+            }
+        });
+        cmd_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_modificarActionPerformed(evt);
             }
         });
         getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 130, 23));
@@ -144,6 +158,11 @@ public class LoteVista extends javax.swing.JInternalFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 cmd_eliminarMouseExited(evt);
+            }
+        });
+        cmd_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_eliminarActionPerformed(evt);
             }
         });
         getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 130, 23));
@@ -173,8 +192,31 @@ public class LoteVista extends javax.swing.JInternalFrame {
     private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
         cmd_eliminar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_eliminarMouseExited
+
+    private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
+        coordinador.verModLoteVista();
+    }//GEN-LAST:event_cmd_modificarActionPerformed
+
+    private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed
+       //coordinador.elimiarLote();
+    }//GEN-LAST:event_cmd_eliminarActionPerformed
+
+    private void txt_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_filtroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_filtroActionPerformed
     
-    TableRowSorter trs;     
+    TableRowSorter trs;
+    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
+        this.getTxt_filtro().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3));
+            }            
+        });
+        trs = new TableRowSorter((DefaultTableModel)getTabla_lote().getModel());
+        this.getTabla_lote().setRowSorter(trs);
+    }//GEN-LAST:event_txt_filtroKeyTyped
+    
     public JTextField getTxt_filtro() {
         return txt_filtro;
     }

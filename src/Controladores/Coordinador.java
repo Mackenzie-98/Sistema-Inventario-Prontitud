@@ -618,8 +618,178 @@ public class Coordinador {
     /**
      * METODOS DE ACTUALIZACION
      */
-    public void modificarCliente() {
-
+    
+    public void verModClienteVista() {
+        int fila = clienteVista.getTabla_cliente().getSelectedRow();
+        
+        //Obtener Datos
+        String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
+        String nombre = clienteVista.getTabla_cliente().getValueAt(fila, 1).toString();
+        String fecha = clienteVista.getTabla_cliente().getValueAt(fila, 2).toString();
+        String telefono = clienteVista.getTabla_cliente().getValueAt(fila, 3).toString();
+        String correo = clienteVista.getTabla_cliente().getValueAt(fila, 4).toString();
+        
+        //Precargar datos  
+        modClienteVista.getTxt_id().setText(id);
+        modClienteVista.getTxt_nombre().setText(nombre);
+        modClienteVista.getTxt_fecha_nac().setText(fecha);
+        modClienteVista.getTxt_telefono().setText(telefono);
+        modClienteVista.getTxt_correo().setText(correo);
+        
+        //Mostrar
+        inicio.getEscritorio().add(modClienteVista, 0);
+        modClienteVista.setVisible(true);
+        modClienteVista.toFront();        
+    }
+    
+    public void verModCompraVista() {
+        int fila = compraVista.getTabla_compra().getSelectedRow();
+        
+        //Obtener Datos
+        String nit = compraVista.getTabla_compra().getValueAt(fila, 0).toString();
+        String fecha = compraVista.getTabla_compra().getValueAt(fila, 1).toString();
+        String descuento = compraVista.getTabla_compra().getValueAt(fila, 2).toString();
+        String cantidad = compraVista.getTabla_compra().getValueAt(fila, 3).toString();
+        String precio = compraVista.getTabla_compra().getValueAt(fila, 4).toString();
+        String id = compraVista.getTabla_compra().getValueAt(fila, 5).toString();
+        String lote = compraVista.getTabla_compra().getValueAt(fila, 6).toString();
+        
+        //Precargar Datos
+        modCompraVista.getTxt_nit().setText(nit);
+        modCompraVista.getTxt_fecha().setText(fecha);
+        modCompraVista.getTxt_dto().setText(descuento);
+        modCompraVista.getTxt_cant().setText(cantidad);
+        modCompraVista.getTxt_precio_c().setText(precio);
+        modCompraVista.getTxt_nombre_prod().setText(id);
+        modCompraVista.getTxt_lote().setText(lote);
+        
+        //Mostrar
+        inicio.getEscritorio().add(modCompraVista, 0);
+        modCompraVista.setVisible(true);
+        modCompraVista.toFront();        
+    }
+    
+    public void verModDevolucionVista() {
+        int fila = devolucionVista.getTabla_dev().getSelectedRow();
+        
+        //Obtener Datos
+        String id_factura = devolucionVista.getTabla_dev().getValueAt(fila, 0).toString();
+        String id_producto = devolucionVista.getTabla_dev().getValueAt(fila, 1).toString();
+        String cantidad = devolucionVista.getTabla_dev().getValueAt(fila, 2).toString();
+        String des = devolucionVista.getTabla_dev().getValueAt(fila, 3).toString();
+        
+        //Precargar datos  
+        modDevolucionVista.getTxt_id_factura().setText(id_factura);
+        modDevolucionVista.getTxt_id_prod().setText(id_producto);
+        modDevolucionVista.getTxt_cant().setText(cantidad);
+        modDevolucionVista.getTxtArea_descrip().setText(des);
+        
+        //Mostrar
+        inicio.getEscritorio().add(modDevolucionVista, 0);
+        modDevolucionVista.setVisible(true);
+        modDevolucionVista.toFront();
+        
+    }
+    
+    public void verModLoteVista() {
+        int fila = loteVista.getTabla_lote().getSelectedRow();
+        
+        //Obtener Datos
+        String lote = loteVista.getTabla_lote().getValueAt(fila, 0).toString();
+        String cantidad = loteVista.getTabla_lote().getValueAt(fila, 1).toString();
+        String fecha = loteVista.getTabla_lote().getValueAt(fila, 2).toString();
+        String laboratorio = loteVista.getTabla_lote().getValueAt(fila, 3).toString();
+        
+        //Precargar datos  
+        modLoteVista.getTxt_lote().setText(lote);
+        modLoteVista.getTxt_cant().setText(cantidad);
+        modLoteVista.getTxt_fecha().setText(fecha);
+        modLoteVista.getTxt_lab().setText(laboratorio);
+        
+        //Mostrar
+        inicio.getEscritorio().add(modLoteVista, 0);
+        modLoteVista.setVisible(true);
+        modLoteVista.toFront();        
+    }
+    
+    public void verModProductoVista() {
+        int fila = productoVista.getTabla_producto().getSelectedRow();
+        
+        //Obtener Datos
+        String id = productoVista.getTabla_producto().getValueAt(fila, 0).toString();
+        String id_lote = productoVista.getTabla_producto().getValueAt(fila, 1).toString();
+        String nombre = productoVista.getTabla_producto().getValueAt(fila, 2).toString();
+        String precio = productoVista.getTabla_producto().getValueAt(fila, 3).toString();
+        
+        Producto producto = productoCon.findProducto(Integer.parseInt(id));
+        Lote lote = loteCon.findLote(Integer.parseInt(id_lote));
+        
+        //Precargar datos  
+        modProductoVista.getTxt_id().setText(id);
+        modProductoVista.getTxt_nombre().setText(producto.getNombre());
+        modProductoVista.getTxt_cant().setText(String.valueOf(lote.getCantidad()));
+        modProductoVista.getTxt_precio().setText(String.valueOf(producto.getPrecioUnitario()));
+        modProductoVista.getTxt_stock().setText(String.valueOf(producto.getStockMinimo()));
+        modProductoVista.getCbx_categoria().setSelectedIndex(producto.getIdcategoriaFK().getIdCategoria() - 1);
+        modProductoVista.getTxt_lab().setText(lote.getLaboratorio());
+        modProductoVista.getTxt_lote().setText(id_lote);
+        modProductoVista.getTxt_fecha().setText(lote.getStringFecha());
+                
+        //Mostrar
+        inicio.getEscritorio().add(modProductoVista, 0);
+        modProductoVista.setVisible(true);
+        modProductoVista.toFront();        
+    }
+    
+    public void verModProveedorVista() {
+        int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
+        
+        //Obtener Datos
+        String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
+        String nombre = proveedorVista.getTabla_proveedor().getValueAt(fila, 1).toString();
+        String ciudad = proveedorVista.getTabla_proveedor().getValueAt(fila, 2).toString();
+        String correo = proveedorVista.getTabla_proveedor().getValueAt(fila, 3).toString();
+        String telefono = proveedorVista.getTabla_proveedor().getValueAt(fila, 4).toString();
+        String direccion = proveedorVista.getTabla_proveedor().getValueAt(fila, 5).toString();
+        
+        //Precargar datos  
+        modProveedorVista.getTxt_nit().setText(nit);
+        modProveedorVista.getTxt_nombre().setText(nombre);
+        modProveedorVista.getTxt_ciudad().setText(ciudad);
+        modProveedorVista.getTxt_correo().setText(correo);
+        modProveedorVista.getTxt_tel().setText(telefono);
+        modProveedorVista.getTxt_direccion().setText(direccion);
+        
+        //Mostrar
+        inicio.getEscritorio().add(modProveedorVista, 0);
+        modProveedorVista.setVisible(true);
+        modProveedorVista.toFront();        
+    }
+    
+    public void verModVentaVista() {
+        int fila = ventaVista.getTabla_venta().getSelectedRow();
+        
+        //Obtener Datos
+        String id_factura = ventaVista.getTabla_venta().getValueAt(fila, 0).toString();
+        String id_producto = ventaVista.getTabla_venta().getValueAt(fila, 1).toString();
+        String cantidad = ventaVista.getTabla_venta().getValueAt(fila, 4).toString();
+        String precio = ventaVista.getTabla_venta().getValueAt(fila, 5).toString();        
+        String dto = ventaVista.getTabla_venta().getValueAt(fila, 6).toString();
+        
+        FacturaVenta facturaVenta = facturaVentaCon.findFacturaVenta(Integer.parseInt(id_factura));
+        
+        //Precargar datos  
+        modVentaVista.getTxt_id_cliente().setText(String.valueOf(facturaVenta.getIdentificacionFK()));
+        modVentaVista.getTxt_nombre_prod().setText(id_producto);
+        modVentaVista.getTxt_cant().setText(cantidad);
+        modVentaVista.getTxt_fecha().setText(facturaVenta.getStringFecha());
+        modVentaVista.getTxt_precio().setText(precio);
+        modVentaVista.getTxt_dto().setText(dto);
+        
+        //Mostrar
+        inicio.getEscritorio().add(modVentaVista, 0);
+        modVentaVista.setVisible(true);
+        modVentaVista.toFront();        
     }
 
     /**

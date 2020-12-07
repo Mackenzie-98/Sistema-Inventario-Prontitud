@@ -9,9 +9,14 @@ import Controladores.Coordinador;
 import static Vista.InicioVista.escritorio;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -54,7 +59,6 @@ public class VentaVista extends javax.swing.JInternalFrame {
         lbl_filtro = new javax.swing.JLabel();
         txt_filtro = new javax.swing.JTextField();
         cmd_modificar = new javax.swing.JButton();
-        cmd_eliminar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -100,6 +104,11 @@ public class VentaVista extends javax.swing.JInternalFrame {
         txt_filtro.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_filtro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_filtro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        txt_filtro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_filtroKeyTyped(evt);
+            }
+        });
         getContentPane().add(txt_filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 120, -1));
 
         cmd_modificar.setBackground(new java.awt.Color(0, 51, 204));
@@ -115,22 +124,12 @@ public class VentaVista extends javax.swing.JInternalFrame {
                 cmd_modificarMouseExited(evt);
             }
         });
-        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 120, 23));
-
-        cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
-        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cmd_eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        cmd_eliminar.setText("Eliminar");
-        cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cmd_eliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cmd_eliminarMouseExited(evt);
+        cmd_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmd_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 23));
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 120, 23));
 
         jLabel6.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,17 +156,24 @@ public class VentaVista extends javax.swing.JInternalFrame {
         cmd_modificar.setBackground(new Color(0,51,204));
     }//GEN-LAST:event_cmd_modificarMouseExited
 
-    private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_cmd_eliminarMouseEntered
+    TableRowSorter trs;
+    private void txt_filtroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_filtroKeyTyped
+       this.getTxt_filtro().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+getTxt_filtro().getText(), 0,1,2,3,4,5,6,7,8));
+            }            
+        });
+        trs = new TableRowSorter((DefaultTableModel)getTabla_venta().getModel());
+        this.getTabla_venta().setRowSorter(trs);
+    }//GEN-LAST:event_txt_filtroKeyTyped
 
-    private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(new Color(0,51,204));
-    }//GEN-LAST:event_cmd_eliminarMouseExited
+    private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
+        coordinador.verModVentaVista();
+    }//GEN-LAST:event_cmd_modificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cmd_eliminar;
     private javax.swing.JButton cmd_modificar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -178,14 +184,6 @@ public class VentaVista extends javax.swing.JInternalFrame {
     private javax.swing.JTable tabla_venta;
     private javax.swing.JTextField txt_filtro;
     // End of variables declaration//GEN-END:variables
-
-    public JButton getCmd_eliminar() {
-        return cmd_eliminar;
-    }
-
-    public void setCmd_eliminar(JButton cmd_eliminar) {
-        this.cmd_eliminar = cmd_eliminar;
-    }
 
     public JButton getCmd_modificar() {
         return cmd_modificar;
