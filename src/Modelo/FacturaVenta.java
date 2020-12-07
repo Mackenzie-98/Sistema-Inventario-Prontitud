@@ -71,7 +71,15 @@ public class FacturaVenta implements Serializable {
         this.idFactura = idFactura;
         this.fecha = fecha;
     }
-
+    
+    public String getStringFecha(){
+        String fecha = "";
+        if(this.fecha != null){
+            fecha = this.fecha.getDate() + "-" + (this.fecha.getMonth()+1) + "-" + (this.fecha.getYear()+1900);
+        }
+        return fecha;
+    }
+    
     public Integer getIdFactura() {
         return idFactura;
     }

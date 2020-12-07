@@ -220,7 +220,7 @@ public class ProductoVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_eliminarActionPerformed
 
     private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
-        coordinador.modificarProductos();
+        coordinador.verModProductoVista();
     }//GEN-LAST:event_cmd_modificarActionPerformed
 
     public JTextField getTxt_filtro() {

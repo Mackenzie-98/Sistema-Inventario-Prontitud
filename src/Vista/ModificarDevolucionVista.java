@@ -39,6 +39,14 @@ public class ModificarDevolucionVista extends javax.swing.JInternalFrame {
         this.cmd_modificar = cmd_devolucion;
     }
 
+    public JTextField getTxt_cant() {
+        return txt_cant;
+    }
+    
+    public void setTxt_cant(JTextField txt_cant) {
+        this.txt_cant = txt_cant;
+    }
+    
     public JTextArea getTxtArea_descrip() {
         return txtArea_descrip;
     }

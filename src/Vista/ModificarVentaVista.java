@@ -69,8 +69,6 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
         txt_precio = new javax.swing.JTextField();
         lbl_previo_venta = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txt_lote = new javax.swing.JTextField();
-        lbl_lote = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -90,7 +88,7 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
 
         lbl_cliente.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         lbl_cliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_cliente.setText("Identificación");
+        lbl_cliente.setText("Id Cliente:");
         getContentPane().add(lbl_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 90, 22));
         lbl_cliente.getAccessibleContext().setAccessibleName("Identificación ");
         lbl_cliente.getAccessibleContext().setAccessibleDescription("");
@@ -105,7 +103,6 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha.setText("yyyy-mm-dd");
         txt_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_fechaMouseClicked(evt);
@@ -195,22 +192,7 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txt_lote.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        txt_lote.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_lote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_loteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 130, -1));
-
-        lbl_lote.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
-        lbl_lote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_lote.setText("No. Lote:");
-        jPanel1.add(lbl_lote, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 60, 22));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 330, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 330, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,10 +221,6 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
         this.getTxt_fecha().setText("");
     }//GEN-LAST:event_txt_fechaMouseClicked
 
-    private void txt_loteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_loteActionPerformed
-
     public void limpiar() {
         this.getTxt_cant().setText("");
         this.getTxt_dto().setText("");
@@ -251,6 +229,14 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
         this.getTxt_precio().setText("");
         this.getTxt_nombre_prod().setText("");
 
+    }
+
+    public JTextField getTxt_id_prod() {
+        return txt_id_prod;
+    }
+
+    public void setTxt_id_prod(JTextField txt_id_prod) {
+        this.txt_id_prod = txt_id_prod;
     }
 
     public JTextField getTxt_cant() {
@@ -315,7 +301,6 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbl_cliente;
     private javax.swing.JLabel lbl_dto;
     private javax.swing.JLabel lbl_fecha;
-    private javax.swing.JLabel lbl_lote;
     private javax.swing.JLabel lbl_previo_venta;
     private javax.swing.JLabel lbl_prod;
     private javax.swing.JTextField txt_cant;
@@ -323,7 +308,6 @@ public class ModificarVentaVista extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_fecha;
     private javax.swing.JTextField txt_id_cliente;
     private javax.swing.JTextField txt_id_prod;
-    private javax.swing.JTextField txt_lote;
     private javax.swing.JTextField txt_precio;
     // End of variables declaration//GEN-END:variables
 }

@@ -120,7 +120,6 @@ public class ModificarLoteVista extends javax.swing.JInternalFrame {
 
         txt_fecha.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha.setText("yyyy-mm-dd");
         txt_fecha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_fechaMouseClicked(evt);

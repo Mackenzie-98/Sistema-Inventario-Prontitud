@@ -19,13 +19,7 @@ import javax.swing.JTextField;
  */
 public class DevolucionVista extends javax.swing.JInternalFrame {
 
-    public JButton getCmd_eliminar() {
-        return cmd_eliminar;
-    }
-
-    public void setCmd_eliminar(JButton cmd_eliminar) {
-        this.cmd_eliminar = cmd_eliminar;
-    }
+    
 
     public JButton getCmd_modificar() {
         return cmd_modificar;
@@ -93,7 +87,6 @@ public class DevolucionVista extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         cmd_modificar = new javax.swing.JButton();
-        cmd_eliminar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -166,21 +159,7 @@ public class DevolucionVista extends javax.swing.JInternalFrame {
                 cmd_modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 120, 23));
-
-        cmd_eliminar.setBackground(new java.awt.Color(0, 51, 204));
-        cmd_eliminar.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
-        cmd_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/icons/icon_eliminar.png"))); // NOI18N
-        cmd_eliminar.setText("Eliminar");
-        cmd_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cmd_eliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cmd_eliminarMouseExited(evt);
-            }
-        });
-        getContentPane().add(cmd_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 120, 23));
+        getContentPane().add(cmd_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 120, 23));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,24 +178,15 @@ public class DevolucionVista extends javax.swing.JInternalFrame {
         cmd_modificar.setBackground(Color.DARK_GRAY);
     }//GEN-LAST:event_cmd_modificarMouseExited
 
-    private void cmd_eliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseEntered
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_cmd_eliminarMouseEntered
-
-    private void cmd_eliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_eliminarMouseExited
-        cmd_eliminar.setBackground(Color.DARK_GRAY);
-    }//GEN-LAST:event_cmd_eliminarMouseExited
-
     private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
         ModificarDevolucionVista ver_ventana = new ModificarDevolucionVista();
         escritorio.add(ver_ventana);
         this.setVisible(false);
         ver_ventana.show();
     }//GEN-LAST:event_cmd_modificarActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cmd_eliminar;
     private javax.swing.JButton cmd_modificar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

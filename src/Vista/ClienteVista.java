@@ -185,7 +185,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_filtroKeyTyped
 
     private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
-        coordinador.modificarCliente();
+        coordinador.verModClienteVista();
     }//GEN-LAST:event_cmd_modificarActionPerformed
 
     private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed

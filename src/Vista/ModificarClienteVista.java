@@ -26,7 +26,6 @@ public class ModificarClienteVista extends javax.swing.JInternalFrame {
     public ModificarClienteVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
@@ -36,7 +35,6 @@ public class ModificarClienteVista extends javax.swing.JInternalFrame {
     public ModificarClienteVista(Coordinador coordinador) {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
@@ -135,7 +133,6 @@ public class ModificarClienteVista extends javax.swing.JInternalFrame {
 
         txt_fecha_nac.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         txt_fecha_nac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_fecha_nac.setText("yyyy-mm-dd");
         txt_fecha_nac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_fecha_nacMouseClicked(evt);
@@ -221,7 +218,7 @@ public class ModificarClienteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_correoActionPerformed
 
     private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
-        coordinador.modificarCliente();
+        //coordinador.modificarCliente();
     }//GEN-LAST:event_cmd_modificarActionPerformed
 
     private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited
