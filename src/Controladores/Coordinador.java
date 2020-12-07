@@ -38,6 +38,15 @@ public class Coordinador {
     public static AgregarProductoVista agregarProductoVista;
     public static AgregarProveedorVista agregarProveedorVista;
     public static AgregarVentaVista agregarVentaVista;
+    
+    //Creacion de Vistas para modificar
+    public static ModificarClienteVista modClienteVista;
+    public static ModificarCompraVista modCompraVista;
+    public static ModificarDevolucionVista modDevolucionVista;
+    public static ModificarLoteVista modLoteVista;
+    public static ModificarProductoVista modProductoVista;
+    public static ModificarProveedorVista modProveedorVista;
+    public static ModificarVentaVista modVentaVista;
 
     //Conexion
     public static Conexion conexion = Conexion.getConexion();
@@ -570,5 +579,8 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
         return now;
+    }
+    public void modificarProductos(){
+        productoVista.getTabla_producto();
     }
 }
