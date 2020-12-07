@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -116,7 +117,8 @@ public class Coordinador {
     }
 
     public void iniciarSesion() {
-        inicio.show();
+        inicio.validar();
+        inicio.setVisible(true);
         login.setVisible(false);
     }
 
@@ -637,6 +639,35 @@ public class Coordinador {
     }
 
     public void modificarProductos() {
-        productoVista.getTabla_producto();
+        try {
+            DefaultTableModel model=(DefaultTableModel)productoVista.getTabla_producto().getModel();
+            int index=productoVista.getTabla_producto().getSelectedRow();
+            
+            String oldIdLote=model.getValueAt(index,1).toString();
+            String p7=modProductoVista.getTxt_cant().getText();
+            String p8=modProductoVista.getTxt_lab().getText();
+            String p9=modProductoVista.getTxt_fecha().getText();
+            
+            //Info Prod
+            String oldIdProd=model.getValueAt(index,0).toString();
+            String p1=modProductoVista.getTxt_id().getText();
+            String p2=modProductoVista.getTxt_nombre().getText();
+            String p3=modProductoVista.getTxt_precio().getText();
+            String p4=modProductoVista.getTxt_stock().getText();
+            String p5=String.valueOf(modProductoVista.getCbx_categoria().getSelectedIndex()+1);
+            String p6=modProductoVista.getTxt_lote().getText();
+            
+            loteCon.create(new Lote(Integer.parseInt(p6), this.obtenerFecha(p9), p8, Integer.parseInt(p7)));
+            Statement st;
+            st = conexion.getConexionSQL().createStatement();
+            String query1="UPDATE `Prontitud`.`Producto` SET `id_lote_FK` = '"+p6+"' WHERE (`id_producto` = '"+oldIdLote+"');";
+            String query2="UPDATE `Prontitud`.`Producto` SET `id_producto` = '"+p1+"', `nombre` = '"+p2+"', `precio_unitario` = '"+p3+"', `stock_minimo` = '"+p4+"', `id_categoria_FK` = '"+p5+"', `id_lote_FK` = '"+p6+"' WHERE (`id_producto` = '"+oldIdProd+"');";
+            st.execute(query1);
+            st.execute(query2);
+            loteCon.destroy(Integer.parseInt(oldIdLote));
+            verProductos();
+        } catch (Exception ex) {
+            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

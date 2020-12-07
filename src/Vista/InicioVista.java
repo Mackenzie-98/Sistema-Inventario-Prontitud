@@ -6,6 +6,7 @@
 package Vista;
 
 import Controladores.Coordinador;
+import static Controladores.Coordinador.inicio;
 import Vista.ImagenFondo.ImagenFondo;
 import static Vista.LoginVista.cbx_usuario;
 import java.sql.SQLException;
@@ -27,7 +28,7 @@ public class InicioVista extends javax.swing.JFrame {
 
     public LoginVista usuario;
     Coordinador coordinador = new Coordinador();
-    //String tipo = String.valueOf(cbx_usuario.getSelectedItem());
+    String tipo ;
 
     /**
      * Creates new form Inicio
@@ -43,6 +44,7 @@ public class InicioVista extends javax.swing.JFrame {
     }
 
     public InicioVista(Coordinador coordinador) {
+        
         this.coordinador = coordinador;
         initComponents();
         this.setSize(800, 585);
@@ -52,16 +54,18 @@ public class InicioVista extends javax.swing.JFrame {
 
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
+        
     }
 
     public void validar() {
-        /*if(tipo.equals("Vendedor")){
+        tipo=String.valueOf(cbx_usuario.getSelectedItem());
+        System.out.println(tipo);
+        if(tipo.equals("Vendedor")){
             jm_prov.setEnabled(false);
             jmi_registrar_c.setEnabled(false);
-            jmi_eliminar_prod.setEnabled(false);
             jmi_agg_prod.setEnabled(false);
-            jmi_facturasC.setEnabled(false);
-        } */
+            jmi_factura_c.setEnabled(false);
+        }
     }
 
     /**
