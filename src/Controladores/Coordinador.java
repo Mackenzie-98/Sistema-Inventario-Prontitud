@@ -51,7 +51,7 @@ public class Coordinador {
     public static ModificarVentaVista modVentaVista;
 
     //Conexion
-    public static Conexion conexion = Conexion.getConexion();
+    public static Conexion conexion =Conexion.getConexion();
 
     //Controllers
     public static CategoriaJpaController categoriaCon;
@@ -67,7 +67,6 @@ public class Coordinador {
 
     public static void main(String[] agrs) throws SQLException {
         Coordinador control = new Coordinador();
-
         //Creacion de Vistas para mostrar
         login = new LoginVista(control);
         inicio = new InicioVista(control);
@@ -98,9 +97,6 @@ public class Coordinador {
         modProveedorVista = new ModificarProveedorVista(control);
         modVentaVista = new ModificarVentaVista(control);
 
-        //Conexion
-        conexion = Conexion.getConexion();
-
         //Controllers
         categoriaCon = new CategoriaJpaController(conexion.getBd());
         clienteCon = new ClienteJpaController(conexion.getBd());
@@ -113,8 +109,7 @@ public class Coordinador {
         productoCon = new ProductoJpaController(conexion.getBd());
         proveedorCon = new ProveedorJpaController(conexion.getBd());
 
-        login.setVisible(
-                true);
+        login.setVisible(true);
     }
 
     public void iniciarSesion() {
@@ -127,37 +122,37 @@ public class Coordinador {
      * METODOS DE REGISTRAR
      */
     public void registrarProductoVista() {
-        inicio.getEscritorio().add(agregarProductoVista);
+        inicio.getEscritorio().add(agregarProductoVista,0);
         agregarProductoVista.show();
         agregarProductoVista.toFront();
     }
 
     public void registrarCliente() {
-        inicio.getEscritorio().add(agregarClienteVista);
+        inicio.getEscritorio().add(agregarClienteVista,0);
         agregarClienteVista.show();
         agregarClienteVista.toFront();
     }
 
     public void registrarProveedorVista() {
-        inicio.getEscritorio().add(agregarProveedorVista);
+        inicio.getEscritorio().add(agregarProveedorVista,0);
         agregarProveedorVista.show();
         agregarProveedorVista.toFront();
     }
 
     public void registrarCompraVista() {
-        inicio.getEscritorio().add(agregarCompraVista);
+        inicio.getEscritorio().add(agregarCompraVista,0);
         agregarCompraVista.show();
         agregarCompraVista.toFront();
     }
 
     public void registrarVentaVista() {
-        inicio.getEscritorio().add(agregarVentaVista);
+        inicio.getEscritorio().add(agregarVentaVista,0);
         agregarVentaVista.show();
         agregarVentaVista.toFront();
     }
 
     public void registrarDevolucionVista() {
-        inicio.getEscritorio().add(agregarDevolucionVista);
+        inicio.getEscritorio().add(agregarDevolucionVista,0);
         agregarDevolucionVista.show();
         agregarDevolucionVista.toFront();
     }
@@ -233,7 +228,7 @@ public class Coordinador {
                 //Fin
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Producto", JOptionPane.INFORMATION_MESSAGE);
                 agregarProductoVista.limpiar();
-
+                verProductos();
             } catch (Exception ex) {
                 Logger.getLogger(Coordinador.class
                         .getName()).log(Level.SEVERE, null, ex);
@@ -391,22 +386,21 @@ public class Coordinador {
             }
         }
     }
-
     /**
      * METODOS DE MOSTRAR
      */
     public void verProductos() {
         DefaultTableModel model = (DefaultTableModel) productoVista.getTabla_producto().getModel();
         try {
-            List<Producto> productos = productoCon.findProductoEntities();
             int numDatos = model.getRowCount();
             for (int i = 0; i < numDatos; i++) {
                 model.removeRow(0);
             }
+            List<Producto> productos = productoCon.findProductoEntities();
             for (Producto x : productos) {
+                System.out.println(x.getIdloteFK());
                 model.addRow(new Object[]{x.getIdProducto(), x.getIdloteFK().getIdLote(), x.getNombre(), x.getPrecioUnitario()});
             }
-
             productoVista.getTabla_producto().setModel(model);
             inicio.getEscritorio().add(productoVista, 0);
             productoVista.setVisible(true);
@@ -415,7 +409,6 @@ public class Coordinador {
         } catch (Exception e) {
             System.err.println(e);
         }
-
     }
 
     public void verClientes() {
@@ -573,7 +566,7 @@ public class Coordinador {
         }
         try {
             int fila = productoVista.getTabla_producto().getSelectedRow();
-            if(fila == -1){
+            if (fila == -1) {
                 JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -605,7 +598,7 @@ public class Coordinador {
         }
         try {
             int fila = clienteVista.getTabla_cliente().getSelectedRow();
-            if(fila == -1){
+            if (fila == -1) {
                 JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -623,7 +616,7 @@ public class Coordinador {
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
- 
+
     public void eliminarProveedor() {
         if (inicio.getTipo().equals("Vendedor")) {
             JOptionPane.showMessageDialog(null, "Error, el usuario: Vendedor NO puede eliminar productos. "
@@ -632,7 +625,7 @@ public class Coordinador {
         }
         try {
             int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
-            if(fila == -1){
+            if (fila == -1) {
                 JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -660,7 +653,7 @@ public class Coordinador {
         }
         try {
             int fila = loteVista.getTabla_lote().getSelectedRow();
-            if(fila == -1){
+            if (fila == -1) {
                 JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -799,6 +792,7 @@ public class Coordinador {
     }
 
     public void verModProductoVista() {
+        try{
         int fila = productoVista.getTabla_producto().getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -827,8 +821,12 @@ public class Coordinador {
 
         //Mostrar
         inicio.getEscritorio().add(modProductoVista, 0);
-        modProductoVista.setVisible(true);
+        modProductoVista.show();
         modProductoVista.toFront();
+        }catch(Exception e){
+            System.err.println(e);
+                    
+        }
     }
 
     public void verModProveedorVista() {
@@ -888,7 +886,7 @@ public class Coordinador {
         modVentaVista.setVisible(true);
         modVentaVista.toFront();
     }
-    
+
     public void modificarProductos() {
         if (inicio.getTipo().equals("Vendedor")) {
             JOptionPane.showMessageDialog(null, "Error, el usuario: Vendedor NO puede eliminar productos. "
@@ -928,8 +926,8 @@ public class Coordinador {
                 loteCon.destroy(Integer.parseInt(oldIdLote));
             }
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Actualizar Producto", JOptionPane.INFORMATION_MESSAGE);
-            verProductos();
             modProductoVista.setVisible(false);
+            verProductos();
         } catch (Exception ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -949,5 +947,5 @@ public class Coordinador {
                     .getName()).log(Level.SEVERE, null, ex);
         }
         return now;
-    }   
-} 
+    }
+}
