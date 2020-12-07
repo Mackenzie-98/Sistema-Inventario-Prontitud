@@ -38,7 +38,7 @@ public class Coordinador {
     public static AgregarProductoVista agregarProductoVista;
     public static AgregarProveedorVista agregarProveedorVista;
     public static AgregarVentaVista agregarVentaVista;
-    
+
     //Creacion de Vistas para modificar
     public static ModificarClienteVista modClienteVista;
     public static ModificarCompraVista modCompraVista;
@@ -87,6 +87,15 @@ public class Coordinador {
         agregarProveedorVista = new AgregarProveedorVista(control);
         agregarVentaVista = new AgregarVentaVista(control);
 
+        //Creacion de Vistas para modificar
+        modClienteVista = new ModificarClienteVista(control);
+        modCompraVista = new ModificarCompraVista(control);
+        modDevolucionVista = new ModificarDevolucionVista(control);
+        modLoteVista = new ModificarLoteVista(control);
+        modProductoVista = new ModificarProductoVista(control);
+        modProveedorVista = new ModificarProveedorVista(control);
+        modVentaVista = new ModificarVentaVista(control);
+
         //Conexion
         conexion = Conexion.getConexion();
 
@@ -102,7 +111,8 @@ public class Coordinador {
         productoCon = new ProductoJpaController(conexion.getBd());
         proveedorCon = new ProveedorJpaController(conexion.getBd());
 
-        login.setVisible(true);
+        login.setVisible(
+                true);
     }
 
     public void iniciarSesion() {
@@ -167,8 +177,10 @@ public class Coordinador {
                 devolucionCon.create(devolucion);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Proveedor", JOptionPane.INFORMATION_MESSAGE);
                 agregarDevolucionVista.limpiar();
+
             } catch (Exception ex) {
-                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Coordinador.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -218,8 +230,10 @@ public class Coordinador {
                 //Fin
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Producto", JOptionPane.INFORMATION_MESSAGE);
                 agregarProductoVista.limpiar();
+
             } catch (Exception ex) {
-                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Coordinador.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -243,8 +257,10 @@ public class Coordinador {
                 clienteCon.create(nuevo);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Cliente", JOptionPane.INFORMATION_MESSAGE);
                 agregarClienteVista.limpiar();
+
             } catch (Exception ex) {
-                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Coordinador.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -269,8 +285,10 @@ public class Coordinador {
                 proveedorCon.create(nuevo);
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Proveedor", JOptionPane.INFORMATION_MESSAGE);
                 agregarProveedorVista.limpiar();
+
             } catch (Exception ex) {
-                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Coordinador.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -316,8 +334,10 @@ public class Coordinador {
 
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Compra", JOptionPane.INFORMATION_MESSAGE);
                 agregarCompraVista.limpiar();
+
             } catch (Exception ex) {
-                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Coordinador.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -361,8 +381,10 @@ public class Coordinador {
 
                 JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Agregar Venta", JOptionPane.INFORMATION_MESSAGE);
                 agregarVentaVista.limpiar();
+
             } catch (Exception ex) {
-                Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Coordinador.class
+                        .getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -397,6 +419,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
             List<Cliente> clientes = clienteCon.findClienteEntities();
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
 
             for (Cliente x : clientes) {
                 model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getTelefono(), x.getCorreo()});
@@ -415,6 +441,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
             List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
 
             for (Proveedor x : proveedores) {
                 model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono(), x.getDireccion()});
@@ -433,7 +463,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) devolucionVista.getTabla_dev().getModel();
             List<Devolucion> registros = devolucionCon.findDevolucionEntities();
-
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
             for (Devolucion x : registros) {
                 model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getDescripcion()});
             }
@@ -451,7 +484,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
             List<Lote> lotes = loteCon.findLoteEntities();
-
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
             for (Lote x : lotes) {
                 model.addRow(new Object[]{x.getIdLote(), x.getCantidad(), x.getStringFecha(), x.getLaboratorio()});
             }
@@ -470,6 +506,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) compraVista.getTabla_compra().getModel();
             List<DetalleCompra> compras = detalleCompraCon.findDetalleCompraEntities();
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
             long descuento = 0;
             for (DetalleCompra x : compras) {
                 if (x.getDescuento() != null) {
@@ -492,6 +532,10 @@ public class Coordinador {
             DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
             List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
             long descuento = 0;
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++) {
+                model.removeRow(0);
+            }
             for (DetalleVenta x : ventas) {
 
                 if (x.getDescuento() != null) {
@@ -519,11 +563,15 @@ public class Coordinador {
             Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
             productoCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Producto", JOptionPane.INFORMATION_MESSAGE);
-            productoVista.repaint();
+            this.verProductos();
+
         } catch (IllegalOrphanException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -534,13 +582,15 @@ public class Coordinador {
             String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
             clienteCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
-            clienteVista.invalidate();
-            clienteVista.validate();
-            clienteVista.repaint();
+            this.verClientes();
+
         } catch (IllegalOrphanException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -551,12 +601,15 @@ public class Coordinador {
 
             proveedorCon.destroy(nit);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Proveedor", JOptionPane.INFORMATION_MESSAGE);
-            proveedorVista.setVisible(false);
             this.verProveedores();
+
         } catch (IllegalOrphanException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -575,12 +628,15 @@ public class Coordinador {
         java.util.Date now = null;
         try {
             now = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
+
         } catch (ParseException ex) {
-            Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return now;
     }
-    public void modificarProductos(){
+
+    public void modificarProductos() {
         productoVista.getTabla_producto();
     }
 }
