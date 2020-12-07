@@ -80,7 +80,7 @@ public class Coordinador {
         productoVista = new ProductoVista(control);
         proveedorVista = new ProveedorVista(control);
         ventaVista = new VentaVista(control);
-
+        
         //Creacion de Vistas para agregar
         agregarClienteVista = new AgregarClienteVista(control);
         agregarCompraVista = new AgregarCompraVista(control);
@@ -517,8 +517,9 @@ public class Coordinador {
             for (DetalleCompra x : compras) {
                 if (x.getDescuento() != null) {
                     descuento = x.getDescuento() * x.getPrecioUnitario();
-                }
+                } else x.setDescuento(0l);
                 model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+                
                 model.addRow(new String[]{x.getFacturaCompra().getIdFactura().toString(), x.getProducto().getIdProducto().toString(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), String.valueOf(x.getCantidad()), String.valueOf(x.getPrecioUnitario()), String.valueOf(x.getDescuento()), String.valueOf(x.getPrecioUnitario() - descuento)});
             }
 
@@ -541,10 +542,9 @@ public class Coordinador {
                 model.removeRow(0);
             }
             for (DetalleVenta x : ventas) {
-
                 if (x.getDescuento() != null) {
                     descuento = x.getDescuento() * x.getPrecioUnitario();
-                }
+                } else x.setDescuento(0l);
                 model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaVenta().getIdentificacionFK().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
             }
 
