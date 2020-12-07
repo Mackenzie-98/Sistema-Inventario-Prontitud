@@ -27,7 +27,6 @@ public class CompraVista extends javax.swing.JInternalFrame {
     public CompraVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
@@ -37,7 +36,6 @@ public class CompraVista extends javax.swing.JInternalFrame {
             this.coordinador=coordinador;
         initComponents();
         this.setResizable(false);
-        this.setVisible(true); 
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,

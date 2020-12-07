@@ -27,14 +27,13 @@ import javax.swing.JPopupMenu;
 public class InicioVista extends javax.swing.JFrame {
 
     public LoginVista usuario;
-    Coordinador coordinador = new Coordinador();
-    String tipo ;
+    public static Coordinador coordinador = new Coordinador();
+    String tipo;
 
     /**
      * Creates new form Inicio
      */
     public InicioVista() {
-
         initComponents();
         this.setResizable(false);
         this.setTitle("Droguería Prontitud");
@@ -44,7 +43,7 @@ public class InicioVista extends javax.swing.JFrame {
     }
 
     public InicioVista(Coordinador coordinador) {
-        
+
         this.coordinador = coordinador;
         initComponents();
         this.setSize(800, 585);
@@ -54,13 +53,12 @@ public class InicioVista extends javax.swing.JFrame {
 
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
-        
+
     }
 
     public void validar() {
-        tipo=String.valueOf(cbx_usuario.getSelectedItem());
-        System.out.println(tipo);
-        if(tipo.equals("Vendedor")){
+        tipo = String.valueOf(cbx_usuario.getSelectedItem());
+        if (tipo.equals("Vendedor")) {
             jm_prov.setEnabled(false);
             jmi_registrar_c.setEnabled(false);
             jmi_agg_prod.setEnabled(false);
@@ -532,7 +530,7 @@ public class InicioVista extends javax.swing.JFrame {
     }
 
     private void jmi_buscar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_prodActionPerformed
-               
+
     }//GEN-LAST:event_jmi_buscar_prodActionPerformed
 
     private void jmi_mostrar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_prodActionPerformed
@@ -548,7 +546,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_mostrar_provActionPerformed
 
     private void jmi_buscar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscar_clienteActionPerformed
-        
+
     }//GEN-LAST:event_jmi_buscar_clienteActionPerformed
 
     private void jmi_agg_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agg_clienteActionPerformed
@@ -596,7 +594,7 @@ public class InicioVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_mostrar_vActionPerformed
 
     private void jmi_mostrar_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_mostrar_cActionPerformed
-       coordinador.verCompras();
+        coordinador.verCompras();
     }//GEN-LAST:event_jmi_mostrar_cActionPerformed
 
     /**

@@ -267,7 +267,7 @@ public class ModificarProductoVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_fechaMouseClicked
 
     private void cmd_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_modificarActionPerformed
-//        coordinador.modificarProducto();
+        coordinador.modificarProductos();
     }//GEN-LAST:event_cmd_modificarActionPerformed
 
     private void cmd_modificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmd_modificarMouseExited

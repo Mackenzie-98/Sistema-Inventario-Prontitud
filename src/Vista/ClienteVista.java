@@ -32,7 +32,6 @@ public class ClienteVista extends javax.swing.JInternalFrame {
     public ClienteVista() {
         initComponents();
         this.setResizable(false);
-        this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
@@ -43,7 +42,6 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         this.coordinador = coordinador;
         initComponents();
         this.setResizable(false);
-        this.setVisible(true);
         Dimension desktopSize = escritorio.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
@@ -94,7 +92,7 @@ public class ClienteVista extends javax.swing.JInternalFrame {
         tabla_cliente.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 14)); // NOI18N
         tabla_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1212121", "Camila", null, null, null}
+
             },
             new String [] {
                 "Identificación", "Nombre", "Fecha de nacimiento", "Telefono", "Correo"
