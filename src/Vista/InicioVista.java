@@ -381,6 +381,15 @@ public class InicioVista extends javax.swing.JFrame {
         return jm_cliente;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
     public void setJm_cliente(JMenu jm_cliente) {
         this.jm_cliente = jm_cliente;
     }
@@ -661,4 +670,5 @@ public class InicioVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_registrar_c;
     private javax.swing.JMenuItem jmi_registrar_v;
     // End of variables declaration//GEN-END:variables
+
 }
