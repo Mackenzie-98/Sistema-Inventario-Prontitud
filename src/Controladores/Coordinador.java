@@ -11,6 +11,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -515,7 +516,7 @@ public class Coordinador {
                 if (x.getDescuento() != null) {
                     descuento = x.getDescuento() * x.getPrecioUnitario();
                 }
-                model.addRow(new Object[]{x.getFacturaCompra().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), x.getCantidad(), x.getPrecioUnitario(), x.getDescuento(), x.getPrecioUnitario() - descuento});
+                model.addRow(new String[]{x.getFacturaCompra().getIdFactura().toString(), x.getProducto().getIdProducto().toString(), x.getProducto().getNombre(), x.getFacturaCompra().getNitFk().getNombre(), String.valueOf(x.getCantidad()), String.valueOf(x.getPrecioUnitario()), String.valueOf(x.getDescuento()), String.valueOf(x.getPrecioUnitario() - descuento)});
             }
 
             compraVista.getTabla_compra().setModel(model);
@@ -561,7 +562,11 @@ public class Coordinador {
         try {
             int fila = productoVista.getTabla_producto().getSelectedRow();
             Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
+            Producto producto = productoCon.findProducto(id);
+            
             productoCon.destroy(id);
+            loteCon.destroy(producto.getIdloteFK().getIdLote());            
+            
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Producto", JOptionPane.INFORMATION_MESSAGE);
             this.verProductos();
 
@@ -612,6 +617,31 @@ public class Coordinador {
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void eliminarLote() {
+        try {
+            int fila = loteVista.getTabla_lote().getSelectedRow();
+            Integer id = Integer.parseInt(loteVista.getTabla_lote().getValueAt(fila, 0).toString());
+            List<Producto> productos = productoCon.findProductoEntities();
+            
+            for(Producto x: productos){
+                if(Objects.equals(x.getIdloteFK().getIdLote(), id))
+                    productoCon.destroy(x.getIdProducto());
+            }
+            
+            loteCon.destroy(id);            
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Lote", JOptionPane.INFORMATION_MESSAGE);
+            this.verLotes();
+
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * METODOS DE ACTUALIZACION
@@ -619,6 +649,10 @@ public class Coordinador {
     
     public void verModClienteVista() {
         int fila = clienteVista.getTabla_cliente().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
@@ -642,6 +676,10 @@ public class Coordinador {
     
     public void verModCompraVista() {
         int fila = compraVista.getTabla_compra().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String nit = compraVista.getTabla_compra().getValueAt(fila, 0).toString();
@@ -669,6 +707,10 @@ public class Coordinador {
     
     public void verModDevolucionVista() {
         int fila = devolucionVista.getTabla_dev().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String id_factura = devolucionVista.getTabla_dev().getValueAt(fila, 0).toString();
@@ -691,6 +733,10 @@ public class Coordinador {
     
     public void verModLoteVista() {
         int fila = loteVista.getTabla_lote().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String lote = loteVista.getTabla_lote().getValueAt(fila, 0).toString();
@@ -712,6 +758,10 @@ public class Coordinador {
     
     public void verModProductoVista() {
         int fila = productoVista.getTabla_producto().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String id = productoVista.getTabla_producto().getValueAt(fila, 0).toString();
@@ -741,6 +791,10 @@ public class Coordinador {
     
     public void verModProveedorVista() {
         int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
@@ -766,6 +820,10 @@ public class Coordinador {
     
     public void verModVentaVista() {
         int fila = ventaVista.getTabla_venta().getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         //Obtener Datos
         String id_factura = ventaVista.getTabla_venta().getValueAt(fila, 0).toString();

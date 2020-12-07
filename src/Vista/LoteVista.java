@@ -198,7 +198,7 @@ public class LoteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmd_modificarActionPerformed
 
     private void cmd_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_eliminarActionPerformed
-       //coordinador.elimiarLote();
+       coordinador.eliminarLote();
     }//GEN-LAST:event_cmd_eliminarActionPerformed
 
     private void txt_filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_filtroActionPerformed

@@ -86,11 +86,10 @@ public class CompraVista extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        tabla_compra.setGridColor(new java.awt.Color(0, 51, 204));
-        tabla_compra.setIntercellSpacing(getMaximumSize());
+        tabla_compra.setGridColor(new java.awt.Color(0, 51, 255));
+        tabla_compra.setInheritsPopupMenu(true);
         tabla_compra.setName(""); // NOI18N
-        tabla_compra.setRequestFocusEnabled(false);
-        tabla_compra.setSelectionBackground(new java.awt.Color(0, 51, 204));
+        tabla_compra.setSelectionBackground(new java.awt.Color(102, 204, 255));
         tabla_compra.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla_compra);
 
