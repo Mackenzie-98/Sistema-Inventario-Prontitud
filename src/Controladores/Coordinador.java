@@ -150,9 +150,9 @@ public class Coordinador {
         String descrip = agregarDevolucionVista.getTxtArea_descrip().getText();
 
         //Validaciones
-        if ("".equals(idFactura) || "".equals(idProducto)) {
+        if ("".equals(idFactura) || "".equals(idProducto))
             JOptionPane.showMessageDialog(null, "ERROR: Es necesario que ingrese el identificador de Producto y Factura", "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else {
+        else{
             try {
                 Devolucion devolucion = new Devolucion(facturaVentaCon.findFacturaVenta(Integer.parseInt(idFactura)), productoCon.findProducto(Integer.parseInt(idProducto)), descrip);
                 devolucionCon.create(devolucion);
@@ -388,7 +388,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) clienteVista.getTabla_cliente().getModel();
             List<Cliente> clientes = clienteCon.findClienteEntities();
-
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++)
+                model.removeRow(0);
+            
             for (Cliente x : clientes) {
                 model.addRow(new Object[]{x.getIdentificacion(), x.getNombre(), x.getStringFecha(), x.getTelefono(), x.getCorreo()});
             }
@@ -406,7 +409,10 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) proveedorVista.getTabla_proveedor().getModel();
             List<Proveedor> proveedores = proveedorCon.findProveedorEntities();
-
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++)
+                model.removeRow(0);
+            
             for (Proveedor x : proveedores) {
                 model.addRow(new String[]{x.getNit(), x.getNombre(), x.getCiudad(), x.getCorreo(), x.getTelefono(), x.getDireccion()});
             }
@@ -424,7 +430,9 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) devolucionVista.getTabla_dev().getModel();
             List<Devolucion> registros = devolucionCon.findDevolucionEntities();
-
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++)
+                model.removeRow(0);
             for (Devolucion x : registros) {
                 model.addRow(new Object[]{x.getFacturaVenta().getIdFactura(), x.getProducto().getIdProducto(), x.getProducto().getNombre(), x.getDescripcion()});
             }
@@ -442,7 +450,9 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) loteVista.getTabla_lote().getModel();
             List<Lote> lotes = loteCon.findLoteEntities();
-
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++)
+                model.removeRow(0);
             for (Lote x : lotes) {
                 model.addRow(new Object[]{x.getIdLote(), x.getCantidad(), x.getStringFecha(), x.getLaboratorio()});
             }
@@ -461,6 +471,9 @@ public class Coordinador {
         try {
             DefaultTableModel model = (DefaultTableModel) compraVista.getTabla_compra().getModel();
             List<DetalleCompra> compras = detalleCompraCon.findDetalleCompraEntities();
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++)
+                model.removeRow(0);
             long descuento = 0;
             for (DetalleCompra x : compras) {
                 if (x.getDescuento() != null) {
@@ -483,6 +496,9 @@ public class Coordinador {
             DefaultTableModel model = (DefaultTableModel) ventaVista.getTabla_venta().getModel();
             List<DetalleVenta> ventas = detalleVentaCon.findDetalleVentaEntities();
             long descuento = 0;
+            int numDatos = model.getRowCount();
+            for (int i = 0; i < numDatos; i++)
+                model.removeRow(0);
             for (DetalleVenta x : ventas) {
 
                 if (x.getDescuento() != null) {
@@ -510,7 +526,7 @@ public class Coordinador {
             Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
             productoCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Producto", JOptionPane.INFORMATION_MESSAGE);
-            productoVista.repaint();
+            this.verProductos();
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NonexistentEntityException ex) {
@@ -525,9 +541,7 @@ public class Coordinador {
             String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
             clienteCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
-            clienteVista.invalidate();
-            clienteVista.validate();
-            clienteVista.repaint();
+            this.verClientes();
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NonexistentEntityException ex) {
@@ -542,7 +556,6 @@ public class Coordinador {
 
             proveedorCon.destroy(nit);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Proveedor", JOptionPane.INFORMATION_MESSAGE);
-            proveedorVista.setVisible(false);
             this.verProveedores();
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
