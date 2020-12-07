@@ -93,11 +93,11 @@ public class Coordinador {
         productoCon = new ProductoJpaController(conexion.getBd());
         proveedorCon = new ProveedorJpaController(conexion.getBd());
 
-        inicio.setVisible(true);
+        login.setVisible(true);
     }
 
     public void iniciarSesion() {
-        inicio.setVisible(true);
+        inicio.show();
         login.setVisible(false);
     }
 

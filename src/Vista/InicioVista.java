@@ -38,7 +38,6 @@ public class InicioVista extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("Droguería Prontitud");
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
-
         escritorio.setBorder(new ImagenFondo());
         this.setExtendedState(InicioVista.MAXIMIZED_HORIZ);
     }
@@ -48,7 +47,6 @@ public class InicioVista extends javax.swing.JFrame {
         initComponents();
         this.setSize(800, 585);
         this.setResizable(false);
-        this.setVisible(true);
         this.setTitle("Droguería Prontitud");
         this.setIconImage(new ImageIcon(getClass().getResource("icons/icon_inicio.png")).getImage());
 
