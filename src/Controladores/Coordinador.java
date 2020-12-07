@@ -573,6 +573,10 @@ public class Coordinador {
         }
         try {
             int fila = productoVista.getTabla_producto().getSelectedRow();
+            if(fila == -1){
+                JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             Integer id = Integer.parseInt(productoVista.getTabla_producto().getValueAt(fila, 0).toString());
             Producto producto = productoCon.findProducto(id);
 
@@ -601,6 +605,10 @@ public class Coordinador {
         }
         try {
             int fila = clienteVista.getTabla_cliente().getSelectedRow();
+            if(fila == -1){
+                JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             String id = clienteVista.getTabla_cliente().getValueAt(fila, 0).toString();
             clienteCon.destroy(id);
             JOptionPane.showMessageDialog(null, "Operación realizada correctamente", "Elimnar Cliente", JOptionPane.INFORMATION_MESSAGE);
@@ -615,7 +623,7 @@ public class Coordinador {
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+ 
     public void eliminarProveedor() {
         if (inicio.getTipo().equals("Vendedor")) {
             JOptionPane.showMessageDialog(null, "Error, el usuario: Vendedor NO puede eliminar productos. "
@@ -624,6 +632,10 @@ public class Coordinador {
         }
         try {
             int fila = proveedorVista.getTabla_proveedor().getSelectedRow();
+            if(fila == -1){
+                JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             String nit = proveedorVista.getTabla_proveedor().getValueAt(fila, 0).toString();
 
             proveedorCon.destroy(nit);
@@ -648,6 +660,10 @@ public class Coordinador {
         }
         try {
             int fila = loteVista.getTabla_lote().getSelectedRow();
+            if(fila == -1){
+                JOptionPane.showMessageDialog(null, "ERROR: Debe seleccionar un registro", "ERROR", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             Integer id = Integer.parseInt(loteVista.getTabla_lote().getValueAt(fila, 0).toString());
             List<Producto> productos = productoCon.findProductoEntities();
 
@@ -872,23 +888,7 @@ public class Coordinador {
         modVentaVista.setVisible(true);
         modVentaVista.toFront();
     }
-
-    /**
-     * UTILIDADES
-     *
-     */
-    public java.util.Date obtenerFecha(String fecha) {
-        java.util.Date now = null;
-        try {
-            now = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Coordinador.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        return now;
-    }
-
+    
     public void modificarProductos() {
         if (inicio.getTipo().equals("Vendedor")) {
             JOptionPane.showMessageDialog(null, "Error, el usuario: Vendedor NO puede eliminar productos. "
@@ -934,4 +934,20 @@ public class Coordinador {
             Logger.getLogger(Coordinador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
+
+    /**
+     * UTILIDADES
+     *
+     */
+    public java.util.Date obtenerFecha(String fecha) {
+        java.util.Date now = null;
+        try {
+            now = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Coordinador.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return now;
+    }   
+} 
