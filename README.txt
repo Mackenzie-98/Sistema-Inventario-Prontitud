@@ -1,2 +1,2 @@
-# Sistema-Inventario-Prontitud
-Sistema para manejo de inventario de la droguería Prontitud
+# Software-Inventario-Prontitud
+Software para manejo de inventario y facturación de la droguería Prontitud.
